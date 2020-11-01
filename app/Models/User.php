@@ -16,13 +16,10 @@ use Laravel\Passport\HasApiTokens;
  * @property mixed city_id
  * @property string password
  * @property mixed avatar
- * @property integer type
  * @property string app_locale
  * @property boolean is_active
  * @property string|null device_token
  * @property string|null device_type
- * @property string|null lat
- * @property string|null lng
  * @property mixed email_verified_at
  * @property mixed mobile_verified_at
  * @method User find(int $id)
@@ -31,15 +28,12 @@ class User extends Authenticatable
 {
     use Notifiable,HasApiTokens;
 
-    protected $fillable = ['name','mobile','email','city_id','password','avatar','type','app_locale','is_active','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at',];
+    protected $fillable = ['name','mobile','email','city_id','password','avatar','app_locale','is_active','device_token','device_type','email_verified_at','mobile_verified_at',];
 
     protected $hidden = ['password'];
 
     public function city(){
         return $this->belongsTo(City::class);
-    }
-    public function vendor(){
-        return $this->hasOne(Vendor::class);
     }
     /**
      * @return int
@@ -121,38 +115,6 @@ class User extends Authenticatable
         $this->city_id = $city_id;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getLat(): ?string
-    {
-        return $this->lat;
-    }
-
-    /**
-     * @param string|null $lat
-     */
-    public function setLat(?string $lat): void
-    {
-        $this->lat = $lat;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLng(): ?string
-    {
-        return $this->lng;
-    }
-
-    /**
-     * @param string|null $lng
-     */
-    public function setLng(?string $lng): void
-    {
-        $this->lng = $lng;
-    }
-
 
     /**
      * @return string
@@ -184,22 +146,6 @@ class User extends Authenticatable
     public function setAvatar($avatar): void
     {
         $this->avatar = Functions::StoreImageModel($avatar,'users/avatar');
-    }
-
-    /**
-     * @return int
-     */
-    public function getType(): int
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param int $type
-     */
-    public function setType(int $type): void
-    {
-        $this->type = $type;
     }
 
     /**

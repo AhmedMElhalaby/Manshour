@@ -23,10 +23,16 @@ return [
         'settings'=>'الإعدادات',
         'faqs'=>'الأسئلة الشائعة',
         'bank_accounts'=>'الحسابات البنكية',
+        'cities'=>'المدن',
+        'categories'=>'التصنيفات',
         'users'=>'المستخدمين',
         'tickets'=>'التذاكر',
         'roles'=>'الأدوار',
         'permissions'=>'الصلاحيات',
+        'app_content'=>'محتوى التطبيق',
+        'advertisements'=>'الاعلانات',
+        'deleted_advertisements'=>'الاعلانات المحذوفة',
+
     ],
     'Home'=>[
         'n_send_general'=>'إرسال إشعار عام ',
@@ -65,6 +71,8 @@ return [
     'minute' => 'دقيقة',
     'the_minute' => 'الدقيقة',
     'finish' => 'إنهاء',
+    'true' => 'مفعل',
+    'false' => 'معطل',
 
 /////////////////////// رسائل اللوحة ////////////////////////
     'messages'=>[

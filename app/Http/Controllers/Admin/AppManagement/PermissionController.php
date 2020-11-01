@@ -36,8 +36,6 @@ class PermissionController extends Controller
             ],
         ]);
         $this->SetLinks([
-//            'edit',
-//            'delete',
         ]);
     }
 

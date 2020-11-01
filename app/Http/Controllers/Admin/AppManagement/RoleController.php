@@ -58,7 +58,6 @@ class RoleController extends Controller
         ]);
         $this->SetLinks([
             'edit',
-//            'delete',
         ]);
     }
 

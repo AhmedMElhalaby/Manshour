@@ -226,6 +226,9 @@ trait AhmedPanelTrait
             case 'file':
                 return view('AhmedPanel.base.columns.file',compact('column','object'));
                 break;
+            case 'boolean':
+                return view('AhmedPanel.base.columns.boolean',compact('column','object'));
+                break;
             case 'select':
                 return view('AhmedPanel.base.columns.select',compact('column','object'));
                 break;
@@ -320,6 +323,9 @@ trait AhmedPanelTrait
     public static function SearchColumns($Column,$lang){
         if($Column['is_searchable'])
             switch ($Column['type']){
+                case 'boolean':
+                    return view('AhmedPanel.base.search.boolean',compact('Column','lang'));
+                    break;
                 case 'select':
                     return view('AhmedPanel.base.search.select',compact('Column','lang'));
                     break;
@@ -354,6 +360,9 @@ trait AhmedPanelTrait
      */
     public static function Fields($Field, $value,$lang){
         switch ($Field['type']){
+            case 'boolean':
+                return view('AhmedPanel.base.fields.boolean',compact('Field','value','lang'));
+                break;
             case 'select':
                 return view('AhmedPanel.base.fields.select',compact('Field','value','lang'));
                 break;

@@ -138,6 +138,30 @@ Route::group([
             Route::delete('/{bank_account}','BankAccountController@destroy');
             Route::get('/option/export','BankAccountController@export');
         });
+        Route::group([
+            'prefix'=>'cities'
+        ],function () {
+            Route::get('/','CityController@index');
+            Route::get('/create','CityController@create');
+            Route::post('/','CityController@store');
+            Route::get('/{city}','CityController@show');
+            Route::get('/{city}/edit','CityController@edit');
+            Route::put('/{city}','CityController@update');
+            Route::delete('/{city}','CityController@destroy');
+            Route::get('/option/export','CityController@export');
+        });
+        Route::group([
+            'prefix'=>'categories'
+        ],function () {
+            Route::get('/','CategoryController@index');
+            Route::get('/create','CategoryController@create');
+            Route::post('/','CategoryController@store');
+            Route::get('/{category}','CategoryController@show');
+            Route::get('/{category}/edit','CategoryController@edit');
+            Route::put('/{category}','CategoryController@update');
+            Route::delete('/{category}','CategoryController@destroy');
+            Route::get('/option/export','CategoryController@export');
+        });
     });
     /*
     |--------------------------------------------------------------------------
@@ -164,8 +188,34 @@ Route::group([
         ],function () {
             Route::get('/','TicketController@index');
             Route::get('/{ticket}','TicketController@show');
-            Route::post('/{ticket}/response','TicketController@response');
             Route::get('/{ticket}/close','TicketController@close');
+        });
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | Admin > App Content
+    |--------------------------------------------------------------------------
+    | Here is where App Content routes
+    */
+
+    Route::group([
+        'prefix'=>'app_content',
+        'namespace'=>'AppContent',
+    ],function () {
+        Route::group([
+            'prefix'=>'advertisements'
+        ],function () {
+            Route::get('/','AdvertisementController@index');
+            Route::get('/{advertisement}','AdvertisementController@show');
+            Route::delete('/{advertisement}','AdvertisementController@destroy');
+            Route::get('/option/export','AdvertisementController@export');
+        });
+        Route::group([
+            'prefix'=>'deleted_advertisements'
+        ],function () {
+            Route::get('/','DeletedAdvertisementController@index');
+            Route::delete('/{advertisement}','DeletedAdvertisementController@destroy');
+            Route::get('/option/export','DeletedAdvertisementController@export');
         });
     });
 

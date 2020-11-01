@@ -20,11 +20,22 @@ class Constant
         'Open'=>1,
         'Closed'=>2
     ];
+    const TICKETS_TYPE = [
+        'Complain'=>1,
+        'Suggestion'=>2,
+        'Enquiry'=>3,
+        'Others'=>4,
+    ];
     const SENDER_TYPE = [
         'User'=>1,
         'Admin'=>2,
     ];
     const MEDIA_TYPES = [
         'Ad'=>1,
+    ];
+    const ADVERTISEMENT_SELL_TYPE = [
+        'InsideWebsite'=>1,
+        'OutsideWebsite'=>2,
+        'NeverSell'=>3
     ];
 }

@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\Helpers\Functions;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer id
- * @property mixed user_id
- * @property mixed title
+ * @property mixed name
+ * @property mixed email
+ * @property mixed mobile
  * @property mixed message
- * @property mixed attachment
+ * @property mixed type
  * @property mixed status
  * @method Ticket find(int $id)
  * @method static updateOrCreate(array $array, array $array1)
@@ -18,14 +18,8 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     protected $table = 'tickets';
-    protected $fillable = ['user_id','title','message','attachment','status'];
+    protected $fillable = ['name','email','mobile','message','type','status'];
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-    public function ticket_responses(){
-        return $this->hasMany(TicketResponse::class);
-    }
     /**
      * @return int
      */
@@ -45,33 +39,49 @@ class Ticket extends Model
     /**
      * @return mixed
      */
-    public function getUserId()
+    public function getName()
     {
-        return $this->user_id;
+        return $this->name;
     }
 
     /**
-     * @param mixed $user_id
+     * @param mixed $name
      */
-    public function setUserId($user_id): void
+    public function setName($name): void
     {
-        $this->user_id = $user_id;
+        $this->name = $name;
     }
 
     /**
      * @return mixed
      */
-    public function getTitle()
+    public function getEmail()
     {
-        return $this->title;
+        return $this->email;
     }
 
     /**
-     * @param mixed $title
+     * @param mixed $email
      */
-    public function setTitle($title): void
+    public function setEmail($email): void
     {
-        $this->title = $title;
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * @param mixed $mobile
+     */
+    public function setMobile($mobile): void
+    {
+        $this->mobile = $mobile;
     }
 
     /**
@@ -93,17 +103,17 @@ class Ticket extends Model
     /**
      * @return mixed
      */
-    public function getAttachment()
+    public function getType()
     {
-        return asset($this->attachment);
+        return $this->type;
     }
 
     /**
-     * @param mixed $attachment
+     * @param mixed $type
      */
-    public function setAttachment($attachment): void
+    public function setType($type): void
     {
-        $this->attachment = Functions::StoreImageModel($attachment,'tickets');
+        $this->type = $type;
     }
 
     /**
@@ -121,6 +131,5 @@ class Ticket extends Model
     {
         $this->status = $status;
     }
-
 
 }

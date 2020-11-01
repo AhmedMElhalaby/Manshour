@@ -14,14 +14,14 @@
                             @foreach($Fields as $Field)
                                 @if(isset($Field['editable']))
                                     @if($Field['editable'])
-                                        @if($Field['type'] != 'multi_checkbox' && $Field['type'] != 'images')
+                                        @if($Field['type'] != 'multi_checkbox' && $Field['type'] != 'images'&& $Field['type'] != 'custom_relation')
                                             {!! \App\Traits\AhmedPanelTrait::Fields($Field,$Object->{$Field['name']},$lang) !!}
                                         @else
                                             {!! \App\Traits\AhmedPanelTrait::Fields($Field,$Object,$lang) !!}
                                         @endif
                                     @endif
                                 @else
-                                    @if($Field['type'] != 'multi_checkbox' && $Field['type'] != 'images')
+                                    @if($Field['type'] != 'multi_checkbox' && $Field['type'] != 'images'&& $Field['type'] != 'custom_relation')
                                         {!! \App\Traits\AhmedPanelTrait::Fields($Field,$Object->{$Field['name']},$lang) !!}
                                     @else
                                         {!! \App\Traits\AhmedPanelTrait::Fields($Field,$Object,$lang) !!}

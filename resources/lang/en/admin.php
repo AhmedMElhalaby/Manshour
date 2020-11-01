@@ -23,10 +23,15 @@ return [
         'settings'=>'Settings',
         'faqs'=>'FAQ',
         'bank_accounts'=>'Bank Accounts',
+        'cities'=>'Cities',
+        'categories'=>'Categories',
         'users'=>'Users',
         'tickets'=>'Tickets',
         'roles'=>'Roles',
         'permissions'=>'Permissions',
+        'app_content'=>'App Content',
+        'advertisements'=>'Advertisements',
+        'deleted_advertisements'=>'Deleted Advertisements',
     ],
     'Home'=>[
         'n_send_general'=>'Send Public Notification ',
@@ -63,6 +68,8 @@ return [
     'minute' => 'Minutes',
     'the_minute' => 'Minute',
     'finish' => 'Finish',
+    'true' => 'True',
+    'false' => 'False',
 
 /////////////////////// Response Messages ////////////////////////
     'messages'=>[

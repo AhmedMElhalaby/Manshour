@@ -19,11 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('mobile')->unique();
             $table->string('password');
+            $table->foreignId('city_id');
             $table->string('avatar')->nullable();
             $table->string('device_token')->nullable();
             $table->string('device_type')->nullable();
-            $table->string('lat')->nullable();
-            $table->string('lng')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('mobile_verified_at')->nullable();
             $table->string('app_locale')->default('en');
