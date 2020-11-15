@@ -38,6 +38,12 @@ return [
         'name_ar' => 'Name Ar',
         'value' => 'Value',
         'value_ar' => 'Value Ar',
+        'Pages'=>[
+            'About'=>'About Us',
+            'Commission'=>'Website Commission',
+            'Faq'=>'FAQ',
+            'Contact'=>'Contact Us',
+        ]
     ],
     'Faq'=>[
         'crud_names' => 'FAQ',
@@ -74,7 +80,7 @@ return [
         'name' => 'Name',
         'email' => 'Email',
         'mobile' => 'Mobile',
-        'type' => 'Type',
+        'type' => 'Purpose',
         'message' => 'Message',
         'status' => 'Status',
         'Links' => [

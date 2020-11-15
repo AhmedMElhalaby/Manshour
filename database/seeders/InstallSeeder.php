@@ -43,6 +43,7 @@ class InstallSeeder extends Seeder
         ];
         $Settings = [
             'privacy',
+            'commission',
             'about',
             'facebook',
             'instagram',
