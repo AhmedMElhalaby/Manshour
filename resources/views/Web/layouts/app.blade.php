@@ -24,9 +24,9 @@
 </head>
 <body>
 <div class="wrapper">
-    @include('web.layouts.header')
+    @include('Web.layouts.header')
     @yield('content')
-    @include('web.layouts.footer')
+    @include('Web.layouts.footer')
 </div>
 <script src="{{asset('web/js/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('web/js/bootstrap.min.js')}}"></script>
