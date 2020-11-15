@@ -2,11 +2,11 @@
     <div class=" mt-5 mb-4 w-100">
         <div class="row">
             <div class="col-lg-2 col-4">
-                <a href=""><img class="footer-img" src="{{asset('Web/img/footer.png')}}" alt=""></a>
+                <a href=""><img class="footer-img" src="{{asset('web/img/footer.png')}}" alt=""></a>
                 <ul class="footer-links">
-                    <li><a href="{{\App\Models\Setting::where('key','instagram')->first()->value??'#'}}"><img src="{{asset('Web/img/insta.png')}}" alt=""></a></li>
-                    <li><a href="{{\App\Models\Setting::where('key','twitter')->first()->value??'#'}}"><img src="{{asset('Web/img/twi.png')}}" alt=""></a></li>
-                    <li><a href="{{\App\Models\Setting::where('key','facebook')->first()->value??'#'}}"><img src="{{asset('Web/img/facebook.png')}}" alt=""></a></li>
+                    <li><a href="{{\App\Models\Setting::where('key','instagram')->first()->value??'#'}}"><img src="{{asset('web/img/insta.png')}}" alt=""></a></li>
+                    <li><a href="{{\App\Models\Setting::where('key','twitter')->first()->value??'#'}}"><img src="{{asset('web/img/twi.png')}}" alt=""></a></li>
+                    <li><a href="{{\App\Models\Setting::where('key','facebook')->first()->value??'#'}}"><img src="{{asset('web/img/facebook.png')}}" alt=""></a></li>
                 </ul>
             </div>
             <div class="col-lg-4 col-8">

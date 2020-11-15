@@ -8,7 +8,7 @@
                 <ul class="navbar-nav navbar-menu-icon pr-0">
                     <li class="nav-item active">
                         <a class="nav-link c-w" href="{{url('app/lang')}}" role="button">
-                            <img src="{{asset('Web/img/Icon%20metro-language.png')}}" alt="">
+                            <img src="{{asset('web/img/Icon%20metro-language.png')}}" alt="">
                             @if (app()->getLocale() == 'ar')
                                 <span>{{__('English')}}</span>
                             @else
@@ -17,7 +17,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link c-w" href="{{url('about')}}"> <img src="{{asset('Web/img/Group%2015235.png')}}" alt=""> {{__('crud.Setting.Pages.About')}}</a>
+                        <a class="nav-link c-w" href="{{url('about')}}"> <img src="{{asset('web/img/Group%2015235.png')}}" alt=""> {{__('crud.Setting.Pages.About')}}</a>
                     </li>
                     <li class="nav-item c-w">
                         <a class="nav-link c-w" href="{{url('commission')}}"> <i class="fas fa-money-bill-wave"></i> {{__('crud.Setting.Pages.Commission')}}</a>
@@ -45,7 +45,7 @@
     </nav>
     <nav class="navbar navbar-light  pb-0 container-fluid">
         <div class="row ">
-            <div class="col-lg-2 col-12 col-md-3"><a class="pr-0" href="{{url('/')}}"><img class="logo" src="{{asset('Web/img/logo.png')}}" alt=""></a></div>
+            <div class="col-lg-2 col-12 col-md-3"><a class="pr-0" href="{{url('/')}}"><img class="logo" src="{{asset('web/img/logo.png')}}" alt=""></a></div>
             <form class="col-lg col-12 col-md-9 form-inline">
                 <input class="search form-control col-lg-4 col-9" type="search" placeholder="{{__('admin.search')}}" aria-label="Search">
                 <button class="btn btn-gradient my-2 my-sm-0 col-lg-1 col-3" type="submit"><i class="fas fa-search"></i></button>

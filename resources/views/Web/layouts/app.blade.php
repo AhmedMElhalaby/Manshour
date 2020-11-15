@@ -11,26 +11,26 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('Web/css/all.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('Web/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('Web/css/normlaize.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('web/css/all.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('web/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('web/css/normlaize.css')}}">
     @if(app()->getLocale() == 'ar')
-        <link rel="stylesheet" type="text/css" href="{{asset('Web/css/style-rtl.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('web/css/style-rtl.css')}}">
     @else
-        <link rel="stylesheet" type="text/css" href="{{asset('Web/css/style-ltr.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('web/css/style-ltr.css')}}">
     @endif
-    <link rel="stylesheet" type="text/css" href="{{asset('Web/css/responsive.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('web/css/responsive.css')}}">
     @yield('style')
 </head>
 <body>
 <div class="wrapper">
-    @include('Web.layouts.header')
+    @include('web.layouts.header')
     @yield('content')
-    @include('Web.layouts.footer')
+    @include('web.layouts.footer')
 </div>
-<script src="{{asset('Web/js/jquery-2.1.4.min.js')}}"></script>
-<script src="{{asset('Web/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('Web/j   s/main.js')}}"></script>
+<script src="{{asset('web/js/jquery-2.1.4.min.js')}}"></script>
+<script src="{{asset('web/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('web/j   s/main.js')}}"></script>
 @yield('script')
 </body>
 </html>
