@@ -25,11 +25,12 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form class="login-form form" action="{{url('password/forget')}}" method="post">
+                        <form class="login-form form" action="{{route('password.email')}}" method="post">
+                            @csrf
                             <div class="form-group">
-                                <label for="email" class="text-info">{{__('web.User.email')}}</label>
-                                <input type="email" name="email" id="email" placeholder="{{__('web.User.email')}}" class="form-control @error('email') is-invalid @enderror">
-                                @error('email')
+                                <label for="mobile" class="text-info">{{__('web.User.mobile')}}</label>
+                                <input type="tel" name="mobile" id="mobile" placeholder="{{__('web.User.mobile')}}" class="form-control @error('mobile') is-invalid @enderror">
+                                @error('mobile')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

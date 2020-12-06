@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer id
  * @property integer user_id
  * @property integer category_id
+ * @property integer sub_category_id_1
+ * @property mixed sub_category_id_2
  * @property integer city_id
  * @property mixed title
  * @property mixed content
@@ -19,11 +21,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed delete_reason
  * @property boolean is_active
  * @property boolean is_deleted
+ * @method Advertisement find(string $string)
  */
 class Advertisement extends Model
 {
     protected $table = 'advertisements';
-    protected $fillable = ['user_id','category_id','city_id','title','content','contact','hide_contact','price','sell_price','sell_type','delete_reason','is_active','is_deleted',];
+    protected $fillable = ['user_id','category_id','sub_category_id_1','sub_category_id_2','city_id','title','content','contact','hide_contact','price','sell_price','sell_type','delete_reason','is_active','is_deleted',];
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -34,8 +37,17 @@ class Advertisement extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+    public function sub_category_1(){
+        return $this->belongsTo(Category::class,'sub_category_id_1','id');
+    }
+    public function sub_category_2(){
+        return $this->belongsTo(Category::class,'sub_category_id_2','id');
+    }
     public function media(){
         return $this->hasMany(Media::class,'ref_id','id');
+    }
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
     /**
      * @return int
@@ -259,6 +271,38 @@ class Advertisement extends Model
     public function setIsDeleted(bool $is_deleted): void
     {
         $this->is_deleted = $is_deleted;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSubCategoryId1(): int
+    {
+        return $this->sub_category_id_1;
+    }
+
+    /**
+     * @param int $sub_category_id_1
+     */
+    public function setSubCategoryId1(int $sub_category_id_1): void
+    {
+        $this->sub_category_id_1 = $sub_category_id_1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSubCategoryId2()
+    {
+        return $this->sub_category_id_2;
+    }
+
+    /**
+     * @param mixed $sub_category_id_2
+     */
+    public function setSubCategoryId2($sub_category_id_2): void
+    {
+        $this->sub_category_id_2 = $sub_category_id_2;
     }
 
 }

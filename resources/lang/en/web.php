@@ -33,5 +33,40 @@ return [
         'email'=>'Email',
         'mobile'=>'Mobile',
         'mobile_example'=>'Example 056xxxxxxx',
-    ]
+    ],
+    'Advertisement'=>[
+        'add_advertisement'=>'Add New Advertisement',
+        'Add'=>[
+            'category'=>'Advertisement Category',
+            'choose_category'=>'Choose Category',
+            'sub_category'=>'Sub Category',
+            'city'=>'City',
+            'choose_city'=>'Choose City',
+            'contact'=>'Mobile Or Contact Way',
+            'hide_contact'=>'Hide Contact Way',
+            'contact_example'=>'Example : 056xxxxxxx',
+            'has_price'=>'Want to add price',
+            'yes'=>'Yes',
+            'no'=>'No',
+            'price'=>'Price',
+            'upload_images'=>'Upload Images',
+            'title'=>'Advertisement Title',
+            'content'=>'Advertisement Content',
+            'terms_agreement'=>'Agree on the terms',
+            'commission_agreement'=>'The owner of the advertisement is obligated to pay the site commission (5.0%) in case of selling through a published site',
+        ],
+        'Show'=>[
+            'add_to_favourite'=>'Add to Favourite',
+            'comments'=>'Comments',
+            'leave_comment'=>'Leave Comment',
+            'add_comment'=>'Add Comment',
+            'similar_advertisement'=>'Similar Advertisement',
+        ]
+    ],
+    'Home'=>[
+        'details'=>'Details',
+        'add_to_fav'=>'Add to favourite',
+        'all_categories'=>'All Categories',
+        'all_sub_categories'=>'All',
+    ],
 ];

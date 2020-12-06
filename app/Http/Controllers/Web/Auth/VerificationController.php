@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Web\Controller;
+use App\Models\VerifyAccounts;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -56,5 +58,19 @@ class VerificationController extends Controller
         return $request->user()->hasVerifiedEmail()
             ? redirect($this->redirectPath())
             : view('Web.auth.verify');
+    }
+    public function check_verify(Request $request): RedirectResponse
+    {
+        $request->validate(['code' => 'required']);
+        $logged = auth()->user();
+        $verify = VerifyAccounts::where('user_id',$logged->id)->first();
+        if($request->code != $verify->code)
+            return back()
+                ->withInput($request->only('code'))
+                ->withErrors(['mobile' => __('auth.failed')]);
+        $logged->mobile_verified_at = now();
+        $logged->email_verified_at = now();
+        $logged->save();
+        return back()->with('status', trans('auth.verified'));
     }
 }

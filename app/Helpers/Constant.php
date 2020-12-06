@@ -26,6 +26,8 @@ class Constant
         'Enquiry'=>3,
         'Others'=>4,
     ];
+    const TICKETS_TYPE_RULES = '1,2,3,4';
+
     const SENDER_TYPE = [
         'User'=>1,
         'Admin'=>2,

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 
+use App\Http\Requests\Web\Home\ContactRequest;
+use App\Http\Requests\Web\Home\IndexRequest;
 use App\Models\Setting;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -13,10 +15,11 @@ use Illuminate\Support\Facades\App;
 class HomeController extends Controller
 {
     /**
+     * @param IndexRequest $request
      * @return Application|Factory|View
      */
-    public function index(){
-        return view('Web.index');
+    public function index(IndexRequest $request){
+        return $request->preset();
     }
 
     /**
@@ -30,6 +33,14 @@ class HomeController extends Controller
      */
     public function contact_us(){
         return view('Web.contact_us');
+    }
+
+    /**
+     * @param ContactRequest $request
+     * @return Application|Factory|View
+     */
+    public function post_contact_us(ContactRequest $request){
+        return $request->preset();
     }
 
     /**

@@ -25,7 +25,7 @@
                                 {{ __('A fresh verification link has been sent to your email address.') }}
                             </div>
                         @endif
-                        <form class="login-form form" action="{{ url('verify') }}" method="post">
+                        <form class="login-form form" action="{{ url('auth/check_verify') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="code" class="text-info">{{__('web.verify_code')}}</label>

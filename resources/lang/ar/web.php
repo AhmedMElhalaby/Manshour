@@ -33,6 +33,41 @@ return [
         'email'=>'البريد الاكتروني',
         'mobile'=>'رقم الجوال',
         'mobile_example'=>'مثال 056xxxxxxx',
-    ]
+    ],
+    'Advertisement'=>[
+        'add_advertisement'=>'اضافة اعلان جديد',
+        'Add'=>[
+            'category'=>'قسم الإعلان',
+            'choose_category'=>'اختر القسم',
+            'sub_category'=>'قسم فرعي',
+            'city'=>'المدينة',
+            'choose_city'=>'اختر المدينة',
+            'contact'=>'رقم الجوال او وسيلة التواصل',
+            'hide_contact'=>'اخفاء وسيلة التواصل',
+            'contact_example'=>'مثال : 056xxxxxxx',
+            'has_price'=>'هل ترغب بتحديد السعر؟',
+            'yes'=>'نعم',
+            'no'=>'لا',
+            'price'=>'السعر',
+            'upload_images'=>'تحميل الصور',
+            'title'=>'عنوان الإعلان',
+            'content'=>'نص الإعلان',
+            'terms_agreement'=>'أوافق على الشروط والأحكام',
+            'commission_agreement'=>'اانا صاحب الإعلان التزم بدفع عمولة الموقع (5.0 (%في حال البيع عن طريق موقع منشور',
+        ],
+        'Show'=>[
+            'add_to_favourite'=>'اضافة الى المفضلة',
+            'comments'=>'تعليقات',
+            'leave_comment'=>'إترك تعليق على الاعلان',
+            'add_comment'=>'اضف التعليق',
+            'similar_advertisement'=>'اعلانات مشابهة',
+        ]
+    ],
 
+    'Home'=>[
+        'details'=>'التفاصيل',
+        'add_to_fav'=>'اضافة الاعلان الى المفضلة',
+        'all_categories'=>'جميع التصنيفات',
+        'all_sub_categories'=>'الكل',
+    ],
 ];

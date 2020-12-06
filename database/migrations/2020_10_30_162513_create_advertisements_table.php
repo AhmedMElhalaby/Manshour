@@ -17,6 +17,8 @@ class CreateAdvertisementsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('category_id');
+            $table->foreignId('sub_category_id_1');
+            $table->foreignId('sub_category_id_2')->nullable();
             $table->foreignId('city_id');
             $table->string('title');
             $table->longText('content');

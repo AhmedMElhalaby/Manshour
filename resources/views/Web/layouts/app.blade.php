@@ -30,7 +30,7 @@
 </div>
 <script src="{{asset('web/js/jquery-2.1.4.min.js')}}"></script>
 <script src="{{asset('web/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('web/j   s/main.js')}}"></script>
+<script src="{{asset('web/js/main.js')}}"></script>
 @yield('script')
 </body>
 </html>

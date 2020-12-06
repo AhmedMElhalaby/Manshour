@@ -1,4 +1,25 @@
 @extends('Web.layouts.app')
+@section('style')
+    <style>
+
+        .pagination>li>a,.pagination>li>span{
+            padding: 6px 12px 8px;
+            border-radius: 12%;
+            background: lightgray;
+            margin: 2px;
+            font-size: 16px;
+        }
+        .pagination>li>a:hover{
+            text-decoration: none;
+            color: #D41675 !important;
+        }
+        .pagination>li.active>span,.page-item.active .page-link{
+            background: linear-gradient(90deg, rgba(212, 22, 117, 1) 0%, rgba(253, 54, 21, 1) 100%);
+            border-color: transparent;
+            color: #fff;
+        }
+    </style>
+@endsection
 @section('content')
     <section class="container-fluid services">
         <section class="container-fluid mt-5 navs">
@@ -8,391 +29,293 @@
                         <div class="col-lg-8 col-12 p-0">
                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">جميع الاقسام</a>
+                                    <a class="nav-link active" id="category_0" onclick="LoadAdvertisement()" data-toggle="pill" href="#category_all">{{__('web.Home.all_categories')}}</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">السيارات</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">العقارات</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="four-sections" data-toggle="pill" href="#pills-four" role="tab" aria-controls="pills-four" aria-selected="false">الاجهزة</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="five-sections" data-toggle="pill" href="#pills-five" role="tab" aria-controls="pills-five" aria-selected="false">مواشي وحيوانات وطيور</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="six-sections" data-toggle="pill" href="#pills-six" role="tab" aria-controls="pills-six" aria-selected="false">اثاث</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="seven-sections" data-toggle="pill" href="#pills-seven" role="tab" aria-controls="pills-seven" aria-selected="false">مستلزمات شخصية</a>
-                                </li>
+                                @foreach(\App\Models\Category::whereNull('parent_id')->get() as $category)
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="category_{{$category->id}}" onclick="LoadAdvertisement({{$category->id}})" data-toggle="pill" href="#category_div_{{$category->id}}">{{(app()->getLocale() == 'ar')?$category->name_ar:$category->name}}</a>
+                                    </li>
+                                @endforeach
                             </ul>
-                        </div>
-                        <div class="col-lg-2 col-12"></div>
-                        <div class="col-lg-2 col-12 p-0">
-                            <div class="left-side">
-
-                                <div class="dropdown">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        جميع المناطق
-                                    </a>
-
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                     <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="tab-pane fade show active" id="category_all" role="tabpanel">
                             <div class="navs-footer">
                                 <hr>
                             </div>
-                            <div class="col-lg-12 all-media p-0">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="submit">التفاصيل </button>
-                                            </div>
-                                            <h5 class="mt-0 mb-4 col-lg-9">يوضع هنا عنوان الاعلان فقط</h5>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 mt-4">
-                                                <button class="btn my-2 my-sm-0 adds-name detail-btn" type="submit">اسم صاحب الاعلان </button>
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <p> يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <hr class="media-hr">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 text-center"><span class="add-to-fav color">اضافة الاعلان الى المفضلة <i class="far fa-heart"></i></span></div>
-                                            <div class="col-lg-5"></div>
-                                            <div class="col-lg-4">
-                                                <div class="row">
-                                                    <span class="col-lg-6 col-6 media-date">الدمام <i class="fas fa-map-marker-alt"></i></span>
-                                                    <span class="col-lg-6 col-5 media-date">16:13 اليوم <i class="far fa-clock"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img src="{{asset('web/img/Rectangle.png')}}" alt="...">
-                                </div>
-                                <div class="media">
-                                    <div class="media-body">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="submit">التفاصيل </button>
-                                            </div>
-                                            <h5 class="mt-0 mb-4 col-lg-9">يوضع هنا عنوان الاعلان فقط</h5>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 mt-4">
-                                                <button class="btn my-2 my-sm-0 adds-name detail-btn" type="submit">اسم صاحب الاعلان </button>
-
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <p> يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <hr class="media-hr">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 text-center"><span class="add-to-fav color">اضافة الاعلان الى المفضلة <i class="far fa-heart"></i></span></div>
-                                            <div class="col-lg-5"></div>
-                                            <div class="col-lg-4">
-                                                <div class="row">
-                                                    <span class="col-lg-6 col-6 media-date">الدمام <i class="fas fa-map-marker-alt"></i></span>
-                                                    <span class="col-lg-6 col-5 media-date">16:13 اليوم <i class="far fa-clock"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <img src="{{asset('web/img/Rectangle.png')}}" alt="...">
-                                </div>
-                                <div class="media">
-                                    <div class="media-body">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="submit">التفاصيل </button>
-                                            </div>
-                                            <h5 class="mt-0 mb-4 col-lg-9">يوضع هنا عنوان الاعلان فقط</h5>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 mt-4">
-                                                <button class="btn my-2 my-sm-0 adds-name detail-btn" type="submit">اسم صاحب الاعلان </button>
-
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <p> يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <hr class="media-hr">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 text-center"><span class="add-to-fav color">اضافة الاعلان الى المفضلة <i class="far fa-heart"></i></span></div>
-                                            <div class="col-lg-5"></div>
-                                            <div class="col-lg-4">
-                                                <div class="row">
-                                                    <span class="col-lg-6 col-6 media-date">الدمام <i class="fas fa-map-marker-alt"></i></span>
-                                                    <span class="col-lg-6 col-5 media-date">16:13 اليوم <i class="far fa-clock"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <img src="{{asset('web/img/Rectangle.png')}}" alt="...">
-                                </div>
-                                <div class="media">
-                                    <div class="media-body">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="submit">التفاصيل </button>
-                                            </div>
-                                            <h5 class="mt-0 mb-4 col-lg-9">يوضع هنا عنوان الاعلان فقط</h5>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 mt-4">
-                                                <button class="btn my-2 my-sm-0 adds-name detail-btn" type="submit">اسم صاحب الاعلان </button>
-
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <p> يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <hr class="media-hr">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 text-center"><span class="add-to-fav color">اضافة الاعلان الى المفضلة <i class="far fa-heart"></i></span></div>
-                                            <div class="col-lg-5"></div>
-                                            <div class="col-lg-4">
-                                                <div class="row">
-                                                    <span class="col-lg-6 col-6 media-date">الدمام <i class="fas fa-map-marker-alt"></i></span>
-                                                    <span class="col-lg-6 col-5 media-date">16:13 اليوم <i class="far fa-clock"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <img src="{{asset('web/img/Rectangle.png')}}" alt="...">
-                                </div>
-                                <div class="media">
-                                    <div class="media-body">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="submit">التفاصيل </button>
-                                            </div>
-                                            <h5 class="mt-0 mb-4 col-lg-9">يوضع هنا عنوان الاعلان فقط</h5>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 mt-4">
-                                                <button class="btn my-2 my-sm-0 adds-name detail-btn" type="submit">اسم صاحب الاعلان </button>
-
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <p> يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <hr class="media-hr">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 text-center"><span class="add-to-fav color">اضافة الاعلان الى المفضلة <i class="far fa-heart"></i></span></div>
-                                            <div class="col-lg-5"></div>
-                                            <div class="col-lg-4">
-                                                <div class="row">
-                                                    <span class="col-lg-6 col-6 media-date">الدمام <i class="fas fa-map-marker-alt"></i></span>
-                                                    <span class="col-lg-6 col-5 media-date">16:13 اليوم <i class="far fa-clock"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <img src="{{asset('web/img/Rectangle.png')}}" alt="...">
-                                </div>
-                                <div class="media">
-                                    <div class="media-body">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="submit">التفاصيل </button>
-                                            </div>
-                                            <h5 class="mt-0 mb-4 col-lg-9">يوضع هنا عنوان الاعلان فقط</h5>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 mt-4">
-                                                <button class="btn my-2 my-sm-0 adds-name detail-btn" type="submit">اسم صاحب الاعلان </button>
-
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <p> يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <hr class="media-hr">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 text-center"><span class="add-to-fav color">اضافة الاعلان الى المفضلة <i class="far fa-heart"></i></span></div>
-                                            <div class="col-lg-5"></div>
-                                            <div class="col-lg-4">
-                                                <div class="row">
-                                                    <span class="col-lg-6 col-6 media-date">الدمام <i class="fas fa-map-marker-alt"></i></span>
-                                                    <span class="col-lg-6 col-5 media-date">16:13 اليوم <i class="far fa-clock"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <img src="{{asset('web/img/Rectangle.png')}}" alt="...">
-                                </div>
-                                <div class="media">
-                                    <div class="media-body">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="submit">التفاصيل </button>
-                                            </div>
-                                            <h5 class="mt-0 mb-4 col-lg-9">يوضع هنا عنوان الاعلان فقط</h5>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 mt-4">
-                                                <button class="btn my-2 my-sm-0 adds-name detail-btn" type="submit">اسم صاحب الاعلان </button>
-
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <p> يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر يوضع هنا وصف للاعلان ويكون مختصر </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <hr class="media-hr">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 text-center"><span class="add-to-fav color">اضافة الاعلان الى المفضلة <i class="far fa-heart"></i></span></div>
-                                            <div class="col-lg-5"></div>
-                                            <div class="col-lg-4">
-                                                <div class="row">
-                                                    <span class="col-lg-6 col-6 media-date">الدمام <i class="fas fa-map-marker-alt"></i></span>
-                                                    <span class="col-lg-6 col-5 media-date">16:13 اليوم <i class="far fa-clock"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <img src="{{asset('web/img/Rectangle.png')}}" alt="...">
-                                </div>
-                            </div>
-
-                            <!-- End media section -->
                         </div>
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                            <hr class="navs-hr">
-                            <ul class="nav nav-pills mb-3" id="pills-tab-1" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="pills-home-tab-1" data-toggle="pill" href="#pills-home-1" role="tab" aria-controls="pills-home" aria-selected="true">جميع الموديلات</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-profile-tab-1" data-toggle="pill" href="#pills-profile-1" role="tab" aria-controls="pills-profile" aria-selected="false">تويوتا</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab-1" data-toggle="pill" href="#pills-contact-1" role="tab" aria-controls="pills-contact" aria-selected="false">فورد</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" id="four-sections-1" data-toggle="pill" href="#pills-four-1" role="tab" aria-controls="pills-four" aria-selected="false">شيفروليه</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="five-sections-1" data-toggle="pill" href="#pills-five-1" role="tab" aria-controls="pills-five" aria-selected="false">قطع غيار وملحقات</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="six-sections-1" data-toggle="pill" href="#pills-six-1" role="tab" aria-controls="pills-six" aria-selected="false">نيسان</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="seven-sections-1" data-toggle="pill" href="#pills-seven-1" role="tab" aria-controls="pills-seven" aria-selected="false">هونداي</a>
-                                </li>
-                            </ul>
-
-                            <div class="tab-content" id="pills-tabContent-1">
-                                <div class="tab-pane fade show active" id="pills-home-1" role="tabpanel" aria-labelledby="pills-home-tab"></div>
-                                <div class="tab-pane fade" id="pills-profile-1" role="tabpanel" aria-labelledby="pills-profile-tab">
-
-
-
-                                </div>
-                                <div class="tab-pane fade" id="pills-contact-1" role="tabpanel" aria-labelledby="pills-contact-tab"></div>
-                                <div class="tab-pane fade" id="pills-four-1" role="tabpanel" aria-labelledby="pills-four"> </div>
-                                <div class="tab-pane fade" id="pills-five-1" role="tabpanel" aria-labelledby="pills-five">
+                        @foreach(\App\Models\Category::whereNull('parent_id')->get() as $category)
+                            @if(count($category->children)>0)
+                                <div class="tab-pane fade" id="category_div_{{$category->id}}" role="tabpanel">
                                     <hr class="navs-hr">
-
-                                    <ul class="nav nav-pills mb-3" id="pills-tab-2" role="tablist">
+                                    <ul class="nav nav-pills mb-3" id="pills-tab-1" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="pills-home-tab-2" data-toggle="pill" href="#pills-home-2" role="tab" aria-controls="pills-home" aria-selected="true">جميع قطع الغيار</a>
+                                            <a class="nav-link active" id="sub_category_0" onclick="LoadAdvertisement({{$category->id}})" data-toggle="pill" href="#sub_category_all">{{__('web.Home.all_sub_categories')}}</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="pills-profile-tab-2" data-toggle="pill" href="#pills-profile-2" role="tab" aria-controls="pills-profile" aria-selected="false">جنوط</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="pills-contact-tab-2" data-toggle="pill" href="#pills-contact-2" role="tab" aria-controls="pills-contact" aria-selected="false">لوحة ميزة</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="four-sections-2" data-toggle="pill" href="#pills-four-2" role="tab" aria-controls="pills-four" aria-selected="false">خدمات فحص السيارات</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="five-sections-2" data-toggle="pill" href="#pills-five-2" role="tab" aria-controls="pills-five" aria-selected="false">شاشة</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="six-sections-2" data-toggle="pill" href="#pills-six-2" role="tab" aria-controls="pills-six" aria-selected="false">مسجل</a>
-                                        </li>
+                                        @foreach($category->children as $sub_category_1)
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="category_{{$sub_category_1->id}}" onclick="LoadAdvertisement({{$category->id}},{{$sub_category_1->id}})" data-toggle="pill" href="@if(count($sub_category_1->children)>0) #category_div_{{$sub_category_1->id}}@else #sub_category_all @endif">{{(app()->getLocale() == 'ar')?$sub_category_1->name_ar:$sub_category_1->name}}</a>
+                                            </li>
+                                        @endforeach
                                     </ul>
-
-                                    <div class="tab-content" id="pills-tabContent-2">
-                                        <div class="tab-pane fade show active" id="pills-home-2" role="tabpanel" aria-labelledby="pills-home-tab"></div>
-                                        <div class="tab-pane fade" id="pills-profile-2" role="tabpanel" aria-labelledby="pills-profile-tab"></div>
-                                        <div class="tab-pane fade" id="pills-contact-2" role="tabpanel" aria-labelledby="pills-contact-tab"></div>
-                                        <div class="tab-pane fade" id="pills-four-2" role="tabpanel" aria-labelledby="pills-four"> </div>
-                                        <div class="tab-pane fade" id="pills-five-2" role="tabpanel" aria-labelledby="pills-five"> </div>
-                                        <div class="tab-pane fade" id="pills-six-2" role="tabpanel" aria-labelledby="pills-six"></div>
+                                    <div class="tab-content" id="pills-tabContent-1">
+                                        <div class="tab-pane fade show active" id="sub_category_all" role="tabpanel">
+                                            <div class="navs-footer">
+                                                <hr>
+                                            </div>
+                                        </div>
+                                        @foreach($category->children as $sub_category_1)
+                                            @if(count($sub_category_1->children)>0)
+                                                <div class="tab-pane fade" id="category_div_{{$sub_category_1->id}}" role="tabpanel">
+                                                    <hr class="navs-hr">
+                                                    <ul class="nav nav-pills mb-3" id="pills-tab-2" role="tablist">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" id="sub_sub_category_0" onclick="LoadAdvertisement({{$category->id}},{{$sub_category_1->id}})" data-toggle="pill" href="#sub_sub_category_all">{{__('web.Home.all_sub_categories')}}</a>
+                                                        </li>
+                                                        @foreach($sub_category_1->children as $sub_category_2)
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" id="category_{{$sub_category_2->id}}" onclick="LoadAdvertisement({{$category->id}},{{$sub_category_1->id}},{{$sub_category_2->id}})" data-toggle="pill" href="#category_div_{{$sub_category_2->id}}">{{(app()->getLocale() == 'ar')?$sub_category_2->name_ar:$sub_category_2->name}}</a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                    <div class="tab-content" id="pills-tabContent-2">
+                                                        <div class="tab-pane fade show active" id="sub_sub_category_all" role="tabpanel">
+                                                            <div class="navs-footer">
+                                                                <hr>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="pills-six-1" role="tabpanel" aria-labelledby="pills-six"></div>
-                                <div class="tab-pane fade" id="pills-seven-1" role="tabpanel" aria-labelledby="pills-seven"></div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"></div>
-                        <div class="tab-pane fade" id="pills-four" role="tabpanel" aria-labelledby="pills-four"></div>
-                        <div class="tab-pane fade" id="pills-five" role="tabpanel" aria-labelledby="pills-five"></div>
-                        <div class="tab-pane fade" id="pills-six" role="tabpanel" aria-labelledby="pills-six"></div>
-                        <div class="tab-pane fade" id="pills-seven" role="tabpanel" aria-labelledby="pills-seven"></div>
+                            @endif
+                        @endforeach
                     </div>
-
+                    <div class="row">
+                        <div class="col-lg-12 all-media p-0" id="Advertisements">
+                            @foreach($Objects as $Object)
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="button" onclick="window.location='{{url('advertisements/show?advertisement_id='.$Object->id)}}'">{{__('web.Home.details')}} </button>
+                                            </div>
+                                            <h5 class="mt-0 mb-4 col-lg-9">{{$Object->title}}</h5>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3 mt-4">
+                                                <button class="btn my-2 my-sm-0 adds-name detail-btn" type="submit">{{$Object->User->name}} </button>
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <p>{{$Object->content}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <hr class="media-hr">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3 text-center"><span class="add-to-fav color"> {{__('web.Home.add_to_fav')}}<i class="far fa-heart"></i></span></div>
+                                            <div class="col-lg-5"></div>
+                                            <div class="col-lg-4">
+                                                <div class="row">
+                                                    <span class="col-lg-6 col-6 media-date">{{$Object->City->name}} <i class="fas fa-map-marker-alt"></i></span>
+                                                    <span class="col-lg-6 col-5 media-date">{{$Object->created_at}} <i class="far fa-clock"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src="{{asset($Object->media()->first()->file)}}" height="235" width="260" alt="...">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-4" id="Paging">
+                            {{ $Objects->links('vendor.pagination.default') }}
+                        </div>
+                    </div>
                 </div>
-
             </div>
-
-
         </section>
-
-
-
-
-
-
-
     </section>
+@endsection
+@section('script')
+    <script>
+        let page = 1;
+        function LoadAdvertisement(category_id=null,sub_category_id=null,sub_sub_category_id=null){
+            console.log('category_id : '+category_id);
+            console.log('sub_category_id : '+sub_category_id);
+            console.log('sub_sub_category_id : '+sub_sub_category_id);
+            let data = {};
+            if(category_id !==null){
+                data['category_id'] = category_id;
+            }
+            if(sub_category_id !==null){
+                data['sub_category_id'] = sub_category_id;
+            }
+            if(sub_sub_category_id !==null){
+                data['sub_sub_category_id'] = sub_sub_category_id;
+            }
+            data['q'] = $('#q').val();
+            data['page'] = page;
+            $.get( "{{url('advertisements/response')}}",data,function( response ) {
+                if (response.status.status === 'success'){
+                    console.log(response);
+                    let html = '';
+                    let link = '';
+                    $('#Advertisements').html('');
+                    response.Advertisements.forEach(advertisement=>{
+                        html =  '<div class="media">'+
+                                    '<div class="media-body">'+
+                                        '<div class="row">'+
+                                            '<div class="col-lg-3">'+
+                                                '<button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="button" onclick="goAd('+advertisement.id+')">{{__('web.Home.details')}} </button>'+
+                                            '</div>'+
+                                            '<h5 class="mt-0 mb-4 col-lg-9">'+advertisement.title+'</h5>'+
+                                        '</div>'+
+                                        '<div class="row">'+
+                                            '<div class="col-lg-3 mt-4">'+
+                                                '<button class="btn my-2 my-sm-0 adds-name detail-btn" type="submit">'+advertisement.User.name+'</button>'+
+                                            '</div>'+
+                                            '<div class="col-lg-9">'+
+                                                '<p>'+advertisement.content+'</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="col-lg-12">'+
+                                            '<hr class="media-hr">'+
+                                        '</div>'+
+                                        '<div class="row">'+
+                                            '<div class="col-lg-3 text-center"><span class="add-to-fav color"> {{__('web.Home.add_to_fav')}}<i class="far fa-heart"></i></span></div>'+
+                                            '<div class="col-lg-5"></div>'+
+                                            '<div class="col-lg-4">'+
+                                                '<div class="row">'+
+                                                    '<span class="col-lg-6 col-6 media-date">'+advertisement.City.name+' <i class="fas fa-map-marker-alt"></i></span>'+
+                                                    '<span class="col-lg-6 col-5 media-date">'+advertisement.created_at+' <i class="far fa-clock"></i></span>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<img src="'+advertisement.FirstMedia.file+'" height="235" width="260" alt="...">'+
+                                '</div>';
+                        $('#Advertisements').append(html);
+                    });
+                    if(response.paging.total > 0){
+                        let paging = '';
+                        let firstClass = '';
+                        let lastClass = '';
+                        let active = '';
+                        let next;
+                        let previous;
+                        if (response.paging.current_page === 1) {
+                            let firstClass = 'disabled';
+                        }
+                        if (response.paging.current_page === response.paging.last_page) {
+                            let lastClass = 'disabled';
+                        }
+                        if(response.paging.current_page !== response.paging.last_page){
+                            next = (response.paging.current_page+1);
+                        }else {
+                            next = response.paging.current_page;
+                        }
+                        if(response.paging.current_page !== 1){
+                            previous = (response.paging.current_page-1);
+                        }else {
+                            previous = response.paging.current_page;
+                        }
+                        paging += '<ul class="pagination"><li class="page-item ' + firstClass + '">' +
+                            '   <a class="page-link page-link--with-arrow" href="javascript:" data-id="1" aria-label="Previous">' +
+                            '   <span class="page-link__arrow page-link__arrow--left" aria-hidden="true"><</span>' +
+                            '   <span class="page-link__arrow page-link__arrow--left" aria-hidden="true"><</span>' +
+                            '   </a>' +
+                            '</li>';
+                        paging += '<li class="page-item ' + firstClass + '">' +
+                            '   <a class="page-link page-link--with-arrow" href="javascript:" data-id="'+previous+'" aria-label="Previous">' +
+                            '   <span class="page-link__arrow page-link__arrow--left" aria-hidden="true"><</span>' +
+                            '   </a>' +
+                            '</li>';
+                        if (response.paging.last_page > 6) {
+                            if(response.paging.current_page < 4){
+                                for (let i = 1; i <= 4; i++) {
+                                    active = '';
+                                    if (response.paging.current_page === i) {
+                                        active = 'active';
+                                    }
+                                    paging += '<li class="page-item ' + active + '"><a class="page-link" href="javascript:" data-id="'+i+'">' + i + '</a></li>';
+                                }
+                                paging += '<li class="page-item page-item--dots">' +
+                                    '   <div class="pagination__dots"></div>' +
+                                    '</li>';
+                                active = '';
+                                if (response.paging.current_page === response.paging.last_page) {
+                                    active = 'active';
+                                }
+                                paging += '<li class="page-item ' + active + '"><a class="page-link" href="javascript:" data-id="'+response.paging.last_page+'">' + response.paging.last_page + '</a></li>';
+
+                            }else if(response.paging.current_page > (response.paging.last_page - 3)){
+                                paging += '<li class="page-item"><a class="page-link" href="javascript:" data-id="1"> 1 </a></li>';
+                                paging += '<li class="page-item page-item--dots">' +
+                                    '   <div class="pagination__dots"></div>' +
+                                    '</li>';
+
+                                for (let i = 3; i >= 0; i--) {
+                                    active = '';
+                                    if (response.paging.current_page === (response.paging.last_page - i)) {
+                                        active = 'active';
+                                    }
+                                    paging += '<li class="page-item ' + active + '"><a class="page-link" href="javascript:" data-id="'+(response.paging.last_page - i)+'">' + (response.paging.last_page - i) + '</a></li>';
+                                }
+                            }else{
+                                paging += '<li class="page-item"><a class="page-link" href="javascript:" data-id="1"> 1 </a></li>';
+
+                                paging += '<li class="page-item page-item--dots">' +
+                                    '   <div class="pagination__dots"></div>' +
+                                    '</li>';
+                                paging += '<li class="page-item"><a class="page-link" href="javascript:" data-id="'+(response.paging.current_page-1)+'"> '+(response.paging.current_page-1)+' </a></li>';
+                                paging += '<li class="page-item active"><a class="page-link" href="javascript:" data-id="'+response.paging.current_page+'"> '+response.paging.current_page+' </a></li>';
+                                paging += '<li class="page-item"><a class="page-link" href="javascript:" data-id="'+(response.paging.current_page+1)+'"> '+(response.paging.current_page+1)+' </a></li>';
+                                paging += '<li class="page-item page-item--dots">' +
+                                    '   <div class="pagination__dots"></div>' +
+                                    '</li>';
+                                active = '';
+                                paging += '<li class="page-item"><a class="page-link" href="javascript:" data-id="'+response.paging.last_page+'">' + response.paging.last_page + '</a></li>';
+                            }
+                        }
+                        else {
+                            for (let i = 1; i <= response.paging.last_page; i++) {
+                                active = '';
+                                if (response.paging.current_page === i) {
+                                    active = 'active';
+                                }
+                                paging += '<li class="page-item ' + active + '"><a class="page-link" href="javascript:" data-id="'+i+'">' + i + '</a></li>';
+                            }
+                        }
+                        paging += '<li class="page-item ' + lastClass + '">' +
+                            '   <a class="page-link page-link--with-arrow" href="javascript:" data-id="'+next+'" aria-label="Next">' +
+                            '   <span class="page-link__arrow page-link__arrow--right" aria-hidden="true">></span>' +
+                            '   </a>' +
+                            '</li>';
+                        paging += '<li class="page-item ' + lastClass + '">' +
+                            '   <a class="page-link page-link--with-arrow" href="javascript:" data-id="'+response.paging.last_page+'" aria-label="Next">' +
+                            '   <span class="page-link__arrow page-link__arrow--right" aria-hidden="true">></span>' +
+                            '   <span class="page-link__arrow page-link__arrow--right" aria-hidden="true">></span>' +
+                            '   </a>' +
+                            '</li></ul>';
+                        $('#Paging').html(paging);
+
+                    }
+                }
+            });
+        }
+        $(document).on('click', '.page-link', function () {
+            page = $(this).data('id');
+            LoadAdvertisement();
+        });
+        LoadAdvertisement();
+        function goAd(id){
+            window.location='{{url("advertisements/show?advertisement_id=")}}'+id;
+        }
+    </script>
 @endsection

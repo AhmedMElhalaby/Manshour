@@ -12,34 +12,55 @@
             </div>
         </div>
     </section>
-    <section class="contact-us">
+    <form action="{{url('contact_us')}}" method="post" class="contact-us">
+        @csrf
         <div class="row">
             <div class="col-lg-3">
                 <div class="form-group">
                     <label for="username" class="text-info">{{__('web.User.username')}}</label>
-                    <input type="text" name="username" required id="username" placeholder="{{__('web.User.username')}}" class="form-control">
+                    <input type="text" name="name" required id="username" value="{{old('name')}}" placeholder="{{__('web.User.username')}}" class="form-control @error('name') is-invalid @enderror">
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="form-group">
                     <label for="email" class="text-info">{{__('web.User.email')}}</label>
-                    <input type="email" name="email" required id="email" placeholder="{{__('web.User.email')}}" class="form-control">
+                    <input type="email" name="email" required id="email" value="{{old('email')}}" placeholder="{{__('web.User.email')}}" class="form-control @error('email') is-invalid @enderror">
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="form-group">
                     <label for="mobile" class="text-info">{{__('web.User.mobile')}}</label>
-                    <input type="tel" name="mobile" required id="mobile" placeholder="{{__('web.User.mobile')}}" class="form-control">
+                    <input type="tel" name="mobile" required value="{{old('mobile')}}" id="mobile" placeholder="{{__('web.User.mobile')}}" class="form-control @error('mobile') is-invalid @enderror">
+                    @error('mobile')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="form-group">
                     <label for="type">{{__('crud.Ticket.type')}}</label>
-                    <select id="type" name="type" required class="form-control">
+                    <select id="type" name="type" required class="form-control @error('type') is-invalid @enderror">
                         @foreach(\App\Helpers\Constant::TICKETS_TYPE as $i)
-                            <option value="{{$i}}">{{__('crud.Ticket.Types.'.$i)}}</option>
+                            <option value="{{$i}}" @if($i ==old('type')) selected @endif>{{__('crud.Ticket.Types.'.$i)}}</option>
                         @endforeach
                     </select>
+                    @error('type')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -47,7 +68,12 @@
             <div class="col-lg-12">
                 <div class="form-group">
                     <label for="message" class="text-info">{{__('crud.Ticket.message')}}</label>
-                    <textarea class="form-control" id="message" rows="5" placeholder="{{__('crud.Ticket.message')}}"></textarea>
+                    <textarea class="form-control @error('message') is-invalid @enderror" id="message" name="message" rows="5" placeholder="{{__('crud.Ticket.message')}}">{{old('message')}}</textarea>
+                    @error('message')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -61,5 +87,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </form>
 @endsection

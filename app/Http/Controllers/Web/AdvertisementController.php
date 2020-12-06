@@ -1,0 +1,66 @@
+<?php
+
+namespace App\Http\Controllers\Web;
+
+
+use App\Http\Requests\Web\Advertisement\CommentRequest;
+use App\Http\Requests\Web\Advertisement\ShowRequest;
+use App\Http\Requests\Web\Advertisement\StoreRequest;
+use App\Http\Requests\Web\Advertisement\ResponseRequest;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
+
+class AdvertisementController extends Controller
+{
+    /**
+     * @return Application|Factory|View
+     */
+    public function index(){
+        return view('Web.Advertisement.index');
+    }
+    /**
+     * @return Application|Factory|View
+     */
+    public function create(){
+        return view('Web.Advertisement.create');
+    }
+
+    /**
+     * @param StoreRequest $request
+     * @return Application|RedirectResponse|Redirector|void
+     */
+    public function store(StoreRequest $request){
+        return $request->preset();
+    }
+
+    /**
+     * @param ShowRequest $request
+     * @return Application|Factory|View
+     */
+    public function show(ShowRequest $request){
+        return $request->preset();
+    }
+
+    /**
+     * @param ResponseRequest $request
+     * @return JsonResponse
+     */
+    public function response(ResponseRequest $request): JsonResponse
+    {
+        return $request->preset();
+    }
+
+    /**
+     * @param CommentRequest $request
+     * @return RedirectResponse
+     */
+    public function comment(CommentRequest $request): RedirectResponse
+    {
+        return $request->preset();
+    }
+
+}
