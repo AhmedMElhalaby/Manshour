@@ -4,9 +4,15 @@ return [
 
     'search' => 'ابحث عن سلعة',
     'my_account' => 'حسابي',
+    'update_profile' => 'تعديل البروفايل',
+    'favourite' => 'المفضلة',
+    'my_advertisements' => 'إعلاناتي',
     'add_advertisement' => 'إضف اعلانك الآن',
     'all_categories' => 'جميع الأقسام',
     'main_page'=>'الصفحة الرئيسية',
+    'chats'=>'المحادثات',
+    'notifications'=>'الإشعارات',
+    'advertisements_list'=>'قائمة الاعلانات',
     'faq'=>'الأسئلة الشائعة',
     'contact_us'=>'تواصل معنا',
     'privacy_and_conditions'=>'سياسة الخصوصية وشروط الاستخدام',
@@ -36,6 +42,8 @@ return [
     ],
     'Advertisement'=>[
         'add_advertisement'=>'اضافة اعلان جديد',
+        'delete_advertisement'=>'حذف الاعلان',
+        'edit_advertisement'=>'تعديل الاعلان',
         'Add'=>[
             'category'=>'قسم الإعلان',
             'choose_category'=>'اختر القسم',
@@ -61,12 +69,24 @@ return [
             'leave_comment'=>'إترك تعليق على الاعلان',
             'add_comment'=>'اضف التعليق',
             'similar_advertisement'=>'اعلانات مشابهة',
+        ],
+        'Delete'=>[
+            'delete_reason'=>'سبب الحذف',
+            'what_is_delete_reason'=>'ما هو السبب في رغبتك بحذف الاعلان ؟',
+            'did_you_sell_the_product'=>'هل تم بيع المنتج او الخدمة ؟',
+            'sold_inside_website'=>'نعم تم البيع داخل الموقع',
+            'sold_outside_website'=>'تم البيع خارج الموقع',
+            'never_sold'=>'لم يتم البيع',
+            'sold_price'=>'سعر البيع',
+            'commission_reminder'=>'نذكرك بدفع عمولة الموقع ( 5.0 ) % من قيمة بيع المنتج او الخدمة'
+
         ]
     ],
 
     'Home'=>[
         'details'=>'التفاصيل',
         'add_to_fav'=>'اضافة الاعلان الى المفضلة',
+        'remove_from_fav'=>'إزالة الاعلان من المفضلة',
         'all_categories'=>'جميع التصنيفات',
         'all_sub_categories'=>'الكل',
     ],

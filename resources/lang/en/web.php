@@ -4,9 +4,15 @@ return [
 
     'search' => 'Search about product',
     'my_account' => 'My Account',
+    'update_profile' => 'Update Profile',
+    'favourite' => 'Favourites',
+    'my_advertisements' => 'My Advertisements',
     'add_advertisement' => 'Add Adv. Now',
     'all_categories' => 'All Categories',
     'main_page'=>'Main Page',
+    'chats'=>'Chats',
+    'notifications'=>'Notifications',
+    'advertisements_list'=>'Advertisements List',
     'faq'=>'FAQ',
     'contact_us'=>'Contact Us',
     'privacy_and_conditions'=>'Privacy And Usage Conditions',
@@ -36,6 +42,8 @@ return [
     ],
     'Advertisement'=>[
         'add_advertisement'=>'Add New Advertisement',
+        'delete_advertisement'=>'Delete Advertisement',
+        'edit_advertisement'=>'Edit Advertisement',
         'Add'=>[
             'category'=>'Advertisement Category',
             'choose_category'=>'Choose Category',
@@ -61,11 +69,22 @@ return [
             'leave_comment'=>'Leave Comment',
             'add_comment'=>'Add Comment',
             'similar_advertisement'=>'Similar Advertisement',
+        ],
+        'Delete'=>[
+            'delete_reason'=>'Delete Reason',
+            'what_is_delete_reason'=>'Why do you want to delete advertisement ?',
+            'did_you_sell_the_product'=>'Is the product/service sold ?',
+            'sold_inside_website'=>'Sold inside website',
+            'sold_outside_website'=>'Sold outside website',
+            'never_sold'=>'Never sold',
+            'sold_price'=>'Sold price',
+            'commission_reminder'=>'We remind you to pay website commission (5.0) % from sold price'
         ]
     ],
     'Home'=>[
         'details'=>'Details',
         'add_to_fav'=>'Add to favourite',
+        'remove_from_fav'=>'Remove from favourite',
         'all_categories'=>'All Categories',
         'all_sub_categories'=>'All',
     ],

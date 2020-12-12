@@ -27,6 +27,7 @@ return [
         'categories'=>'التصنيفات',
         'users'=>'المستخدمين',
         'tickets'=>'التذاكر',
+        'banners'=>'اللوحات الاعلانية',
         'roles'=>'الأدوار',
         'permissions'=>'الصلاحيات',
         'app_content'=>'محتوى التطبيق',

@@ -253,6 +253,9 @@ trait AhmedPanelTrait
             case 'image':
                 return view('AhmedPanel.base.columns.image',compact('column','object'));
                 break;
+            case 'url':
+                return view('AhmedPanel.base.columns.url',compact('column','object'));
+                break;
             case 'text':
             default :
                 return view('AhmedPanel.base.columns.default',compact('column','object'));
@@ -360,6 +363,9 @@ trait AhmedPanelTrait
      */
     public static function Fields($Field, $value,$lang){
         switch ($Field['type']){
+            case 'url':
+                return view('AhmedPanel.base.fields.url',compact('Field','value','lang'));
+                break;
             case 'boolean':
                 return view('AhmedPanel.base.fields.boolean',compact('Field','value','lang'));
                 break;

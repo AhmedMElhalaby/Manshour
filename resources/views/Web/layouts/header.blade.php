@@ -43,7 +43,7 @@
             </div>
         </div>
     </nav>
-    <nav class="navbar navbar-light  pb-0 container-fluid">
+    <nav class="navbar navbar-light  pb-0 container-fluid" style="margin-bottom: 15px">
         <div class="row ">
             <div class="col-lg-2 col-12 col-md-3"><a class="pr-0" href="{{url('/')}}"><img class="logo" src="{{asset('web/img/logo.png')}}" alt=""></a></div>
             <form class="col-lg col-12 col-md-9 form-inline">
@@ -55,7 +55,11 @@
                             <li><a href="{{ route('login') }}">{{ __('auth.login') }}</a></li>
                             <li><a href="{{ route('register') }}">{{ __('auth.register') }}</a></li>
                         @else
-                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('auth.logout') }}</a></li>
+                            <li><a href="{{ url('profile/update') }}" >{{ __('web.update_profile') }}</a></li>
+                            <li><a href="{{ url('profile/favourite') }}" >{{ __('web.favourite') }}</a></li>
+                            <li><a href="{{ url('profile/notifications') }}" >{{ __('web.notifications') }}</a></li>
+                            <li><a href="{{ url('profile/my_advertisements') }}" >{{ __('web.my_advertisements') }}</a></li>
+                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('auth.logout') }}</a></li>
                         @endguest
 
                     </ul>
@@ -64,6 +68,35 @@
             </form>
         </div>
     </nav>
+    @if (url()->current() == url('/'))
+        <div class="container-fluid pl-0 pr-0">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @foreach(\App\Models\Banner::where('is_active',true)->get() as $banner)
+
+                    <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}" @if($loop->index == 0) class="active" @endif></li>
+                    @endforeach
+                </ol>
+                <div class="carousel-inner ">
+                    @foreach(\App\Models\Banner::where('is_active',true)->get() as $banner)
+                    <div class="carousel-item @if($loop->index == 0) active @endif" onclick="window.open('{{$banner->getUrl()}}','_blank')">
+                        <img class="d-block w-100" src="{{asset($banner->getImage())}}" height="350" alt="{{$banner->getName()}}">
+                    </div>
+                    @endforeach
+                    <div class="shape"></div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    @endif
+
 </header>
 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
     @csrf

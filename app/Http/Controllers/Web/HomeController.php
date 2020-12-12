@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Requests\Web\Home\ContactRequest;
 use App\Http\Requests\Web\Home\IndexRequest;
+use App\Models\Notification;
 use App\Models\Setting;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

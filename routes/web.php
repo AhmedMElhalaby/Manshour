@@ -23,6 +23,17 @@ Route::group([
 ], function() {
     Route::post('check_verify', 'VerificationController@check_verify');
 });
+Route::group([
+    'prefix'  => 'profile',
+    'middleware' => 'auth',
+], function() {
+    Route::get('update', 'ProfileController@update');
+    Route::get('favourite', 'ProfileController@favourite');
+    Route::get('notifications', 'ProfileController@notifications');
+    Route::post('post_update', 'ProfileController@post_update');
+    Route::get('my_advertisements', 'ProfileController@my_advertisements');
+
+});
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('faq', 'HomeController@faq');
 Route::get('privacy', 'HomeController@privacy');
@@ -40,8 +51,12 @@ Route::group([
     Route::group([
         'middleware' => 'auth',
     ], function() {
+        Route::post('response/toggle_fav', 'AdvertisementController@response_toggle_fav');
         Route::get('create', 'AdvertisementController@create');
+        Route::get('edit', 'AdvertisementController@edit');
         Route::post('store', 'AdvertisementController@store');
+        Route::post('update', 'AdvertisementController@update');
+        Route::post('delete', 'AdvertisementController@delete');
         Route::post('comment', 'AdvertisementController@comment');
 
     });
@@ -50,4 +65,12 @@ Route::group([
     'prefix'  => 'response',
 ], function() {
     Route::get('categories', 'ResponseController@categories');
+    Route::post('delete/media', 'ResponseController@delete_media');
+});
+
+Route::group([
+    'prefix'  => 'chat',
+    'middleware' => 'auth',
+], function() {
+    Route::get('/', 'ChatController@index');
 });

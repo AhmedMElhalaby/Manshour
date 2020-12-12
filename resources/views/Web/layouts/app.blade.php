@@ -24,6 +24,7 @@
 </head>
 <body>
 <div class="wrapper">
+    @yield('out-content')
     @include('Web.layouts.header')
     @yield('content')
     @include('Web.layouts.footer')

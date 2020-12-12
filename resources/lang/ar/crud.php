@@ -121,6 +121,15 @@ return [
         'account_number' => 'رقم الحساب',
         'account_iban' => 'رقم الاي بان',
     ],
+    'Banner'=>[
+        'crud_names' => 'اللوحات الاعلانية',
+        'crud_name' => 'لوحة اعلانية',
+        'crud_the_name' => 'اللوحة الاعلانية',
+        'name' => 'الاسم',
+        'image' => 'الصورة',
+        'url' => 'الرابط',
+        'is_active' => 'الحالة',
+    ],
     'Advertisement'=>[
         'crud_names' => 'الإعلانات',
         'crud_name' => 'إعلان',

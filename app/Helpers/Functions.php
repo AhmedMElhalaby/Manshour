@@ -12,7 +12,7 @@ use App\Notifications\VerifyAccount;
 use App\Traits\ResponseTrait;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
-
+use Intervention\Image\ImageManagerStatic as Image;
 class Functions
 {
     use ResponseTrait;
@@ -216,10 +216,17 @@ class Functions
         $destination_path = "storage/".$destination_path.'/';
         $request = Request::instance();
         if ($request->hasFile($attribute_name)) {
-            $file = $request->file($attribute_name);
-            if ($file->isValid()) {
-                $file_name = md5($file->getClientOriginalName().time()).'.'.$file->getClientOriginalExtension();
-                $file->move($destination_path, $file_name);
+            $request_file = $request->file($attribute_name);
+            if ($request_file->isValid()) {
+                $file = Image::make($request_file)->resize(850, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $watermark = Image::make('logo.png')->resize(200,null,function ($c){
+                    $c->aspectRatio();
+                });
+                $file->insert($watermark,'bottom-right',10,15);
+                $file_name = md5($request_file->getClientOriginalName().time()).'.'.$request_file->getClientOriginalExtension();
+                $file->save($destination_path.$file_name);
                 $attribute_value =  $destination_path.$file_name;
             }
         }
@@ -228,8 +235,15 @@ class Functions
     public static function StoreImageModel($file,$destination_path){
         $destination_path = "storage/".$destination_path.'/';
         if ($file->isValid()) {
+            $image = Image::make($file)->resize(850, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $watermark = Image::make('logo.png')->resize(200,null,function ($c){
+                $c->aspectRatio();
+            });
+            $image->insert($watermark,'bottom-right',10,15);
             $file_name = md5($file->getClientOriginalName().time()).'.'.$file->getClientOriginalExtension();
-            $file->move($destination_path, $file_name);
+            $image->save($destination_path.$file_name);
             $attribute_value =  $destination_path.$file_name;
         }
         return $attribute_value??null;

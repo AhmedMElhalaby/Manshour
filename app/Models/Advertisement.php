@@ -46,6 +46,9 @@ class Advertisement extends Model
     public function media(){
         return $this->hasMany(Media::class,'ref_id','id');
     }
+    public function first_media(){
+        return $this->hasOne(Media::class,'ref_id','id');
+    }
     public function comments(){
         return $this->hasMany(Comment::class);
     }

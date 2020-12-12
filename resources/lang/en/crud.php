@@ -112,6 +112,15 @@ return [
         'name' => 'Name',
         'permissions' => 'Permissions',
     ],
+    'Banner'=>[
+        'crud_names' => 'Banners',
+        'crud_name' => 'Banner',
+        'crud_the_name' => 'The Banner',
+        'name' => 'Name',
+        'image' => 'Image',
+        'url' => 'Url',
+        'is_active' => 'Status',
+    ],
     'BankAccount'=>[
         'crud_names' => 'Bank Accounts',
         'crud_name' => 'Bank Account',

@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Web;
 
 use App\Helpers\Constant;
+use App\Models\Favourite;
 use App\Models\Media;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -40,6 +41,11 @@ class AdvertisementResource extends JsonResource
         $Object['delete_reason'] = $this->delete_reason;
         $Object['is_active'] = $this->is_active;
         $Object['is_deleted'] = $this->is_deleted;
+        $fav = false;
+        if(auth()->check()){
+            $fav = (Favourite::where('advertisement_id',$this->id)->where('user_id',auth()->user()->id)->first())?true:false;
+        }
+        $Object['is_fav'] = $fav;
         $Object['FirstMedia'] =new MediaResource($this->media()->first());
         $Object['created_at'] = Carbon::parse($this->created_at)->format('Y-m-d');
         $Object['Media'] = MediaResource::collection($this->media);

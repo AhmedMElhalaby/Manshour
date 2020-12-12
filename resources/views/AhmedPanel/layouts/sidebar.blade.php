@@ -40,7 +40,7 @@
     </div>
 </li>
 @endif
-@if (auth('admin')->user()->can('Settings') || auth('admin')->user()->can('Faqs') || auth('admin')->user()->can('BankAccounts') || auth('admin')->user()->can('Cities'))
+@if (auth('admin')->user()->can('Settings') || auth('admin')->user()->can('Faqs') || auth('admin')->user()->can('BankAccounts') || auth('admin')->user()->can('Cities') || auth('admin')->user()->can('Categories') || auth('admin')->user()->can('Banners'))
 <li class="nav-item ">
     <a class="nav-link collapsed" data-toggle="collapse" href="#app_data" aria-expanded="false">
         <i class="material-icons">keyboard_arrow_down</i>
@@ -85,6 +85,14 @@
                     <a href="{{url('admin/app_data/categories')}}" class="nav-link">
                         <i class="material-icons">category</i>
                         <p>{{__('admin.sidebar.categories')}}</p>
+                    </a>
+                </li>
+            @endif
+            @if (auth('admin')->user()->can('Banners'))
+                <li class="nav-item @if(strpos(url()->current() , url('admin/app_data/banners'))===0) active @endif">
+                    <a href="{{url('admin/app_data/banners')}}" class="nav-link">
+                        <i class="material-icons">view_carousel</i>
+                        <p>{{__('admin.sidebar.banners')}}</p>
                     </a>
                 </li>
             @endif

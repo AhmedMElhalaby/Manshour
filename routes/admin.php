@@ -162,6 +162,18 @@ Route::group([
             Route::delete('/{category}','CategoryController@destroy');
             Route::get('/option/export','CategoryController@export');
         });
+        Route::group([
+            'prefix'=>'banners'
+        ],function () {
+            Route::get('/','BannerController@index');
+            Route::get('/create','BannerController@create');
+            Route::post('/','BannerController@store');
+            Route::get('/{banner}','BannerController@show');
+            Route::get('/{banner}/edit','BannerController@edit');
+            Route::put('/{banner}','BannerController@update');
+            Route::delete('/{banner}','BannerController@destroy');
+            Route::get('/option/export','BannerController@export');
+        });
     });
     /*
     |--------------------------------------------------------------------------

@@ -6,7 +6,11 @@ namespace App\Http\Controllers\Web;
 use App\Http\Requests\Web\Advertisement\CommentRequest;
 use App\Http\Requests\Web\Advertisement\ShowRequest;
 use App\Http\Requests\Web\Advertisement\StoreRequest;
+use App\Http\Requests\Web\Advertisement\UpdateRequest;
+use App\Http\Requests\Web\Advertisement\ResponseToggleFavRequest;
+use App\Http\Requests\Web\Advertisement\DeleteRequest;
 use App\Http\Requests\Web\Advertisement\ResponseRequest;
+use App\Http\Requests\Web\Advertisement\EditRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -36,6 +40,20 @@ class AdvertisementController extends Controller
     public function store(StoreRequest $request){
         return $request->preset();
     }
+    /**
+     * @param UpdateRequest $request
+     * @return Application|RedirectResponse|Redirector|void
+     */
+    public function update(UpdateRequest $request){
+        return $request->preset();
+    }
+    /**
+     * @param DeleteRequest $request
+     * @return Application|RedirectResponse|Redirector|void
+     */
+    public function delete(DeleteRequest $request){
+        return $request->preset();
+    }
 
     /**
      * @param ShowRequest $request
@@ -46,10 +64,27 @@ class AdvertisementController extends Controller
     }
 
     /**
+     * @param EditRequest $request
+     * @return Application|Factory|View
+     */
+    public function edit(EditRequest $request){
+        return $request->preset();
+    }
+
+    /**
      * @param ResponseRequest $request
      * @return JsonResponse
      */
     public function response(ResponseRequest $request): JsonResponse
+    {
+        return $request->preset();
+    }
+
+    /**
+     * @param ResponseToggleFavRequest $request
+     * @return JsonResponse
+     */
+    public function response_toggle_fav(ResponseToggleFavRequest $request): JsonResponse
     {
         return $request->preset();
     }

@@ -25,6 +25,7 @@ class ResponseRequest extends Response
     }
     public function preset(){
         $Objects = new Advertisement();
+        $Objects = $Objects->where('is_deleted',false);
         if($this->filled('category_id')){
             $Objects = $Objects->where('category_id',$this->category_id);
         }

@@ -40,4 +40,5 @@ class Constant
         'OutsideWebsite'=>2,
         'NeverSell'=>3
     ];
+    const ADVERTISEMENT_SELL_TYPE_RULES='1,2,3';
 }

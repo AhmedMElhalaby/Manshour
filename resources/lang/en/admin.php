@@ -28,6 +28,7 @@ return [
         'users'=>'Users',
         'tickets'=>'Tickets',
         'roles'=>'Roles',
+        'banners'=>'Banners',
         'permissions'=>'Permissions',
         'app_content'=>'App Content',
         'advertisements'=>'Advertisements',

@@ -187,9 +187,13 @@
                                         '<div class="col-lg-12">'+
                                             '<hr class="media-hr">'+
                                         '</div>'+
-                                        '<div class="row">'+
-                                            '<div class="col-lg-3 text-center"><span class="add-to-fav color"> {{__('web.Home.add_to_fav')}}<i class="far fa-heart"></i></span></div>'+
-                                            '<div class="col-lg-5"></div>'+
+                                        '<div class="row">';
+                                    if(advertisement.is_fav){
+                                        html +='<div class="col-lg-3 text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav" onclick="ToggleFav('+advertisement.id+')"> {{__('web.Home.remove_from_fav')}}<i class="fas fa-heart"></i></span></div>';
+                                    }else{
+                                        html +='<div class="col-lg-3 text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav color" onclick="ToggleFav('+advertisement.id+')"> {{__('web.Home.add_to_fav')}}<i class="far fa-heart"></i></span></div>';
+                                    }
+                                    html += '<div class="col-lg-5"></div>'+
                                             '<div class="col-lg-4">'+
                                                 '<div class="row">'+
                                                     '<span class="col-lg-6 col-6 media-date">'+advertisement.City.name+' <i class="fas fa-map-marker-alt"></i></span>'+
@@ -316,6 +320,17 @@
         LoadAdvertisement();
         function goAd(id){
             window.location='{{url("advertisements/show?advertisement_id=")}}'+id;
+        }
+        function ToggleFav(id){
+            $.post( "{{url('advertisements/response/toggle_fav')}}", {advertisement_id:id,_token:'{{csrf_token()}}'},function( response ) {
+                if (response.status.status === 'success'){
+                    if (response.data){
+                        $('#ToggleFav-'+id).html('<span class="add-to-fav" onclick="ToggleFav('+id+')"> {{__('web.Home.remove_from_fav')}}<i class="fas fa-heart"></i></span>');
+                    }else{
+                        $('#ToggleFav-'+id).html('<span class="add-to-fav color" onclick="ToggleFav('+id+')"> {{__('web.Home.add_to_fav')}}<i class="far fa-heart"></i></span>');
+                    }
+                }
+            });
         }
     </script>
 @endsection
