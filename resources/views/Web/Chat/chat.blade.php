@@ -14,119 +14,79 @@
     </section>
     <section class="chats container-fluid">
         <div class="row">
-            <div class="col-lg-4 col-12 chat-r">
-                <div class="w3-sidebar w3-bar-block w3-card">
-                    <div class="row">
-                        <form class="form-inline col-12">
-                            <input class="search form-control " type="search" placeholder="{{__('web.search')}}" aria-label="Search">
-                            <button class="btn btn-gradient my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                        </form></div>
-                    <div class="scroll">
-                        <button class="w3-bar-item w3-button tablink">
-                            <div class="row">
-                                <div class="col-12 p-0">
-                                    <div class="card" style="max-width: 540px;" >
-                                        <div class="row no-gutters">
-                                            <div class="col-mf-2 col-3 chat-img">
-                                                <img src="lib/img/Avatar.png" class="card-img" alt="...">
-                                            </div>
-                                            <div class="col-mf-10 col-9">
-                                                <div class="card-body chat-con">
-                                                    <div class="div card-h">
-                                                        <h5 class="card-title">اسم المستخدم</h5>
-                                                        <p class="card-text"><small class="text-muted">قبل دقيقتين</small></p>
-                                                    </div>
-                                                    <p class="card-text">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص</p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-8 chat-l">
-                <div class="w3-container city" style="display:block">
-                    <div class="header-chat row">
-                        <div class="col-lg-5 col-7 pr-0">
-                            <div class="row">
-                                <div class="back col-lg col-2 ">
-                                    <button type="button" class="btn"> <i class="fas fa-angle-right"></i></button>
-                                </div>
-                                <div class="col-lg-2 col-3 chat-img">
-                                    <img src="lib/img/Avatar.png" class="card-img " alt="...">
-                                </div>
-                                <div class="col-lg-10 col-7 img-name">
-                                    <p>اسم المستخدم</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-7 col-5 chat-remove">
-                            <button type="button" class="btn btn-danger"> <i class="far fa-trash-alt ml-2"></i> حذف المحادثة </button>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row chat-body">
-                        <div class="col-12 pl-0 pr-0">
-                            <div class="main-chat">
-                                <div class="float-l">
-                                    <div class="you">
-                                        <p>هناك حقيقة مثبتة منذ زمن</p>
-                                    </div>
-                                    <span>10:24</span>
-                                </div>
-                                <div class="float-r">
-                                    <div class="me">
-                                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي</p>
-                                    </div>
-                                    <span>10:24</span>
-                                </div>
-                                <div class="float-l">
-                                    <div class="you">
-                                        <p>هناك حقيقة مثبتة منذ زمن</p>
-                                    </div>
-                                    <span>10:24</span>
-                                </div>
-                                <div class="float-r">
-                                    <div class="me">
-                                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي</p>
-                                    </div>
-                                    <span>10:24</span>
-                                </div>
-                                <div class="float-l">
-                                    <div class="you">
-                                        <p>هناك حقيقة مثبتة منذ زمن</p>
-                                    </div>
-                                    <span>10:24</span>
-                                </div>
-                                <div class="float-r">
-                                    <div class="me">
-                                        <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي</p>
-                                    </div>
-                                    <span>10:24</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 send-chat">
-                            <div class="row">
-                                <div class="form-group col-md-11 col-10 chat-input">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="ادخل الرسالة"></textarea>
-                                </div>
-                                <div class="col-md-1 col-2 chat-button">
-                                    <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" rows="5" type="submit"><i class="fas fa-paper-plane"></i> </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('Web.Chat.rooms')
+            @include('Web.Chat.messages')
         </div>
     </section>
+@endsection
+@section('script')
+    <script>
+        let chat_room_id;
+        let user_name;
+    function LoadChatRoom(){
+        let q = $('#rooms_search').val();
+        $.get( "{{url('chat/rooms')}}",{q:q},function( response ) {
+            if (response.status.status === 'success'){
+                let i =0;
+                $('#ChatRooms').html('');
+                response.ChatRooms.forEach(room =>{
+                    $('#ChatRoomUserName').html(room.User.name);
+                    let ele = $('#ChatRoomDiv').clone().attr('id','ChatRoom-'+room.id).attr('data-id',room.id).attr('data-name',room.User.name);
+                    $('#ChatRooms').append(ele.show());
+                    if(i === 0){
+                        GetMessages(ele);
+                    }
+                    i++;
+                });
+            }
+        });
+    }
+    LoadChatRoom();
+    $('#ChatRoomSearchForm').on('submit',function (e){
+        e.preventDefault();
+        LoadChatRoom();
+    });
+    function GetMessages(ChatRoom){
+        chat_room_id = $(ChatRoom).data('id');
+        user_name = $(ChatRoom).data('name');
+        $('#ChatUserName').html(user_name);
+        $.get( "{{url('chat/messages')}}",{chat_room_id:chat_room_id},function( response ) {
+            if (response.status.status === 'success'){
+                $('#ChatMessages').html('');
+                response.ChatMessages.forEach(message =>{
+                    if(message.is_mine){
+                        $('#ChatMessages').append('<div class="float-r">'+
+                                                    '<div class="me">'+
+                                                        '<p>'+message.message+'</p>'+
+                                                    '</div>'+
+                                                    '<span>'+message.created_at+'</span>'+
+                                                '</div>');
+                    }else{
+                        $('#ChatMessages').append('<div class="float-l">'+
+                                                    '<div class="you">'+
+                                                        '<p>'+message.message+'</p>'+
+                                                    '</div>'+
+                                                    '<span>'+message.created_at+'</span>'+
+                                                '</div>');
+                    }
+                });
+            }
+        });
+    }
+    function SendMessage(){
+        let message = $('#message').val();
+        $.post( "{{url('chat/messages/send')}}",{message:message,chat_room_id:chat_room_id,_token:'{{csrf_token()}}'},function( response ) {
+            if (response.status.status === 'success'){
+                $('#ChatMessages').append('<div class="float-r">'+
+                                            '<div class="me">'+
+                                                '<p>'+response.ChatMessage.message+'</p>'+
+                                            '</div>'+
+                                            '<span>'+response.ChatMessage.created_at+'</span>'+
+                                          '</div>');
+                $('#message').val('');
+
+            }
+        });
+    }
+    </script>
 @endsection

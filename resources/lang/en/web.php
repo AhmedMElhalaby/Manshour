@@ -69,6 +69,8 @@ return [
             'leave_comment'=>'Leave Comment',
             'add_comment'=>'Add Comment',
             'similar_advertisement'=>'Similar Advertisement',
+            'chat'=>'Chat',
+            'message'=>'Message',
         ],
         'Delete'=>[
             'delete_reason'=>'Delete Reason',

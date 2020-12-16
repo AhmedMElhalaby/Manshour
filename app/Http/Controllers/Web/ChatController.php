@@ -3,17 +3,13 @@
 namespace App\Http\Controllers\Web;
 
 
-use App\Http\Requests\Web\Home\ContactRequest;
-use App\Http\Requests\Web\Home\IndexRequest;
-use App\Http\Requests\Web\Profile\UpdateRequest;
-use App\Models\Advertisement;
-use App\Models\Favourite;
-use App\Models\Setting;
+use App\Http\Requests\Web\Chat\ChatRoomMessageResponse;
+use App\Http\Requests\Web\Chat\ChatRoomResponse;
+use App\Http\Requests\Web\Chat\SendMessageResponse;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\App;
+use Illuminate\Http\JsonResponse;
 
 class ChatController extends Controller
 {
@@ -22,5 +18,18 @@ class ChatController extends Controller
      */
     public function index(){
         return view('Web.Chat.chat');
+    }
+    public function chat_rooms(ChatRoomResponse $response): JsonResponse
+    {
+        return $response->preset();
+    }
+
+    public function chat_room_messages(ChatRoomMessageResponse $response): JsonResponse
+    {
+        return $response->preset();
+    }
+    public function send_message(SendMessageResponse $response): JsonResponse
+    {
+        return $response->preset();
     }
 }

@@ -58,6 +58,7 @@ Route::group([
         Route::post('update', 'AdvertisementController@update');
         Route::post('delete', 'AdvertisementController@delete');
         Route::post('comment', 'AdvertisementController@comment');
+        Route::post('send_message', 'AdvertisementController@send_message');
 
     });
 });
@@ -73,4 +74,7 @@ Route::group([
     'middleware' => 'auth',
 ], function() {
     Route::get('/', 'ChatController@index');
+    Route::get('rooms', 'ChatController@chat_rooms');
+    Route::get('messages', 'ChatController@chat_room_messages');
+    Route::post('messages/send', 'ChatController@send_message');
 });

@@ -9,6 +9,7 @@ use App\Http\Requests\Web\Advertisement\StoreRequest;
 use App\Http\Requests\Web\Advertisement\UpdateRequest;
 use App\Http\Requests\Web\Advertisement\ResponseToggleFavRequest;
 use App\Http\Requests\Web\Advertisement\DeleteRequest;
+use App\Http\Requests\Web\Advertisement\SendMessageRequest;
 use App\Http\Requests\Web\Advertisement\ResponseRequest;
 use App\Http\Requests\Web\Advertisement\EditRequest;
 use Illuminate\Contracts\Foundation\Application;
@@ -68,6 +69,13 @@ class AdvertisementController extends Controller
      * @return Application|Factory|View
      */
     public function edit(EditRequest $request){
+        return $request->preset();
+    }
+    /**
+     * @param SendMessageRequest $request
+     * @return Application|Factory|View
+     */
+    public function send_message(SendMessageRequest $request){
         return $request->preset();
     }
 

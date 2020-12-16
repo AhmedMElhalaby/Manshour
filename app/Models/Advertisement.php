@@ -52,6 +52,13 @@ class Advertisement extends Model
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+    public function is_fav(){
+        $fav = false;
+        if(auth()->check()){
+            $fav = (Favourite::where('advertisement_id',$this->id)->where('user_id',auth()->user()->id)->first())?true:false;
+        }
+        return $fav;
+    }
     /**
      * @return int
      */

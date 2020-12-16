@@ -1,4 +1,32 @@
 @extends('Web.layouts.app')
+@section('out-content')
+    <div class="modal fade" id="SendMessage" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-centered">
+            <form method="post" action="{{url('advertisements/send_message')}}" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">{{__('web.Advertisement.Show.message')}}</h5>
+                </div>
+                <div class="modal-body">
+                    @csrf
+                    <input type="hidden" name="advertisement_id" id="advertisement_id" value="{{$Object->id}}">
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label for="message" hidden></label>
+                            <textarea class="form-control" id="message" name="message" required rows="5" placeholder="{{__('web.Advertisement.Show.message')}}"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row w-100">
+                        <div class="col-lg delete-b">
+                            <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="submit">{{__('admin.Home.n_send')}} </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
 @section('content')
     <section class="container-fluid single-post">
         <div class="row">
@@ -10,7 +38,16 @@
                         <div class="col-lg-5 single-r-link">
                             <span class="media-date"><i class="fas fa-map-marker-alt"></i> {{$Object->City->name}}</span>
                             <span class="media-date"><i class="far fa-clock"></i> {{$Object->created_at}}</span>
-                            <span class="add-to-fav color"><i class="far fa-heart"></i> {{__('web.Advertisement.Show.add_to_favourite')}}</span>
+                            <span id="ToggleFav-{{$Object->id}}" class="add-to-fav @if($Object->is_fav() != true) color @endif" onclick="ToggleFav({{$Object->id}})">
+                                <i id="ToggleFavIcon-{{$Object->id}}" class="@if($Object->is_fav() != true) far @else fas @endif fa-heart"></i>
+                                <span id="ToggleFavText-{{$Object->id}}">
+                                    @if($Object->is_fav() != true)
+                                        {{__('web.Advertisement.Show.add_to_favourite')}}
+                                    @else
+                                        {{__('web.Home.remove_from_fav')}}
+                                    @endif
+                                </span>
+                            </span>
                         </div>
                         <div class="col-lg-7 single-l-link">
                             <ul class="navbar-nav">
@@ -104,7 +141,7 @@
                 <div class="card rate">
                     <div class="card-body">
                         <div>
-                            <p class="card-title"> <i class="fas fa-user-circle"></i> {{$Object->User->name}}</p>
+                            <p class="card-title"><i class="fas fa-user-circle"></i>{{$Object->User->name}}</p>
 {{--                            <form>--}}
 {{--                                <fieldset>--}}
 {{--                                    <span class="star-cb-group">--}}
@@ -119,8 +156,8 @@
 {{--                                </fieldset>--}}
 {{--                            </form>--}}
                         </div>
-                        <p class="card-text"> <i class="fas fa-mobile-alt"></i> {{$Object->User->mobile}}</p>
-                        <a href="#" class="btn submit-comment col-lg"><i class="far fa-comments"></i> محادثة </a>
+                        <p class="card-text"><i class="fas fa-mobile-alt"></i>{{$Object->User->mobile}}</p>
+                        <a href="javascript:;" class="btn submit-comment col-lg" data-toggle="modal" data-target="#SendMessage"><i class="far fa-comments"></i> {{__('web.Advertisement.Show.chat')}} </a>
                     </div>
                 </div>
                 <h5>{{__('web.Advertisement.Show.similar_advertisement')}}</h5>
@@ -146,7 +183,16 @@
                                 <div class="col-lg single-r-link">
                                     <span class="media-date"><i class="fas fa-map-marker-alt ml-2"></i> {{$ad->city->name}}</span>
                                     <span class="media-date"><i class="far fa-clock  ml-2"></i> {{\Carbon\Carbon::parse($ad->created_at)->format('Y-m-d')}}</span>
-                                    <span class="add-to-fav color"><i class="far fa-heart"></i> {{__('web.Advertisement.Show.add_to_favourite')}}</span>
+                                    <span id="ToggleFav-{{$ad->id}}" class="add-to-fav @if($ad->is_fav() != true) color @endif" onclick="ToggleFav({{$ad->id}})">
+                                        <i id="ToggleFavIcon-{{$ad->id}}" class="@if($ad->is_fav() != true) far @else fas @endif fa-heart"></i>
+                                        <span id="ToggleFavText-{{$ad->id}}">
+                                            @if($ad->is_fav() != true)
+                                                {{__('web.Advertisement.Show.add_to_favourite')}}
+                                            @else
+                                                {{__('web.Home.remove_from_fav')}}
+                                            @endif
+                                        </span>
+                                    </span>
                                 </div>
                             </div>
                             <hr>
@@ -157,4 +203,23 @@
             </div>
         </div>
     </section>
+@endsection
+@section('script')
+    <script>
+        function ToggleFav(id){
+            $.post( "{{url('advertisements/response/toggle_fav')}}", {advertisement_id:id,_token:'{{csrf_token()}}'},function( response ) {
+                if (response.status.status === 'success'){
+                    if (response.data){
+                        $('#ToggleFav-'+id).removeClass('color');
+                        $('#ToggleFavIcon-'+id).removeClass('far').addClass('fas');
+                        $('#ToggleFavText-'+id).html('{{__('web.Home.remove_from_fav')}}');
+                    }else{
+                        $('#ToggleFav-'+id).addClass('color');
+                        $('#ToggleFavIcon-'+id).removeClass('fas').addClass('far');
+                        $('#ToggleFavText-'+id).html('{{__('web.Home.add_to_fav')}}');
+                    }
+                }
+            });
+        }
+    </script>
 @endsection

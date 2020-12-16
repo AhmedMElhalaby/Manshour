@@ -69,6 +69,8 @@ return [
             'leave_comment'=>'إترك تعليق على الاعلان',
             'add_comment'=>'اضف التعليق',
             'similar_advertisement'=>'اعلانات مشابهة',
+            'chat'=>'محادثة',
+            'message'=>'نص الرسالة',
         ],
         'Delete'=>[
             'delete_reason'=>'سبب الحذف',
