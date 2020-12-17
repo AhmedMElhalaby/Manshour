@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web\Auth;
 
+use App\Helpers\Constant;
 use App\Helpers\Functions;
 use App\Http\Controllers\Web\Controller;
 use App\Models\User;
@@ -74,7 +75,7 @@ class RegisterController extends Controller
             'city_id' => $data['city_id'],
             'password' => Hash::make($data['password']),
         ]);
-        Functions::SendVerification($User);
+        Functions::SendVerification($User,Constant::VERIFICATION_TYPE['Mobile']);
         return $User;
     }
     public function showRegistrationForm()
