@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Web\Chat;
 
+use App\Events\SendMessageEvent;
 use App\Http\Resources\Web\AdvertisementResource;
 use App\Http\Resources\Web\ChatMessageResource;
 use App\Models\Advertisement;
@@ -32,6 +33,7 @@ class SendMessageResponse extends Response
         $Object->setChatRoomId($this->chat_room_id);
         $Object->save();
         $Object->refresh();
+        SendMessageEvent::dispatch(new ChatMessageResource($Object));
         return $this->successJsonResponse([],new ChatMessageResource($Object),'ChatMessage');
     }
 }

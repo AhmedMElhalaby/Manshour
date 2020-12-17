@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 
+use App\Events\SendMessageEvent;
 use App\Http\Requests\Web\Chat\ChatRoomMessageResponse;
 use App\Http\Requests\Web\Chat\ChatRoomResponse;
 use App\Http\Requests\Web\Chat\SendMessageResponse;

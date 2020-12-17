@@ -33,6 +33,7 @@
                     $('#ChatRoomUserName').html(room.User.name);
                     let ele = $('#ChatRoomDiv').clone().attr('id','ChatRoom-'+room.id).attr('data-id',room.id).attr('data-name',room.User.name);
                     $('#ChatRooms').append(ele.show());
+                    OpenBroadcast(room.id);
                     if(i === 0){
                         GetMessages(ele);
                     }
@@ -72,6 +73,7 @@
                 });
             }
         });
+
     }
     function SendMessage(){
         let message = $('#message').val();
@@ -84,9 +86,28 @@
                                             '<span>'+response.ChatMessage.created_at+'</span>'+
                                           '</div>');
                 $('#message').val('');
-
+                ScrollDown();
             }
         });
     }
     </script>
-@endsection
+    <script>
+        function ScrollDown(){
+            $("#ChatMessagesBox").animate({ scrollTop: $('#ChatMessagesBox').prop("scrollHeight") })
+        }
+        function OpenBroadcast(id){
+            window.Echo.channel('new_message.'+id)
+                .listen('SendMessageEvent',e=>{
+                    if(id === chat_room_id ){
+                        $('#ChatMessages').append('<div class="float-l">'+
+                            '<div class="you">'+
+                            '<p>'+e.message.message+'</p>'+
+                            '</div>'+
+                            '<span>'+e.message.created_at+'</span>'+
+                            '</div>');
+                        ScrollDown();
+                    }
+                });
+        }
+    </script>
+ @endsection

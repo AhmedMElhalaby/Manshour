@@ -20,7 +20,7 @@
             </div>
         </div>
         <hr>
-        <div class="row chat-body">
+        <div class="row chat-body" id="ChatMessagesBox">
             <div class="col-12 pl-0 pr-0">
                 <div class="main-chat" id="ChatMessages">
                 </div>

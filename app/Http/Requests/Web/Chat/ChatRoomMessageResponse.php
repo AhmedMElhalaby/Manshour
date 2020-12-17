@@ -28,7 +28,7 @@ class ChatRoomMessageResponse extends Response
         $ChatRoom = (new ChatRoom())->find($this->chat_room_id);
         $Objects = new ChatMessage();
         $Objects = $Objects->where('chat_room_id',$ChatRoom->getId());
-        $Objects = $Objects->orderBy('created_at','desc');
+        $Objects = $Objects->orderBy('created_at','asc');
         $Objects = $Objects->get();
         return $this->successJsonResponse([],ChatMessageResource::collection($Objects),'ChatMessages');
     }
