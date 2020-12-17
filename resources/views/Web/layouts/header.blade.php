@@ -55,6 +55,7 @@
                             <li><a href="{{ route('login') }}">{{ __('auth.login') }}</a></li>
                             <li><a href="{{ route('register') }}">{{ __('auth.register') }}</a></li>
                         @else
+                            <li><a href="{{ url('profile/chat') }}" >{{ __('web.chats') }}</a></li>
                             <li><a href="{{ url('profile/update') }}" >{{ __('web.update_profile') }}</a></li>
                             <li><a href="{{ url('profile/favourite') }}" >{{ __('web.favourite') }}</a></li>
                             <li><a href="{{ url('profile/notifications') }}" >{{ __('web.notifications') }}</a></li>
