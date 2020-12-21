@@ -32,12 +32,7 @@ class HomeController extends Controller
     public function general_notification(Request $request){
         $Title = $request->has('title')?$request->title:'';
         $Message = $request->has('msg')?$request->msg:'';
-        $Users = new User();
-        if($request->has('type') && $request->type == 1)
-            $Users = $Users->where('type',1);
-        if($request->has('type') && $request->type == 2)
-            $Users = $Users->where('type',2);
-        $Users = $Users->whereNotNull('device_token')->get();
+        $Users = (new User())->all();
         Functions::sendNotifications($Users,$Title,$Message,null,Constant::NOTIFICATION_TYPE['General']);
         return redirect()->back()->with('status', __('admin.messages.notification_sent'));
     }

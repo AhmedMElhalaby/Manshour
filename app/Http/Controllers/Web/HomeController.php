@@ -57,6 +57,16 @@ class HomeController extends Controller
     /**
      * @return Application|Factory|View
      */
+    public function about(){
+        $About = Setting::where('key','about')->first();
+        if (!$About) {
+            return redirect('/');
+        }
+        return view('Web.about',compact('About'));
+    }
+    /**
+     * @return Application|Factory|View
+     */
     public function terms(){
         $Term = Setting::where('key','terms')->first();
         if (!$Term) {

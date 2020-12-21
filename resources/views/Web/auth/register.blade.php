@@ -92,7 +92,8 @@
                                 <div class="col-md-6 l-l-s">
                                     <div class="form-group form-check checkbox">
                                         <input type="checkbox" required class="form-check-input col-1 k-checkbox" checked="checked" id="checkbox">
-                                        <label class="form-check-label col-11 k-checkbox-label" for="checkbox">{{__('web.approve_privacy')}}</label>
+                                        <label class="form-check-label col-11 k-checkbox-label"  for="checkbox" style="display: inline"></label>
+                                        <a href="{{url('terms')}}" style="display: inline">{{__('web.approve_privacy')}}</a>
                                     </div>
                                     <div class="form-group">
                                         <input type="submit" name="submit" class="btn btn-info btn-md" value="{{__('web.register')}}">

@@ -37,6 +37,7 @@ Route::group([
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('faq', 'HomeController@faq');
 Route::get('privacy', 'HomeController@privacy');
+Route::get('about', 'HomeController@about');
 Route::get('terms', 'HomeController@terms');
 Route::get('commission', 'HomeController@commission');
 Route::get('contact_us', 'HomeController@contact_us');
