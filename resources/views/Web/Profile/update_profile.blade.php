@@ -12,7 +12,7 @@
             </div>
         </div>
     </section>
-    <section class="login register">
+    <section class="login register" style="min-height: 25vh">
         <div class="container">
             <div class="row login-row justify-content-center align-items-center">
                 <div class="login-column col-md-7">

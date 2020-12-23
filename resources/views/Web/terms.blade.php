@@ -12,7 +12,7 @@
             </div>
         </div>
     </section>
-    <section class="privacy-trems container-fluid">
+    <section class="privacy-trems container-fluid" style="min-height: 25vh">
         <div class="row">
             <div class="col-md-12">
                 <p>{{(app()->getLocale()=='ar')?$Term->getValueAr():$Term->getValue()}}</p>

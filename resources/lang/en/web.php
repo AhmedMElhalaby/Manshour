@@ -7,6 +7,7 @@ return [
     'update_profile' => 'Update Profile',
     'favourite' => 'Favourites',
     'my_advertisements' => 'My Advertisements',
+    'notification_title' => 'Important Notification',
     'add_advertisement' => 'Add Adv. Now',
     'all_categories' => 'All Categories',
     'main_page'=>'Main Page',
@@ -70,6 +71,7 @@ return [
             'add_comment'=>'Add Comment',
             'similar_advertisement'=>'Similar Advertisement',
             'chat'=>'Chat',
+            'reply_comment'=>'Reply Comment',
             'message'=>'Message',
         ],
         'Delete'=>[

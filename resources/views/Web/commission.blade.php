@@ -12,7 +12,7 @@
             </div>
         </div>
     </section>
-    <section class="site-commission container-fluid">
+    <section class="site-commission container-fluid" style="min-height: 25vh">
         <div class="row">
             <div class="col-md-12">
                 <p>{{(app()->getLocale()=='ar')?$Commission->getValueAr():$Commission->getValue()}} </p>

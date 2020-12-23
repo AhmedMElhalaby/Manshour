@@ -12,7 +12,7 @@
             </div>
         </div>
     </section>
-    <form method="post" action="{{url('advertisements/store')}}" class="new-ads container-fluid" enctype="multipart/form-data">
+    <form method="post" action="{{url('advertisements/store')}}" class="new-ads container-fluid" enctype="multipart/form-data" style="min-height: 25vh">
         <div class="row">
             @csrf
             <div class="col-lg-4">

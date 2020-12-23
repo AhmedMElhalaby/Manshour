@@ -48,6 +48,7 @@ Route::group([
 ], function() {
     Route::get('/', 'AdvertisementController@index');
     Route::get('response', 'AdvertisementController@response');
+    Route::get('comment/response', 'AdvertisementController@comment_response');
     Route::get('show', 'AdvertisementController@show');
     Route::group([
         'middleware' => 'auth',
@@ -59,6 +60,7 @@ Route::group([
         Route::post('update', 'AdvertisementController@update');
         Route::post('delete', 'AdvertisementController@delete');
         Route::post('comment', 'AdvertisementController@comment');
+        Route::post('comment/post_response', 'AdvertisementController@comment_post_response');
         Route::post('send_message', 'AdvertisementController@send_message');
 
     });

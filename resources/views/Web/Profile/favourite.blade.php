@@ -32,7 +32,7 @@
             </div>
         </div>
     </section>
-    <section class="ads-list container-fluid">
+    <section class="ads-list container-fluid" style="min-height: 25vh">
         <div class="row">
             <div class="col-lg-12 all-media">
                 @foreach ($Objects as $advertisement)

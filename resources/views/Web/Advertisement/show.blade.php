@@ -1,4 +1,27 @@
 @extends('Web.layouts.app')
+@section('style')
+    <style>
+        .pagination>li>a,.pagination>li>span{
+            padding: 6px 12px 8px;
+            border-radius: 12%;
+            background: lightgray;
+            margin: 2px;
+            font-size: 16px;
+        }
+        .page-link{
+            color: #000;
+        }
+        .pagination>li>a:hover{
+            text-decoration: none;
+            color: #D41675 !important;
+        }
+        .pagination>li.active>span,.page-item.active .page-link{
+            background: linear-gradient(90deg, rgba(212, 22, 117, 1) 0%, rgba(253, 54, 21, 1) 100%);
+            border-color: transparent;
+            color: #fff;
+        }
+    </style>
+@endsection
 @section('out-content')
     <div class="modal fade" id="SendMessage" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog modal-dialog-centered">
@@ -28,7 +51,7 @@
     </div>
 @endsection
 @section('content')
-    <section class="container-fluid single-post">
+    <section class="container-fluid single-post" style="min-height: 25vh">
         <div class="row">
             <div class="col-lg-8">
                 <div class="single-post-top">
@@ -37,7 +60,7 @@
                     <div class="row">
                         <div class="col-lg-5 single-r-link">
                             <span class="media-date"><i class="fas fa-map-marker-alt"></i> {{$Object->City->name}}</span>
-                            <span class="media-date"><i class="far fa-clock"></i> {{$Object->created_at}}</span>
+                            <span class="media-date"><i class="far fa-clock"></i> {{\Carbon\Carbon::parse($Object->created_at)->diffForHumans()}}</span>
                             <span id="ToggleFav-{{$Object->id}}" class="add-to-fav @if($Object->is_fav() != true) color @endif" onclick="ToggleFav({{$Object->id}})">
                                 <i id="ToggleFavIcon-{{$Object->id}}" class="@if($Object->is_fav() != true) far @else fas @endif fa-heart"></i>
                                 <span id="ToggleFavText-{{$Object->id}}">
@@ -96,27 +119,13 @@
                         <div class="comments-area">
                             <h4>{{count($Object->Comments)}} {{__('web.Advertisement.Show.comments')}}</h4>
                             <hr>
-                            @foreach($Object->Comments as $comment)
-                                <div class="comment-list">
-                                    <div class="single-comment justify-content-between d-flex">
-                                        <div class="user justify-content-between d-flex">
-                                            <div class="desc">
-                                                <div class="comment-h">
-                                                    <a href="#">
-                                                        <h5>{{$comment->User->name}}</h5>
-                                                    </a>
-                                                    <div class="reply-btn">
-                                                        <span class="date"><i class="far fa-clock mx-2"></i>{{Carbon\Carbon::parse($comment->created_at)->diffForHumans()}}</span>
-{{--                                                        <a href="" class="btn-reply text-uppercase"><i class="far fa-comment"></i> رد على التعليق</a>--}}
-                                                    </div>
-                                                </div>
-                                                <p class="comment">{{$comment->comment}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
-                            @endforeach
+                            <div id="Comments">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-4" id="Paging">
+                            </div>
                         </div>
                         <div class="comment-form">
                             <h4> <i class="far fa-comment ml-2"></i> {{__('web.Advertisement.Show.leave_comment')}}</h4>
@@ -157,7 +166,7 @@
 {{--                            </form>--}}
                         </div>
                         <p class="card-text"><i class="fas fa-mobile-alt"></i>{{$Object->User->mobile}}</p>
-                        <a href="javascript:;" class="btn submit-comment col-lg" data-toggle="modal" data-target="#SendMessage"><i class="far fa-comments"></i> {{__('web.Advertisement.Show.chat')}} </a>
+                        <a href="javascript:" class="btn submit-comment col-lg" data-toggle="modal" data-target="#SendMessage"><i class="far fa-comments"></i> {{__('web.Advertisement.Show.chat')}} </a>
                     </div>
                 </div>
                 <h5>{{__('web.Advertisement.Show.similar_advertisement')}}</h5>
@@ -182,7 +191,7 @@
                             <div class="row mt-3">
                                 <div class="col-lg single-r-link">
                                     <span class="media-date"><i class="fas fa-map-marker-alt ml-2"></i> {{$ad->city->name}}</span>
-                                    <span class="media-date"><i class="far fa-clock  ml-2"></i> {{\Carbon\Carbon::parse($ad->created_at)->format('Y-m-d')}}</span>
+                                    <span class="media-date"><i class="far fa-clock  ml-2"></i> {{\Carbon\Carbon::parse($ad->created_at)->diffForHumans()}}</span>
                                     <span id="ToggleFav-{{$ad->id}}" class="add-to-fav @if($ad->is_fav() != true) color @endif" onclick="ToggleFav({{$ad->id}})">
                                         <i id="ToggleFavIcon-{{$ad->id}}" class="@if($ad->is_fav() != true) far @else fas @endif fa-heart"></i>
                                         <span id="ToggleFavText-{{$ad->id}}">
@@ -221,5 +230,219 @@
                 }
             });
         }
+    </script>
+    <script>
+        let page = 1;
+        function LoadComments(){
+            let data = {};
+            data['page'] = page;
+            data['advertisement_id'] = '{{$Object->id}}';
+            $.get( "{{url('advertisements/comment/response')}}", data,function( response ) {
+                if (response.status.status === 'success'){
+                    let html = '';
+                    let link = '';
+                    $('#Comments').html('');
+                    response.Comments.forEach(comment=>{
+                        html =  '<div class="comment-list">'+
+                        '   <div class="single-comment justify-content-between d-flex">'+
+                        '       <div class="user justify-content-between d-flex">'+
+                        '           <div class="desc">'+
+                        '               <div class="comment-h">'+
+                        '                   <a href="#">'+
+                        '                       <h5>'+comment.User.name+'</h5>'+
+                        '                   </a>'+
+                        '                   <div class="reply-btn">'+
+                        '                       <span class="date"><i class="far fa-clock mx-2"></i>'+comment.created_at+'</span>'+
+                        '                   </div>' +
+                        '                   <a href="javascript:" class="btn-reply" onclick="document.getElementById(`reply-comment-'+comment.id+'`).style.display = `block`">' +
+                        '                       <i class="far fa-comment"></i>' +
+                        '                       <span> {{__('web.Advertisement.Show.reply_comment')}}</span>' +
+                        '                   </a>'+
+                        '               </div>'+
+                        '               <p class="comment">'+comment.comment+'</p>'+
+                        '           </div>'+
+                        '       </div>' +
+                        '   </div>'+
+                        '   <hr>'+
+                        '   <div id="reply-comment-'+comment.id+'" class="row" style="display: none;">'+
+                        '       <div class="form-group col-lg-12">'+
+                        '           <label for="reply-'+comment.id+'" class="hidden"></label>'+
+                        '           <input type="text" required="" name="reply" id="reply-'+comment.id+'" data-id="'+comment.id+'" value="" placeholder="" class="form-control reply-comment">'+
+                        '       </div>'+
+                        '   </div>'+
+                        '</div>' +
+                        '<div class="comment-list left-padding" id="Replies-'+comment.id+'">';
+                        comment.Replies.forEach(reply =>{
+                            html+=  '   <div class="single-comment justify-content-between d-flex">'+
+                                    '    <div class="user justify-content-between d-flex">'+
+                                    '        <div class="desc">'+
+                                    '            <div class="comment-h">'+
+                                    '                <a href="#">'+
+                                    '                    <h5>'+reply.User.name+'</h5>'+
+                                    '                </a>'+
+                                    '                <div class="reply-btn">'+
+                                    '                    <span class="date"><i class="far fa-clock mx-2"></i>'+reply.created_at+'</span>'+
+                                    '                </div>' +
+                                    '            </div>'+
+                                    '            <p class="comment">'+reply.comment+'</p>'+
+                                    '        </div>'+
+                                    '    </div>' +
+                                    '</div>'+
+                                    '<hr>';
+                        });
+                        html+='</div>';
+                        $('#Comments').append(html);
+                    });
+                    if(response.paging.total > 0){
+                        let paging = '';
+                        let firstClass = '';
+                        let lastClass = '';
+                        let active = '';
+                        let next;
+                        let previous;
+                        if (response.paging.current_page === 1) {
+                            let firstClass = 'disabled';
+                        }
+                        if (response.paging.current_page === response.paging.last_page) {
+                            let lastClass = 'disabled';
+                        }
+                        if(response.paging.current_page !== response.paging.last_page){
+                            next = (response.paging.current_page+1);
+                        }else {
+                            next = response.paging.current_page;
+                        }
+                        if(response.paging.current_page !== 1){
+                            previous = (response.paging.current_page-1);
+                        }else {
+                            previous = response.paging.current_page;
+                        }
+                        paging += '<ul class="pagination"><li class="page-item ' + firstClass + '">' +
+                            '   <a class="page-link page-link--with-arrow" href="javascript:" data-id="1" aria-label="Previous">' +
+                            '   <span class="page-link__arrow page-link__arrow--left" aria-hidden="true"><</span>' +
+                            '   <span class="page-link__arrow page-link__arrow--left" aria-hidden="true"><</span>' +
+                            '   </a>' +
+                            '</li>';
+                        paging += '<li class="page-item ' + firstClass + '">' +
+                            '   <a class="page-link page-link--with-arrow" href="javascript:" data-id="'+previous+'" aria-label="Previous">' +
+                            '   <span class="page-link__arrow page-link__arrow--left" aria-hidden="true"><</span>' +
+                            '   </a>' +
+                            '</li>';
+                        if (response.paging.last_page > 6) {
+                            if(response.paging.current_page < 4){
+                                for (let i = 1; i <= 4; i++) {
+                                    active = '';
+                                    if (response.paging.current_page === i) {
+                                        active = 'active';
+                                    }
+                                    paging += '<li class="page-item ' + active + '"><a class="page-link" href="javascript:" data-id="'+i+'">' + i + '</a></li>';
+                                }
+                                paging += '<li class="page-item page-item--dots">' +
+                                    '   <div class="pagination__dots"></div>' +
+                                    '</li>';
+                                active = '';
+                                if (response.paging.current_page === response.paging.last_page) {
+                                    active = 'active';
+                                }
+                                paging += '<li class="page-item ' + active + '"><a class="page-link" href="javascript:" data-id="'+response.paging.last_page+'">' + response.paging.last_page + '</a></li>';
+
+                            }else if(response.paging.current_page > (response.paging.last_page - 3)){
+                                paging += '<li class="page-item"><a class="page-link" href="javascript:" data-id="1"> 1 </a></li>';
+                                paging += '<li class="page-item page-item--dots">' +
+                                    '   <div class="pagination__dots"></div>' +
+                                    '</li>';
+
+                                for (let i = 3; i >= 0; i--) {
+                                    active = '';
+                                    if (response.paging.current_page === (response.paging.last_page - i)) {
+                                        active = 'active';
+                                    }
+                                    paging += '<li class="page-item ' + active + '"><a class="page-link" href="javascript:" data-id="'+(response.paging.last_page - i)+'">' + (response.paging.last_page - i) + '</a></li>';
+                                }
+                            }else{
+                                paging += '<li class="page-item"><a class="page-link" href="javascript:" data-id="1"> 1 </a></li>';
+
+                                paging += '<li class="page-item page-item--dots">' +
+                                    '   <div class="pagination__dots"></div>' +
+                                    '</li>';
+                                paging += '<li class="page-item"><a class="page-link" href="javascript:" data-id="'+(response.paging.current_page-1)+'"> '+(response.paging.current_page-1)+' </a></li>';
+                                paging += '<li class="page-item active"><a class="page-link" href="javascript:" data-id="'+response.paging.current_page+'"> '+response.paging.current_page+' </a></li>';
+                                paging += '<li class="page-item"><a class="page-link" href="javascript:" data-id="'+(response.paging.current_page+1)+'"> '+(response.paging.current_page+1)+' </a></li>';
+                                paging += '<li class="page-item page-item--dots">' +
+                                    '   <div class="pagination__dots"></div>' +
+                                    '</li>';
+                                active = '';
+                                paging += '<li class="page-item"><a class="page-link" href="javascript:" data-id="'+response.paging.last_page+'">' + response.paging.last_page + '</a></li>';
+                            }
+                        }
+                        else {
+                            for (let i = 1; i <= response.paging.last_page; i++) {
+                                active = '';
+                                if (response.paging.current_page === i) {
+                                    active = 'active';
+                                }
+                                paging += '<li class="page-item ' + active + '"><a class="page-link" href="javascript:" data-id="'+i+'">' + i + '</a></li>';
+                            }
+                        }
+                        paging += '<li class="page-item ' + lastClass + '">' +
+                            '   <a class="page-link page-link--with-arrow" href="javascript:" data-id="'+next+'" aria-label="Next">' +
+                            '   <span class="page-link__arrow page-link__arrow--right" aria-hidden="true">></span>' +
+                            '   </a>' +
+                            '</li>';
+                        paging += '<li class="page-item ' + lastClass + '">' +
+                            '   <a class="page-link page-link--with-arrow" href="javascript:" data-id="'+response.paging.last_page+'" aria-label="Next">' +
+                            '   <span class="page-link__arrow page-link__arrow--right" aria-hidden="true">></span>' +
+                            '   <span class="page-link__arrow page-link__arrow--right" aria-hidden="true">></span>' +
+                            '   </a>' +
+                            '</li></ul>';
+                        $('#Paging').html(paging);
+                    }
+                }
+            });
+        }
+        LoadComments();
+        $(document).on('click', '.page-link', function () {
+            console.log(page);
+            page = $(this).data('id');
+            LoadComments();
+        });
+        $(document).on('keypress', '.reply-comment', function (e) {
+
+            let keycode = (e.keyCode ? e.keyCode : e.which);
+            let id = $(this).data('id');
+            let content = $(this).val();
+            console.log('keycode:'+keycode);
+            console.log('content:'+content);
+            console.log('id:'+id);
+            if(keycode === 13 && content !== '') {
+                let html = '';
+                let data = {};
+                data['_token'] = '{{csrf_token()}}';
+                data['advertisement_id'] = '{{$Object->id}}';
+                data['comment_id'] = id;
+                data['comment'] = content;
+                $.post( "{{url('advertisements/comment/post_response')}}", data,function( response ) {
+                    if (response.status.status === 'success') {
+                        html =  '<div class="single-comment justify-content-between d-flex">'+
+                                '   <div class="user justify-content-between d-flex">'+
+                                '       <div class="desc">'+
+                                '           <div class="comment-h">'+
+                                '               <a href="">'+
+                                '                   <h5>'+response.Comment.User.name+'</h5>'+
+                                '               </a>' +
+                                '               <div class="reply-btn">'+
+                                '                   <span class="date"> <i class="far fa-clock"></i> '+response.Comment.created_at+' </span>'+
+                                '               </div>'+
+                                '           </div>'+
+                                '           <p class="comment">'+response.Comment.comment+'</p>'+
+                                '       </div>'+
+                                '   </div>'+
+                                '</div>'+
+                                '<hr>';
+                        $('#Replies-'+id).append(html);
+                        $(this).val('');
+                    }
+                });
+            }
+        });
     </script>
 @endsection

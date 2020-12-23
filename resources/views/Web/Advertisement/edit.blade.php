@@ -12,7 +12,7 @@
             </div>
         </div>
     </section>
-    <form method="post" action="{{url('advertisements/update')}}" class="new-ads container-fluid" enctype="multipart/form-data">
+    <form method="post" action="{{url('advertisements/update')}}" class="new-ads container-fluid" enctype="multipart/form-data" style="min-height: 25vh">
         <div class="row">
             @csrf
             <input type="hidden" name="advertisement_id" value="{{$Object->id}}">

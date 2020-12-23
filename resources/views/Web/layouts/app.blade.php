@@ -26,6 +26,9 @@
 <div class="wrapper">
     @yield('out-content')
     @include('Web.layouts.header')
+    <div id="Notifications">
+
+    </div>
     @yield('content')
     @include('Web.layouts.footer')
 </div>

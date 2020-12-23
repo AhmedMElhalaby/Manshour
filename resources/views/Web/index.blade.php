@@ -1,7 +1,6 @@
 @extends('Web.layouts.app')
 @section('style')
     <style>
-
         .pagination>li>a,.pagination>li>span{
             padding: 6px 12px 8px;
             border-radius: 12%;
@@ -21,7 +20,7 @@
     </style>
 @endsection
 @section('content')
-    <section class="container-fluid services">
+    <section class="container-fluid services" style="min-height: 15vh">
         <section class="container-fluid mt-5 navs">
             <div class="row">
                 <div class="col-lg-12 pl-0 pr-0">
@@ -96,45 +95,10 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12 all-media p-0" id="Advertisements">
-                            @foreach($Objects as $Object)
-                                <div class="media">
-                                    <div class="media-body">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="button" onclick="window.location='{{url('advertisements/show?advertisement_id='.$Object->id)}}'">{{__('web.Home.details')}} </button>
-                                            </div>
-                                            <h5 class="mt-0 mb-4 col-lg-9">{{$Object->title}}</h5>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 mt-4">
-                                                <button class="btn my-2 my-sm-0 adds-name detail-btn" type="submit">{{$Object->User->name}} </button>
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <p>{{$Object->content}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <hr class="media-hr">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 text-center"><span class="add-to-fav color"> {{__('web.Home.add_to_fav')}}<i class="far fa-heart"></i></span></div>
-                                            <div class="col-lg-5"></div>
-                                            <div class="col-lg-4">
-                                                <div class="row">
-                                                    <span class="col-lg-6 col-6 media-date">{{$Object->City->name}} <i class="fas fa-map-marker-alt"></i></span>
-                                                    <span class="col-lg-6 col-5 media-date">{{$Object->created_at}} <i class="far fa-clock"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img src="{{asset($Object->media()->first()->file)}}" height="235" width="260" alt="...">
-                                </div>
-                            @endforeach
                         </div>
                     </div>
                     <div class="row">
                         <div class="col mb-4" id="Paging">
-                            {{ $Objects->links('vendor.pagination.default') }}
                         </div>
                     </div>
                 </div>

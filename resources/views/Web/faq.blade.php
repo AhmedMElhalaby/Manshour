@@ -12,7 +12,7 @@
             </div>
         </div>
     </section>
-    <section class="faq container-fluid">
+    <section class="faq container-fluid" style="min-height: 25vh">
         <div class="row">
             <div class="col-md-12">
                 <div class="accordion">

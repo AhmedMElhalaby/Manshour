@@ -32,7 +32,7 @@
             </div>
         </div>
     </section>
-    <section class="notifications container-fluid">
+    <section class="notifications container-fluid" style="min-height: 25vh">
         <div class="row">
             <div class="col-lg-5">
                 @foreach($Objects as $notification)

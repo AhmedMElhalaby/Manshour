@@ -12,7 +12,7 @@
             </div>
         </div>
     </section>
-    <form action="{{url('contact_us')}}" method="post" class="contact-us">
+    <form action="{{url('contact_us')}}" method="post" class="contact-us" style="min-height: 25vh">
         @csrf
         <div class="row">
             <div class="col-lg-3">

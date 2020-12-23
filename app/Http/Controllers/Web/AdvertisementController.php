@@ -11,6 +11,8 @@ use App\Http\Requests\Web\Advertisement\ResponseToggleFavRequest;
 use App\Http\Requests\Web\Advertisement\DeleteRequest;
 use App\Http\Requests\Web\Advertisement\SendMessageRequest;
 use App\Http\Requests\Web\Advertisement\ResponseRequest;
+use App\Http\Requests\Web\Advertisement\CommentPostResponseRequest;
+use App\Http\Requests\Web\Advertisement\CommentResponseRequest;
 use App\Http\Requests\Web\Advertisement\EditRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -89,6 +91,15 @@ class AdvertisementController extends Controller
     }
 
     /**
+     * @param CommentResponseRequest $request
+     * @return JsonResponse
+     */
+    public function comment_response(CommentResponseRequest $request): JsonResponse
+    {
+        return $request->preset();
+    }
+
+    /**
      * @param ResponseToggleFavRequest $request
      * @return JsonResponse
      */
@@ -102,6 +113,14 @@ class AdvertisementController extends Controller
      * @return RedirectResponse
      */
     public function comment(CommentRequest $request): RedirectResponse
+    {
+        return $request->preset();
+    }
+    /**
+     * @param CommentPostResponseRequest $request
+     * @return JsonResponse
+     */
+    public function comment_post_response(CommentPostResponseRequest $request): JsonResponse
     {
         return $request->preset();
     }

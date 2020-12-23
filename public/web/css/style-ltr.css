@@ -225,7 +225,7 @@ Start Home Page
 }
 
 /* slider css */
-header #myCarousel .carousel-item .mask {
+.homeCarousel #myCarousel .carousel-item .mask {
     position: absolute;
     top: 0;
     left: 0;
@@ -234,7 +234,7 @@ header #myCarousel .carousel-item .mask {
     background-attachment: fixed;
 }
 
-header #myCarousel h4 {
+.homeCarousel #myCarousel h4 {
     font-size: 50px;
     margin-bottom: 15px;
     color: #fff;
@@ -243,13 +243,13 @@ header #myCarousel h4 {
     font-weight: 600;
 }
 
-header #myCarousel p {
+.homeCarousel #myCarousel p {
     font-size: 18px;
     margin-bottom: 15px;
     color: #d5d5d5;
 }
 
-header #myCarousel .carousel-item a {
+.homeCarousel #myCarousel .carousel-item a {
     background: rgb(212, 22, 117);
     background: linear-gradient(90deg, rgba(212, 22, 117, 1) 0%, rgba(253, 54, 21, 1) 100%);
     font-size: 14px;
@@ -258,27 +258,27 @@ header #myCarousel .carousel-item a {
     display: inline-block;
 }
 
-header #myCarousel .carousel-item a:hover {
+.homeCarousel #myCarousel .carousel-item a:hover {
     background: #394fa2;
     text-decoration: none;
 }
 
-header #myCarousel .carousel-item h4 {
+.homeCarousel #myCarousel .carousel-item h4 {
     -webkit-animation-name: fadeInLeft;
     animation-name: fadeInLeft;
 }
 
-header #myCarousel .carousel-item p {
+.homeCarousel #myCarousel .carousel-item p {
     -webkit-animation-name: slideInRight;
     animation-name: slideInRight;
 }
 
-header #myCarousel .carousel-item a {
+.homeCarousel #myCarousel .carousel-item a {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
 }
 
-header #myCarousel .carousel-item .mask img {
+.homeCarousel #myCarousel .carousel-item .mask img {
     -webkit-animation-name: slideInRight;
     animation-name: slideInRight;
     display: block;
@@ -286,28 +286,28 @@ header #myCarousel .carousel-item .mask img {
     max-width: 100%;
 }
 
-header #myCarousel h4,
-header #myCarousel p,
-header #myCarousel a,
-header #myCarousel .carousel-item .mask img {
+.homeCarousel #myCarousel h4,
+.homeCarousel #myCarousel p,
+.homeCarousel #myCarousel a,
+.homeCarousel #myCarousel .carousel-item .mask img {
     -webkit-animation-duration: 1s;
     animation-duration: 1.2s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
 
-header #myCarousel .container {
+.homeCarousel #myCarousel .container {
     max-width: 1430px;
 }
 
-header #myCarousel .carousel-item {
+.homeCarousel #myCarousel .carousel-item {
     height: 100%;
     min-height: 550px;
 }
 
 
-header .carousel-control-next,
-header .carousel-control-prev {
+.homeCarousel .carousel-control-next,
+.homeCarousel .carousel-control-prev {
     height: 100px;
     width: 50px;
     padding: 12px;
@@ -319,7 +319,7 @@ header .carousel-control-prev {
     opacity: 1
 }
 
-header .carousel-indicators li {
+.homeCarousel .carousel-indicators li {
     width: 16px;
     height: 16px;
     margin-right: 7px;
@@ -335,12 +335,12 @@ header .carousel-indicators li {
     border-bottom: 0px;
 }
 
-header .carousel-indicators li.active {
+.homeCarousel .carousel-indicators li.active {
     background: rgb(212, 22, 117);
     background: linear-gradient(90deg, rgba(212, 22, 117, 1) 0%, rgba(253, 54, 21, 1) 100%);
 }
 
-header .carousel-indicators {
+.homeCarousel .carousel-indicators {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -360,7 +360,7 @@ header .carousel-indicators {
     display: flex;
     justify-content: flex-end;
 }
-header .shape {
+.homeCarousel .shape {
     background-color: #000;
     z-index: 9999999999;
     display: flex;
@@ -370,7 +370,7 @@ header .shape {
     width: 100%;
 }
 
-header .carousel-inner {
+.homeCarousel .carousel-inner {
     z-index: -1
 }
 
@@ -953,34 +953,49 @@ start new ads Page
 
 **/
 .top-alert {
-        color: #fff;
-    background-color: #0E9809;
-    border-color: #0E9809;
-        position: absolute;
+    color: #fff;
+    position: absolute;
     right: 1.9rem;
     top: 8.7rem;
     padding: .5rem 1.25rem;
     width: 36%;
     font-size: 0.8rem;
     z-index: 9999999;
+    direction: rtl;
+}
+.top-alert-success{
+    background-color: #0E9809;
+    border-color: #0E9809;
+}
+.top-alert-warning{
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+.top-alert-danger{
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+.top-alert-primary{
+    background: rgb(212, 22, 117);
+    background: linear-gradient(90deg, rgba(212, 22, 117, 1) 0%, rgba(253, 54, 21, 1) 100%);
 }
 .alert-icon{
         border: 1px solid #fff;
     border-radius: 50%;
     padding: 0.4rem;
-    background-color: #fff;
-    color: #0E9809
 }
 .top-alert h4{
     font-size: 0.9rem;
     text-align: start;
-    margin-bottom: 0
+    margin-bottom: 0;
+    color: #fff
 }
 .top-alert p{
     padding: 0 2.3rem;
     margin-bottom: 0;
     text-align: start;
-    line-height: 2
+    line-height: 2;
+    color: #fff
 }
 .new-ads{
     margin-top: 4rem
@@ -2102,6 +2117,14 @@ End single post
     background: rgb(212, 22, 117);
     background: linear-gradient(90deg, rgba(212, 22, 117, 1) 0%, rgba(253, 54, 21, 1) 10);
 }
-.invalid-feedback{
-    display: inline-block;
+.exit button{
+        border-radius: 50%;
+    border-color: #fff;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+.exit{
+    position: absolute;
+    left: 1rem;
 }

@@ -7,6 +7,7 @@ return [
     'update_profile' => 'تعديل البروفايل',
     'favourite' => 'المفضلة',
     'my_advertisements' => 'إعلاناتي',
+    'notification_title' => 'تنبيه هام',
     'add_advertisement' => 'إضف اعلانك الآن',
     'all_categories' => 'جميع الأقسام',
     'main_page'=>'الصفحة الرئيسية',
@@ -70,6 +71,7 @@ return [
             'add_comment'=>'اضف التعليق',
             'similar_advertisement'=>'اعلانات مشابهة',
             'chat'=>'محادثة',
+            'reply_comment'=>'الرد على التعليق',
             'message'=>'نص الرسالة',
         ],
         'Delete'=>[

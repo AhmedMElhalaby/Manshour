@@ -12,7 +12,7 @@
             </div>
         </div>
     </section>
-    <section class="chats container-fluid">
+    <section class="chats container-fluid" style="min-height: 25vh">
         <div class="row">
             @include('Web.Chat.rooms')
             @include('Web.Chat.messages')
