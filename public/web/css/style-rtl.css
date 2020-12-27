@@ -3,7 +3,7 @@ body {
     direction: rtl !important
 }
 
-/**  
+/**
 
 Start Home Page
 
@@ -495,7 +495,7 @@ display: flex;
 .all-media .adds-name:hover{
     color: #F02C32;
     border-color: #F02C32;
-    
+
 }
 .all-media .media-hr {
     margin: 35px 10px 20px 35px;
@@ -685,7 +685,7 @@ footer .copyright a {
 
 
 
-/**  
+/**
 
 End Home Page
 
@@ -693,7 +693,7 @@ End Home Page
 
 
 
-/**  
+/**
 
 Start login Page
 
@@ -755,13 +755,13 @@ Start login Page
     text-decoration: none;
     font-weight: 600;
     text-align: end
-} 
+}
  .login .form-group a,
 .login .form-group input[type=text]::placeholder , .login .form-group input[type=password]::placeholder ,.login .form-group input[type=email]::placeholder , .login .form-group .form-control {
-    color: #E4E4E4
+    color: #9d9d9d
 }
-.login .form-group input[type=text], .login .form-group input[type=password] ,.login .form-group input[type=email] {
-    color: #111111
+.login .form-group input[type=text], .login .form-group input[type=password] ,.login .form-group input[type=email],.login .form-group input[type=tel] ,.login .form-group .form-control,.new-ads .form-group .form-control, .new-ads .form-group textarea::placeholder{
+    color: #111111 !important;
 }
 .field-icon {
     float: left;
@@ -786,19 +786,19 @@ Start login Page
     top: 11rem;
 }
 
-/**  
+/**
 
 End login Page
 
 **/
 
-/**  
+/**
 
 Start register Page
 
 **/
 .register .form-group {
-     margin-bottom: 1rem; 
+     margin-bottom: 1rem;
 }
 .register .container .login-row .login-column .login-box {
     margin-top: 4rem;
@@ -820,7 +820,7 @@ Start register Page
     top: 9rem;
 }
 .login .form-group .form-control option{
-    color: #111111 
+    color: #111111
 }
 .register .form-group label{
     margin-bottom: 1rem
@@ -916,12 +916,12 @@ Start register Page
 .checkbox input[type="checkbox"]:focus + label::before {
     outline: 0;
 }
-/**  
+/**
 
 End register Page
 
 **/
-/**  
+/**
 
 start send-register-code Page
 
@@ -939,12 +939,12 @@ start send-register-code Page
     margin-bottom: 9rem;
     position: relative;
 }
-/**  
+/**
 
 end send-register-code Page
 
 **/
-/**  
+/**
 
 start new ads Page
 
@@ -1007,7 +1007,7 @@ start new ads Page
     color: #E4E4E4
 }
 .new-ads .form-group .form-control option{
-    color: #111111 
+    color: #111111
 }
 .new-ads .form-group input[type=text], .new-ads .form-group input[type=password] ,.new-ads .form-group input[type=email] ,.new-ads .form-group textarea{
     color: #111111!important;
@@ -1073,7 +1073,7 @@ start new ads Page
     line-height: 25px;
     margin: 0;
     padding: 0;
-  
+
 }
 .radio-item label:checked{
     color: #F02C32 !important;
@@ -1104,7 +1104,7 @@ start new ads Page
 .radio-item{
     display: flex;
 }
-/**  
+/**
 
 end new ads Page
 
@@ -1142,7 +1142,7 @@ Start ads list page
 }
 .modal-body .form-group textarea {
      border: 1px solid #E4E4E4 !important;
-}  
+}
 .modal-body .form-group label ,.modal-body .form-group input[type=text]{
     text-align: right
 }
@@ -1170,7 +1170,7 @@ Start ads list page
 End ads list page
 
 */
-/**  
+/**
 
 Start notifications Page
 
@@ -1211,12 +1211,12 @@ justify-content: flex-end;
     background-color: #FFF4E5;
     color: #FFCA83;
 }
-/**  
+/**
 
 End notifications Page
 
 **/
-/**  
+/**
 
 start account sitting Page
 
@@ -1225,7 +1225,7 @@ start account sitting Page
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    margin: 6% 0 
+    margin: 6% 0
 }
 .account-sitting .form-group label{
     display: flex;
@@ -1238,12 +1238,12 @@ start account sitting Page
 .form-group select option{
     color: #111111
 }
-/**  
+/**
 
 End account sitting Page
 
 **/
-/**  
+/**
 
 start notification Page
 
@@ -1264,12 +1264,12 @@ option:hover {
 select{
         height: calc(1.8em + .75rem + 2px) !important;
 }
-/**  
+/**
 
 End notification Page
 
 **/
-/**  
+/**
 
 start contact us Page
 
@@ -1299,12 +1299,12 @@ start contact us Page
     color: #fff;
     border: 0
 }
-/**  
+/**
 
 End contact us Page
 
 **/
-/**  
+/**
 
 Start FAQ Page
 
@@ -1362,12 +1362,12 @@ width: 100%;
     font-size: 14px;
   }
 }
-/**  
+/**
 
 End FAQ Page
 
 **/
-/**  
+/**
 
 Start Privacy Policy And Terms Page
 
@@ -1386,14 +1386,14 @@ display: flex;
     font-weight: 600;
     line-height: 1.9
 }
-/**  
+/**
 
-End Privacy Policy And Terms Page 
+End Privacy Policy And Terms Page
 
 **/
-/**  
+/**
 
-Start Site Commission Page 
+Start Site Commission Page
 
 **/
 .site-commission{
@@ -1436,14 +1436,14 @@ Start Site Commission Page
 .site-commission a{
     text-decoration: none
 }
-/**  
+/**
 
-End Site Commission Page 
+End Site Commission Page
 
 **/
-/**  
+/**
 
-Start Chats Page 
+Start Chats Page
 
 **/
 
@@ -1528,7 +1528,7 @@ Start Chats Page
 }
 .chat-remove button{
         padding: 0.7rem 2rem;
-    background-color: 
+    background-color:
 }
 .header-chat .img-name{
 display: flex;
@@ -1593,9 +1593,9 @@ display: flex;
 .send-chat button i{
     font-size: 2rem
 }
-/**  
+/**
 
-End Chats Page 
+End Chats Page
 
 **/
 
@@ -1613,9 +1613,9 @@ End Chats Page
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1 !important; 
+  background: #f1f1f1 !important;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(212, 22, 117);
@@ -1626,15 +1626,15 @@ End Chats Page
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555 !important; 
+  background: #555 !important;
 }
 
 /*
  *  STYLE 14
  */
-/**  
+/**
 
-start single post 
+start single post
 
 **/
 .single-post{
@@ -1642,7 +1642,7 @@ start single post
     flex-wrap: wrap;
     width: 100%;
     margin: 4% 0 ;
-    justify-content: flex-start 
+    justify-content: flex-start
 }
 .single-post .single-post-top p{
     text-align: start
@@ -1672,7 +1672,7 @@ start single post
     justify-content: flex-end;
 }
 .single-post .single-l-link i{
-    color: #1C1C1C 
+    color: #1C1C1C
 }
 .single-post .single-l-link i:hover{
     color: #F02C32 !important;
@@ -1681,7 +1681,7 @@ start single post
 .single-post .single-l-link ul{
     padding-right: 0;
     display: inline
-        
+
 }
 .single-post .single-l-link ul li{
     display: inline;
@@ -1937,7 +1937,7 @@ text-align: start;
     font-weight: bold
 }
 .single-post .reply-btn span,.reply-btn a{
-    color: 
+    color:
 }
 .single-post .reply-btn span i,.reply-btn a i{
     margin-left: 0.5rem
@@ -2078,7 +2078,7 @@ text-align: start;
     font-size: 0.8rem;
     line-height: 1.8
 }
-/**  
+/**
 
 End single post
 

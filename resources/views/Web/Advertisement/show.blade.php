@@ -103,13 +103,15 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                    <ol class="carousel-indicators">
-                        @foreach($Object->Media as $media)
-                            <li data-target="#carousel-thumb" data-slide-to="{{$loop->index}}" @if($loop->index == 0) class="active" @endif>
-                                <img src="{{asset($media->file)}}" width="100" alt="">
-                            </li>
-                        @endforeach
-                    </ol>
+                    @if (count($Object->Media) > 1)
+                        <ol class="carousel-indicators">
+                            @foreach($Object->Media as $media)
+                                <li data-target="#carousel-thumb" data-slide-to="{{$loop->index}}" @if($loop->index == 0) class="active" @endif>
+                                    <img src="{{asset($media->file)}}" width="100" alt="">
+                                </li>
+                            @endforeach
+                        </ol>
+                    @endif
                 </div>
                 <div class="post-disc">
                     <p>{{$Object->content}}</p>

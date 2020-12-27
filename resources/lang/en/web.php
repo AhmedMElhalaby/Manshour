@@ -82,7 +82,7 @@ return [
             'sold_outside_website'=>'Sold outside website',
             'never_sold'=>'Never sold',
             'sold_price'=>'Sold price',
-            'commission_reminder'=>'We remind you to pay website commission (5.0) % from sold price'
+            'commission_reminder'=>'We remind you to pay website commission (0.5) % from sold price'
         ]
     ],
     'Home'=>[

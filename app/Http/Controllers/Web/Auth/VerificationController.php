@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Web\Auth;
 
+use App\Helpers\Constant;
+use App\Helpers\Functions;
 use App\Http\Controllers\Web\Controller;
 use App\Models\VerifyAccounts;
 use App\Providers\RouteServiceProvider;
@@ -72,5 +74,10 @@ class VerificationController extends Controller
         $logged->email_verified_at = now();
         $logged->save();
         return back()->with('status', trans('auth.verified'));
+    }
+    public function resend_verification(){
+        $logged = auth()->user();
+        Functions::SendVerification($logged,Constant::VERIFICATION_TYPE['Mobile']);
+        return back()->with('resent', trans('auth.verification_code_sent'));
     }
 }

@@ -16,15 +16,15 @@
         <div class="container">
             <div class="row login-row justify-content-center align-items-center">
                 <div class="login-column col-md-5">
+                    @if (session('resent'))
+                        <div class="alert alert-success" role="alert">
+                            {{ __('A verification code has been sent to your mobile.') }}
+                        </div>
+                    @endif
                     <div class="login-box col-md-12">
                         <div class="login-img">
                             <img src="{{asset('web/img/login.png')}}" alt="">
                         </div>
-                        @if (session('resent'))
-                            <div class="alert alert-success" role="alert">
-                                {{ __('A fresh verification link has been sent to your email address.') }}
-                            </div>
-                        @endif
                         <form class="login-form form" action="{{ url('auth/check_verify') }}" method="post">
                             @csrf
                             <div class="form-group">
@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <a href="{{url('resend_verification')}}" class="col pl-0">{{__('web.resend_verification_code')}}</a>
+                                    <a href="{{url('auth/resend_verification')}}" class="col pl-0">{{__('web.resend_verification_code')}}</a>
                                 </div>
                             </div>
                             <div class="form-group">

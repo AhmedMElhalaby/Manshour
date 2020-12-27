@@ -22,6 +22,7 @@ Route::group([
     'namespace' => 'Auth',
 ], function() {
     Route::post('check_verify', 'VerificationController@check_verify');
+    Route::get('resend_verification', 'VerificationController@resend_verification');
 });
 Route::group([
     'prefix'  => 'profile',
