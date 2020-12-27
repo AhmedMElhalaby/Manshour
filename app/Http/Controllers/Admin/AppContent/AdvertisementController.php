@@ -88,7 +88,7 @@ class AdvertisementController extends Controller
             ],
         ]);
         $this->SetLinks([
-            'show',
+            'view',
             'delete',
         ]);
     }

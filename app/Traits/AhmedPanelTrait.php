@@ -274,6 +274,9 @@ trait AhmedPanelTrait
             case 'show' :
                 return view('AhmedPanel.base.links.show',compact('link','object','redirect'));
                 break;
+            case 'view' :
+                return view('AhmedPanel.base.links.view',compact('link','object','redirect'));
+                break;
             case 'edit' :
                 return view('AhmedPanel.base.links.edit',compact('link','object','redirect'));
                 break;
