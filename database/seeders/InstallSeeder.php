@@ -1,6 +1,7 @@
 <?php
 namespace Database\Seeders;
 
+use App\Helpers\Constant;
 use App\Models\Admin;
 use App\Models\ModelPermission;
 use App\Models\ModelRole;
@@ -41,23 +42,59 @@ class InstallSeeder extends Seeder
             'Cities',
             'Categories',
         ];
+
         $Settings = [
-            'privacy',
-            'commission',
-            'about',
-            'facebook',
-            'instagram',
-            'email',
-            'mobile',
-            'terms',
+            [
+                'name'=>'privacy',
+                'category'=>Constant::SETTING_CATEGORY['Page'],
+            ],
+            [
+                'name'=>'commission',
+                'category'=>Constant::SETTING_CATEGORY['Page'],
+            ],
+            [
+                'name'=>'about',
+                'category'=>Constant::SETTING_CATEGORY['Page'],
+            ],
+            [
+                'name'=>'terms',
+                'category'=>Constant::SETTING_CATEGORY['Page'],
+            ],
+            [
+                'name'=>'facebook',
+                'category'=>Constant::SETTING_CATEGORY['Field'],
+                'type'=>'url'
+            ],
+            [
+                'name'=>'instagram',
+                'category'=>Constant::SETTING_CATEGORY['Field'],
+                'type'=>'url'
+            ],
+            [
+                'name'=>'twitter',
+                'category'=>Constant::SETTING_CATEGORY['Field'],
+                'type'=>'url'
+            ],
+            [
+                'name'=>'email',
+                'category'=>Constant::SETTING_CATEGORY['Field'],
+                'type'=>'email'
+            ],
+            [
+                'name'=>'mobile',
+                'category'=>Constant::SETTING_CATEGORY['Field'],
+                'type'=>'tel'
+            ],
         ];
         foreach ($Settings as $setting){
             $Setting = new Setting();
-            $Setting->setKey($setting);
-            $Setting->setName($setting);
-            $Setting->setNameAr($setting);
-            $Setting->setValue($setting);
-            $Setting->setValueAr($setting);
+            $Setting->setKey($setting['name']);
+            $Setting->setName($setting['name']);
+            $Setting->setNameAr($setting['name']);
+            $Setting->setValue($setting['name']);
+            $Setting->setValueAr($setting['name']);
+            $Setting->setCategory($setting['category']);
+            $Setting->setType(@$setting['type']);
             $Setting->save();
         }
         foreach ($Permissions as $permission){

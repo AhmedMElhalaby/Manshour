@@ -38,6 +38,16 @@ return [
         'name_ar' => 'Name Ar',
         'value' => 'Value',
         'value_ar' => 'Value Ar',
+        'Category' => [
+            'page'=>'Static Pages',
+        ],
+        'Fields'=>[
+            'facebook'=>'Facebook',
+            'instagram'=>'Instagram',
+            'twitter'=>'Twitter',
+            'email'=>'Email',
+            'mobile'=>'Mobile',
+        ],
         'Pages'=>[
             'About'=>'About Us',
             'Commission'=>'Website Commission',

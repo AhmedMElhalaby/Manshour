@@ -109,6 +109,7 @@ Route::group([
             'prefix'=>'settings'
         ],function () {
             Route::get('/','SettingController@index');
+            Route::post('/','SettingController@updateFields');
             Route::get('/{setting}/edit','SettingController@edit');
             Route::put('/{setting}','SettingController@update');
         });

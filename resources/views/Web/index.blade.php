@@ -20,7 +20,7 @@
     </style>
 @endsection
 @section('content')
-    <section class="container-fluid services" style="min-height: 15vh">
+    <section class="container-fluid services" style="min-height: 35vh">
         <section class="container-fluid mt-5 navs">
             <div class="row">
                 <div class="col-lg-12 pl-0 pr-0">

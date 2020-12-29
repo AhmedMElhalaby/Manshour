@@ -20,6 +20,8 @@ class CreateSettingsTable extends Migration
             $table->string('name_ar');
             $table->longText('value');
             $table->longText('value_ar')->nullable();
+            $table->string('type')->nullable();
+            $table->tinyInteger('category');
             $table->timestamps();
         });
     }

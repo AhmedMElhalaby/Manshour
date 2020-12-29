@@ -69,7 +69,7 @@
             </form>
         </div>
     </nav>
-    @if (url()->current() == url('/'))
+    @if (url()->current() == url('/') && (\App\Models\Banner::where('is_active',true)->count()>0))
         <div class="container-fluid pl-0 pr-0">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">

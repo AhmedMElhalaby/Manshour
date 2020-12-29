@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin\AppData;
 
+use App\Helpers\Constant;
 use App\Http\Controllers\Admin\Controller;
+use App\Http\Requests\Admin\AppData\Setting\UpdateFieldsRequest;
 use App\Models\Setting;
 use App\Traits\AhmedPanelTrait;
 
@@ -16,8 +18,16 @@ class SettingController extends Controller
         $this->setEntity(new Setting());
         $this->setTable('settings');
         $this->setLang('Setting');
+        $this->setFilters([
+            'category'=>[
+                'name'=>'category',
+                'type'=>'where',
+                'value'=>Constant::SETTING_CATEGORY['Page']
+            ]
+        ]);
         $this->setCreate(false);
         $this->setExport(false);
+        $this->setViewIndex('Admin.AppData.Setting.index');
         $this->setColumns([
             'name'=> [
                 'name'=>'name',
@@ -52,5 +62,7 @@ class SettingController extends Controller
             'edit',
         ]);
     }
-
+    public function updateFields(UpdateFieldsRequest $request){
+        return $request->preset($this);
+    }
 }
