@@ -4,6 +4,7 @@ return [
 
     'search' => 'Search about product',
     'my_account' => 'My Account',
+    'download_our_app' => 'Download Our App',
     'update_profile' => 'Update Profile',
     'favourite' => 'Favourites',
     'my_advertisements' => 'My Advertisements',

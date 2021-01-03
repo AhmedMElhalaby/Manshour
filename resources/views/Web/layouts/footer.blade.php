@@ -1,36 +1,35 @@
 <footer class="container-fluid">
     <div class=" mt-5 mb-4 w-100">
         <div class="row">
-            <div class="col-lg-2 col-4">
-                <a href=""><img class="footer-img" src="{{asset('web/img/footer.png')}}" alt=""></a>
-                <ul class="footer-links">
-                    <li><a href="{{\App\Models\Setting::where('key','instagram')->first()->value??'#'}}"><img src="{{asset('web/img/insta.png')}}" alt=""></a></li>
-                    <li><a href="{{\App\Models\Setting::where('key','twitter')->first()->value??'#'}}"><img src="{{asset('web/img/twi.png')}}" alt=""></a></li>
-                    <li><a href="{{\App\Models\Setting::where('key','facebook')->first()->value??'#'}}"><img src="{{asset('web/img/facebook.png')}}" alt=""></a></li>
+            <div class="col-lg-2 col-12 d-f">
+                <a href="" class="col-6 m-auto"><img class="footer-img" src="{{(app()->getLocale() == 'ar')?asset('web/img/footer.png'):asset('web/img/en_logo_white.png')}}" alt=""></a>
+                <ul class="footer-links col-lg-12 col-6">
+                    <li><a class="social-m" href="{{\App\Models\Setting::where('key','instagram')->first()->value??'#'}}"><i class="fab fa-instagram"></i></a></li>
+                    <li><a class="social-m" href="{{\App\Models\Setting::where('key','twitter')->first()->value??'#'}}"><i class="fab fa-twitter"></i></a></li>
+                    <li><a class="social-m" href="{{\App\Models\Setting::where('key','facebook')->first()->value??'#'}}"><i class="fab fa-facebook-f"></i></a></li>
                 </ul>
             </div>
-            <div class="col-lg-4 col-8">
-                <p class="footer-p">
-                </p>
+            <div class="col-lg-4 col-8 d-n">
+                <p class="footer-p">{{\App\Models\Setting::where('key','footer_about_us')->first()->value??''}}</p>
             </div>
-            <div class="col-lg-3 col-5 footer-email">
-                <p class="footer-p"> <i class="fas fa-paper-plane ml-2"></i>{{__('web.User.email')}} : &nbsp; &nbsp;<span>{{\App\Models\Setting::where('key','email')->first()->value??'-'}}</span></p>
-                <p class="footer-p"><i class="fas fa-phone ml-2"></i>{{__('web.User.mobile')}} :<span>&nbsp; &nbsp; {{\App\Models\Setting::where('key','mobile')->first()->value??'#'}}</span> </p>
+            <div class="col-lg-3 col-12 footer-email">
+                <p class="footer-p col-6"> <i class="fas fa-paper-plane ml-2"></i>{{__('web.User.email')}} : &nbsp; &nbsp;<span>{{\App\Models\Setting::where('key','email')->first()->value??'-'}}</span></p>
+                <p class="footer-p col-6"><i class="fas fa-phone ml-2"></i>{{__('web.User.mobile')}} :<span>&nbsp; &nbsp; {{\App\Models\Setting::where('key','mobile')->first()->value??'#'}}</span> </p>
             </div>
 
-{{--            <div class="col-lg-3 col-7 pl-0">--}}
-{{--                <p class="footer-p">حمل تطبيقنا</p>--}}
-{{--                <div class="flex social-btns">--}}
-{{--                    <a class="app-btn blu flex vert" href="http:apple.com">--}}
-{{--                        <p class="available">Available on the <br /> <span class="big-txt">App Store</span></p>--}}
-{{--                        <i class="fab fa-apple"></i>--}}
-{{--                    </a>--}}
-{{--                    <a class="app-btn blu flex vert" href="http:google.com">--}}
-{{--                        <p class="available">Get it on <br /> <span class="big-txt">Google Play</span></p>--}}
-{{--                        <i class="fab fa-google-play"></i>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="col-lg-3 col-7 pl-0 our-app">
+                <p class="footer-p">{{__('web.download_our_app')}}</p>
+                <div class="flex social-btns">
+                    <a class="app-btn blu flex vert" href="http:apple.com">
+                        <p class="available">Available on the <br /> <span class="big-txt">App Store</span></p>
+                        <i class="fab fa-apple"></i>
+                    </a>
+                    <a class="app-btn blu flex vert" href="http:google.com">
+                        <p class="available">Get it on <br /> <span class="big-txt">Google Play</span></p>
+                        <i class="fab fa-google-play"></i>
+                    </a>
+                </div>
+            </div>
         </div>
         <hr>
         <div class="row">

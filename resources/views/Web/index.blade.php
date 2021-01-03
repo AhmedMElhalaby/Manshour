@@ -20,6 +20,33 @@
     </style>
 @endsection
 @section('content')
+    @if ((\App\Models\Banner::where('is_active',true)->count()>0))
+        <div class="container-fluid pl-0 pr-0 homeCarousel">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @foreach(\App\Models\Banner::where('is_active',true)->get() as $banner)
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}" @if($loop->index == 0) class="active" @endif></li>
+                    @endforeach
+                </ol>
+                <div class="carousel-inner ">
+                    @foreach(\App\Models\Banner::where('is_active',true)->get() as $banner)
+                        <div class="carousel-item @if($loop->index == 0) active @endif" onclick="window.open('{{$banner->getUrl()}}','_blank')">
+                            <img class="d-block w-100" src="{{asset($banner->getImage())}}" height="350" alt="{{$banner->getName()}}">
+                        </div>
+                    @endforeach
+                    <div class="shape"></div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    @endif
     <section class="container-fluid services" style="min-height: 35vh">
         <section class="container-fluid mt-5 navs">
             <div class="row">
@@ -132,41 +159,44 @@
                     let link = '';
                     $('#Advertisements').html('');
                     response.Advertisements.forEach(advertisement=>{
-                        html =  '<div class="media">'+
-                                    '<div class="media-body">'+
-                                        '<div class="row">'+
-                                            '<div class="col-lg-3">'+
-                                                '<button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="button" onclick="goAd('+advertisement.id+')">{{__('web.Home.details')}} </button>'+
-                                            '</div>'+
-                                            '<h5 class="mt-0 mb-4 col-lg-9">'+advertisement.title+'</h5>'+
-                                        '</div>'+
-                                        '<div class="row">'+
-                                            '<div class="col-lg-3 mt-4">'+
-                                                '<button class="btn my-2 my-sm-0 adds-name detail-btn" type="submit">'+advertisement.User.name+'</button>'+
-                                            '</div>'+
-                                            '<div class="col-lg-9">'+
-                                                '<p>'+advertisement.content+'</p>'+
-                                            '</div>'+
-                                        '</div>'+
-                                        '<div class="col-lg-12">'+
-                                            '<hr class="media-hr">'+
-                                        '</div>'+
-                                        '<div class="row">';
-                                    if(advertisement.is_fav){
-                                        html +='<div class="col-lg-3 text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav" onclick="ToggleFav('+advertisement.id+')"> {{__('web.Home.remove_from_fav')}}<i class="fas fa-heart"></i></span></div>';
-                                    }else{
-                                        html +='<div class="col-lg-3 text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav color" onclick="ToggleFav('+advertisement.id+')"> {{__('web.Home.add_to_fav')}}<i class="far fa-heart"></i></span></div>';
-                                    }
-                                    html += '<div class="col-lg-5"></div>'+
-                                            '<div class="col-lg-4">'+
-                                                '<div class="row">'+
-                                                    '<span class="col-lg-6 col-6 media-date">'+advertisement.City.name+' <i class="fas fa-map-marker-alt"></i></span>'+
-                                                    '<span class="col-lg-6 col-5 media-date">'+advertisement.created_at+' <i class="far fa-clock"></i></span>'+
-                                                '</div>'+
-                                            '</div>'+
-                                        '</div>'+
-                                    '</div>'+
-                                    '<img src="'+advertisement.FirstMedia.file+'" height="235" width="260" alt="...">'+
+                        html=   '<div class="media">'+
+                                '   <div class="row">'+
+                                '       <div class="col-lg-2 col-2 p-0"><img class="m-0 p-0" src="'+advertisement.FirstMedia.file+'" alt="..."></div>'+
+                                '       <div class="col-lg-10 col-md-10 col-10">'+
+                                '           <div class="row">'+
+                                '               <div class="col-lg-9 col-9 p-0 media-body">'+
+                                '                   <h5 class="mt-0 mb-4">'+advertisement.title+'</h5>'+
+                                '                   <p> '+advertisement.content+' </p>'+
+                                '                   <div class="row b-top">'+
+                                '                       <span class="col-lg-6 col-6 media-date">'+advertisement.City.name+' <i class="fas fa-map-marker-alt"></i></span>'+
+                                '                       <span class="col-lg-6 col-5 media-date">'+advertisement.created_at+' <i class="far fa-clock"></i></span>'+
+                                '                   </div>'+
+                                '               </div>'+
+                                '               <div class="col-lg-3 col-3 p-0 d-flex">'+
+                                '                   <div class="row">'+
+                                '                       <div class="col-lg-12 m-b-m mob-bott"><button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="button" onclick="goAd('+advertisement.id+')">{{__('web.Home.details')}} </button></div>'+
+                                '                       <div class="col-lg-12 m-b-m mob-bott"><button class="btn my-2 my-sm-0 adds-name detail-btn" type="button">'+advertisement.User.name+'</button></div>'+
+                                '                       <div class="col-lg-12 mob-bott add-to-fav-pc pt-2 pb-2">';
+                                if(advertisement.is_fav){
+                                    html +='<div class="text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav" onclick="ToggleFav('+advertisement.id+')"> {{__('web.Home.remove_from_fav')}} <i class="fas fa-heart"></i></span></div>';
+                                }else{
+                                    html +='<div class="text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav color" onclick="ToggleFav('+advertisement.id+')"> {{__('web.Home.add_to_fav')}} <i class="far fa-heart"></i></span></div>';
+                                }
+                        html += '                       </div>';
+                                if(advertisement.is_fav){
+                                    html +='<div class="col-lg-12 mob-bott add-to-fav-mob"><div class="text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav" onclick="ToggleFav('+advertisement.id+')"> {{__('web.Home.remove_from_fav')}} <i class="fas fa-heart"></i></span></div></div>';
+                                }else{
+                                    html +='<div class="col-lg-12 mob-bott add-to-fav-mob"><div class="text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav color" onclick="ToggleFav('+advertisement.id+')"> {{__('web.Home.add_to_fav')}} <i class="far fa-heart"></i></span></div></div>';
+                                }
+                        html += '                       <div class="col-lg-12 mob-bott add-to-fav-mob"><div class="text-center"><span class="add-to-fav color"><i class="far fa-heart"></i></span></div></div>'+
+                                '                   </div>'+
+                                '               </div>'+
+                                '           </div>'+
+                                '           <div class="row hr-sty">'+
+                                '               <div class="col-lg-12"> <hr></div>'+
+                                '           </div>'+
+                                '       </div>'+
+                                '   </div>'+
                                 '</div>';
                         $('#Advertisements').append(html);
                     });

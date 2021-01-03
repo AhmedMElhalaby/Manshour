@@ -69,6 +69,17 @@
                                 </span>
                             @endif
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-group label-floating">
+                                <label for="footer_about_us" class="control-label">{{__('crud.'.$lang.'.Fields.footer_about_us')}}</label>
+                                <textarea id="footer_about_us" name="footer_about_us" class="form-control {{ $errors->has('footer_about_us') ? ' is-invalid' : '' }}">{{\App\Models\Setting::where('key','footer_about_us')->first()->value}}</textarea>
+                            </div>
+                            @if ($errors->has('footer_about_us'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('footer_about_us') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                     </div>
                     <div class="row submit-btn">
                         <div class="col-md-12">

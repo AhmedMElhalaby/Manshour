@@ -4,6 +4,22 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <section class="dropdown top-navbar top-navbar-mob col-lg-2 col"> <a class="user-color dropdown-toggle nav-link dropdown" href="#"><i class="far fa-user-circle user"></i>{{__('web.my_account')}}</a>
+                <ul>
+                    @guest
+                        <li><a href="{{ route('login') }}">{{ __('auth.login') }}</a></li>
+                        <li><a href="{{ route('register') }}">{{ __('auth.register') }}</a></li>
+                    @else
+                        <li><a href="{{ url('chat') }}" >{{ __('web.chats') }}</a></li>
+                        <li><a href="{{ url('profile/update') }}" >{{ __('web.update_profile') }}</a></li>
+                        <li><a href="{{ url('profile/favourite') }}" >{{ __('web.favourite') }}</a></li>
+                        <li><a href="{{ url('profile/notifications') }}" >{{ __('web.notifications') }}</a></li>
+                        <li><a href="{{ url('profile/my_advertisements') }}" >{{ __('web.my_advertisements') }}</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('auth.logout') }}</a></li>
+                    @endguest
+                </ul>
+            </section>
+            <div class="col-lg-2 logo-mob col-md-3 col-4 p-0"><a class="pr-0 " href="#"><img class="logo logo-mob" src="{{(app()->getLocale() == 'ar')?asset('web/img/footer.png'):asset('web/img/en_logo_white.png')}}"></a></div>
             <div class="collapse navbar-collapse links" id="navbarSupportedContent">
                 <ul class="navbar-nav navbar-menu-icon pr-0">
                     <li class="nav-item active">
@@ -45,11 +61,13 @@
     </nav>
     <nav class="navbar navbar-light  pb-0 container-fluid" style="margin-bottom: 15px">
         <div class="row ">
-            <div class="col-lg-2 col-12 col-md-3"><a class="pr-0" href="{{url('/')}}"><img class="logo" src="{{asset('web/img/logo.png')}}" alt=""></a></div>
+            <div class="col-lg-2 col-12 col-md-3"><a class="pr-0" href="{{url('/')}}">
+                    <img class="logo" src="{{(app()->getLocale() == 'ar')?asset('web/img/logo.png'):asset('web/img/en_logo.png')}}" alt=""></a>
+            </div>
             <form class="col-lg col-12 col-md-9 form-inline">
                 <input class="search form-control col-lg-4 col-9" id="q" name="q" type="search" value="{{request('q')}}" placeholder="{{__('admin.search')}}" aria-label="Search">
                 <button class="btn btn-gradient my-2 my-sm-0 col-lg-1 col-3" type="submit"><i class="fas fa-search"></i></button>
-                <section class="dropdown top-navbar col-lg-2 col-5"> <a class="user-color dropdown-toggle nav-link dropdown" href="#"><i class="far fa-user-circle user"></i> {{__('web.my_account')}} </a>
+                <section class="dropdown top-navbar top-navbar-lg col-lg-2 col-5"> <a class="user-color dropdown-toggle nav-link dropdown" href="#"><i class="far fa-user-circle user"></i> {{__('web.my_account')}} </a>
                     <ul>
                         @guest
                             <li><a href="{{ route('login') }}">{{ __('auth.login') }}</a></li>
@@ -69,35 +87,6 @@
             </form>
         </div>
     </nav>
-    @if (url()->current() == url('/') && (\App\Models\Banner::where('is_active',true)->count()>0))
-        <div class="container-fluid pl-0 pr-0">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    @foreach(\App\Models\Banner::where('is_active',true)->get() as $banner)
-
-                    <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}" @if($loop->index == 0) class="active" @endif></li>
-                    @endforeach
-                </ol>
-                <div class="carousel-inner ">
-                    @foreach(\App\Models\Banner::where('is_active',true)->get() as $banner)
-                    <div class="carousel-item @if($loop->index == 0) active @endif" onclick="window.open('{{$banner->getUrl()}}','_blank')">
-                        <img class="d-block w-100" src="{{asset($banner->getImage())}}" height="350" alt="{{$banner->getName()}}">
-                    </div>
-                    @endforeach
-                    <div class="shape"></div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    @endif
-
 </header>
 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
     @csrf

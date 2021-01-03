@@ -4,6 +4,7 @@ return [
 
     'search' => 'ابحث عن سلعة',
     'my_account' => 'حسابي',
+    'download_our_app' => 'حمل تطبيقنا',
     'update_profile' => 'تعديل البروفايل',
     'favourite' => 'المفضلة',
     'my_advertisements' => 'إعلاناتي',

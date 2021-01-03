@@ -66,6 +66,11 @@ class InstallSeeder extends Seeder
                 'type'=>'url'
             ],
             [
+                'name'=>'footer_about_us',
+                'category'=>Constant::SETTING_CATEGORY['Field'],
+                'type'=>'text'
+            ],
+            [
                 'name'=>'instagram',
                 'category'=>Constant::SETTING_CATEGORY['Field'],
                 'type'=>'url'

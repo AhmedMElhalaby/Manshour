@@ -47,6 +47,7 @@ return [
             'twitter'=>'Twitter',
             'email'=>'Email',
             'mobile'=>'Mobile',
+            'footer_about_us'=>'Footer About Us',
         ],
         'Pages'=>[
             'About'=>'About Us',
