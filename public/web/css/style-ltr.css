@@ -309,8 +309,7 @@ Start Home Page
 }
 
 
-.homeCarousel .carousel-control-next,
-.homeCarousel .carousel-control-prev {
+.homeCarousel .carousel-control-next, .homeCarousel .carousel-control-prev {
     height: 100px;
     width: 50px;
     padding: 12px;
@@ -319,7 +318,7 @@ Start Home Page
     transform: translateY(-50%);
     background: rgb(212, 22, 117);
     background: linear-gradient(90deg, rgba(212, 22, 117, 1) 0%, rgba(253, 54, 21, 1) 100%);
-    opacity: 1
+    opacity: 1;
 }
 
 .homeCarousel .carousel-indicators li {
@@ -439,6 +438,10 @@ Start Home Page
 
 }
 
+.all-media .media img {
+    display: flex;
+    width: 100%;
+}
 
 
 
@@ -455,16 +458,32 @@ Start Home Page
 
 
 
+.all-media .media-body {
+    text-align: start;
+    margin-top: 1.5rem;
+    margin-left: 1rem
+}
 
+.b-top {
+    padding-top: 1.3rem;
+}
 
+.hr-sty{
+    position: absolute;
+    bottom: 17%;
+    padding-right: 1rem;
+}
+.all-media .media p{
+    margin-bottom: 2rem
+}
+.m-b-m{
+    margin-bottom: .6rem;
+    margin-top: 1.3rem;
+}
 
-
-
-
-
-
-
-
+.add-to-fav-mob{
+    display: none
+}
 
 .all-media .media {
     display: flex;
@@ -472,13 +491,12 @@ Start Home Page
     margin: 4% 0;
     border: 1px solid #E4E4E4;
     border-radius: 10px;
-    direction: rtl
 }
 .all-media .media img{
-    margin-right: 1rem
+    margin-right: 1rem;
+    max-height: 12rem
 }
 .all-media .media-body {
-    text-align: end;
     margin-top: 1.5rem;
 }
 

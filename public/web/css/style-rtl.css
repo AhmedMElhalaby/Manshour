@@ -456,10 +456,64 @@ header .carousel-inner {
 
 
 
+.homeCarousel .carousel-indicators li {
+    width: 16px;
+    height: 16px;
+    margin-right: 7px;
+    margin-left: 7px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    opacity: 1;
+    transition: opacity .6s ease;
+    border-radius: 10px;
+    border-top: 0px;
+    border-bottom: 0px;
+}
 
+.homeCarousel .carousel-indicators li.active {
+    background: rgb(212, 22, 117);
+    background: linear-gradient(90deg, rgba(212, 22, 117, 1) 0%, rgba(253, 54, 21, 1) 100%);
+}
 
+.homeCarousel .carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    list-style: none;
+    margin-bottom: 4%;
+}
+.homeCarousel .shape {
+    background-color: #000;
+    z-index: 9999999999;
+    display: flex;
+    opacity: 0.49;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
 
-
+.homeCarousel .carousel-control-next, .homeCarousel .carousel-control-prev {
+    height: 100px;
+    width: 50px;
+    padding: 12px;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    background: rgb(212, 22, 117);
+    background: linear-gradient(90deg, rgba(212, 22, 117, 1) 0%, rgba(253, 54, 21, 1) 100%);
+    opacity: 1;
+}
 .all-media .media {
     display: flex;
     flex-wrap: wrap;
@@ -469,7 +523,8 @@ header .carousel-inner {
     direction: rtl
 }
 .all-media .media img{
-    margin-left: 1rem
+    margin-left: 1rem;
+    max-height: 12rem
 }
 .all-media .media-body {
     text-align: start;

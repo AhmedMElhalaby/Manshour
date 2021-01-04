@@ -186,6 +186,13 @@
     }
 }
 @media (max-width: 767.98px) {
+    .homeCarousel .carousel-control-next, .homeCarousel .carousel-control-prev {
+    height: 30px;
+    width: 30px;
+    }
+    .homeCarousel .carousel-indicators{
+        display: none
+    }
     .container-fluid{
         padding: 0;
     }
@@ -314,7 +321,6 @@
     .all-media .media-date i {
         font-size: 5px;
         color: #1C1C1C;
-        margin-left: 0.5rem;
     }
     .all-media .media-date {
         font-size: 5px;
@@ -326,7 +332,7 @@
         color: #fff;
     }
     .logo-mob,.top-navbar-mob{
-        display: flex
+        display: flex !important
     }
 
 }
