@@ -164,7 +164,7 @@
                                 '       <div class="col-lg-2 col-2 p-0"><img class="m-0 p-0" src="'+advertisement.FirstMedia.file+'" alt="..."></div>'+
                                 '       <div class="col-lg-10 col-md-10 col-10">'+
                                 '           <div class="row">'+
-                                '               <div class="col-lg-9 col-9 p-0 media-body">'+
+                                '               <div class="col-lg-9 col-md-8 col-9 p-0 media-body">'+
                                 '                   <h5 class="mt-0 mb-4">'+advertisement.title+'</h5>'+
                                 '                   <p> '+advertisement.content+' </p>'+
                                 '                   <div class="row b-top">'+
@@ -172,7 +172,7 @@
                                 '                       <span class="col-lg-6 col-5 media-date">'+advertisement.created_at+' <i class="far fa-clock"></i></span>'+
                                 '                   </div>'+
                                 '               </div>'+
-                                '               <div class="col-lg-3 col-3 p-0 d-flex">'+
+                                '               <div class="col-lg-3 col-md-4 col-3 p-0 d-flex">'+
                                 '                   <div class="row">'+
                                 '                       <div class="col-lg-12 m-b-m mob-bott"><button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="button" onclick="goAd('+advertisement.id+')">{{__('web.Home.details')}} </button></div>'+
                                 '                       <div class="col-lg-12 m-b-m mob-bott"><button class="btn my-2 my-sm-0 adds-name detail-btn" type="button">'+advertisement.User.name+'</button></div>'+
@@ -193,7 +193,7 @@
                                 '               </div>'+
                                 '           </div>'+
                                 '           <div class="row hr-sty">'+
-                                '               <div class="col-lg-12"> <hr></div>'+
+                                '               <div class="col-lg-12" style="margin: 0"> <hr style="margin: 8px;"></div>'+
                                 '           </div>'+
                                 '       </div>'+
                                 '   </div>'+
@@ -319,9 +319,9 @@
             $.post( "{{url('advertisements/response/toggle_fav')}}", {advertisement_id:id,_token:'{{csrf_token()}}'},function( response ) {
                 if (response.status.status === 'success'){
                     if (response.data){
-                        $('#ToggleFav-'+id).html('<span class="add-to-fav" onclick="ToggleFav('+id+')"> {{__('web.Home.remove_from_fav')}}<i class="fas fa-heart"></i></span>');
+                        $('#ToggleFav-'+id).html('<span class="add-to-fav" onclick="ToggleFav('+id+')"> {{__('web.Home.remove_from_fav')}} <i class="fas fa-heart"></i></span>');
                     }else{
-                        $('#ToggleFav-'+id).html('<span class="add-to-fav color" onclick="ToggleFav('+id+')"> {{__('web.Home.add_to_fav')}}<i class="far fa-heart"></i></span>');
+                        $('#ToggleFav-'+id).html('<span class="add-to-fav color" onclick="ToggleFav('+id+')"> {{__('web.Home.add_to_fav')}} <i class="far fa-heart"></i></span>');
                     }
                 }
             });
