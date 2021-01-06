@@ -115,6 +115,12 @@ class Functions
         return true;
     }
     public static function SendSms($msg,$to){
+        if (substr($to, 0, 1) == '0' ){
+            $to = substr($to,1);
+        }
+        if( substr($to, 0, 3) == '966') {
+            $to = substr($to,3);
+        }
         $ch = curl_init();
         $userid = '966555408042';
         $password = 'Mshmsh10';
