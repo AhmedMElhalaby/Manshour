@@ -184,12 +184,11 @@
                                 }
                         html += '                       </div>';
                                 if(advertisement.is_fav){
-                                    html +='<div class="col-lg-12 mob-bott add-to-fav-mob"><div class="text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav" onclick="ToggleFav('+advertisement.id+')"> {{__('web.Home.remove_from_fav')}} <i class="fas fa-heart"></i></span></div></div>';
+                                    html +='<div class="col-lg-12 mob-bott add-to-fav-mob"><div class="text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav" onclick="ToggleFav('+advertisement.id+')"><i class="fas fa-heart"></i></span></div></div>';
                                 }else{
-                                    html +='<div class="col-lg-12 mob-bott add-to-fav-mob"><div class="text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav color" onclick="ToggleFav('+advertisement.id+')"> {{__('web.Home.add_to_fav')}} <i class="far fa-heart"></i></span></div></div>';
+                                    html +='<div class="col-lg-12 mob-bott add-to-fav-mob"><div class="text-center" id="ToggleFav-'+advertisement.id+'"><span class="add-to-fav color" onclick="ToggleFav('+advertisement.id+')"><i class="far fa-heart"></i></span></div></div>';
                                 }
-                        html += '                       <div class="col-lg-12 mob-bott add-to-fav-mob"><div class="text-center"><span class="add-to-fav color"><i class="far fa-heart"></i></span></div></div>'+
-                                '                   </div>'+
+                        html += '                   </div>'+
                                 '               </div>'+
                                 '           </div>'+
                                 '           <div class="row hr-sty">'+
