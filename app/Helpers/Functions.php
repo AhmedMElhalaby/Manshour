@@ -169,7 +169,7 @@ class Functions
                             'type'=>Constant::VERIFICATION_TYPE['Mobile']
                         ]
                     );
-                    static::SendSms('كود تفعيل الحساب هو : '.$code_mobile,$user->getMobile());
+                    static::SendSms('رمز تفعيل الحساب هو : '.$code_mobile,$user->getMobile());
                     break;
                 }
             }
@@ -195,7 +195,7 @@ class Functions
                     'type'=>Constant::VERIFICATION_TYPE['Mobile']
                 ]
             );
-            static::SendSms('كود تفعيل الحساب هو : '.$code_mobile,$user->getMobile());
+            static::SendSms('رمز تفعيل الحساب هو : '.$code_mobile,$user->getMobile());
             $user->notify(
                 new VerifyAccount($token,$code_email)
             );
@@ -213,7 +213,7 @@ class Functions
                 'token' => $token,
             ]
         );
-        static::SendSms('كود استرجاع كلمة المرور هو : '.$code,$user->getMobile());
+        static::SendSms('رمز استرجاع كلمة المرور هو : '.$code,$user->getMobile());
         $user->notify(
             new PasswordResetNotification($code)
         );
