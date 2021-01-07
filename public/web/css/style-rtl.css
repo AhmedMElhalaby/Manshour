@@ -778,6 +778,13 @@ End Home Page
 **/
 
 
+.header_nav_dir{
+    direction: ltr
+}
+.header_nav_dir #navbarSupportedContent{
+    direction: rtl;
+    padding-right: 10px;
+}
 
 /**
 

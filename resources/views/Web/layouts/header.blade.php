@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light linear-gradient top-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light linear-gradient top-navbar header_nav_dir">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
                     @endguest
                 </ul>
             </section>
-            <div class="col-lg-2 logo-mob col-md-3 col-4 p-0"><a class="pr-0 " href="#"><img class="logo logo-mob" src="{{(app()->getLocale() == 'ar')?asset('web/img/footer.png'):asset('web/img/en_logo_white.png')}}"></a></div>
+            <div class="col-lg-2 logo-mob col-md-3 col-4 p-0"><a class="pr-0 " href="{{url('/')}}"><img class="logo logo-mob" src="{{(app()->getLocale() == 'ar')?asset('web/img/footer.png'):asset('web/img/en_logo_white.png')}}"></a></div>
             <div class="collapse navbar-collapse links" id="navbarSupportedContent">
                 <ul class="navbar-nav navbar-menu-icon pr-0">
                     <li class="nav-item active">
@@ -45,7 +45,7 @@
                         <a class="nav-link c-w" href="{{url('contact_us')}}"> <i class="fas fa-headset"></i> {{__('crud.Setting.Pages.Contact')}} </a>
                     </li>
                 </ul>
-                <ul class="navbar-nav left-icon">
+                <ul class="navbar-nav left-icon header_icon_social">
                     <li class="nav-item">
                         <a class="nav-link c-w" href="{{\App\Models\Setting::where('key','twitter')->first()->value??'#'}}"><i class="fab fa-twitter"></i></a>
                     </li>

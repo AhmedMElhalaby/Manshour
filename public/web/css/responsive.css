@@ -24,7 +24,13 @@
     .all-media .media img{
         width: 100%
     }
-
+    .single-post .carousel-item img{
+        max-height : 12rem;
+    }
+    .single-post .carousel-control-next, .single-post .carousel-control-prev{
+        height: 50px;
+        width: 35px;
+    }
 }
 @media (max-width: 991.98px) {
     .navbar .btn{
@@ -110,8 +116,9 @@
     .new-ads .form-check .k-checkbox-label{
         margin-right: 0;
         text-align: start;
-        padding-right: 3rem;
+        padding-left: 3rem !important;
     }
+    .header_icon_social{display: none}
     .new-ads .form-check .k-checkbox-label {
         padding-left: 0;
         justify-content: flex-start;

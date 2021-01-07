@@ -720,6 +720,14 @@ End Home Page
 **/
 
 
+.header_nav_dir{
+    direction: rtl;
+}
+.header_nav_dir #navbarSupportedContent{
+    direction: ltr;
+    padding-left: 10px;
+}
+
 
 /**
 
