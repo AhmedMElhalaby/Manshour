@@ -83,7 +83,7 @@
 
                     </ul>
                 </section>
-                <button class="btn btn-add my-2 my-sm-0 col-lg-2 col-7" onclick="@auth window.location='{{url('advertisements/create')}}';@else alert('{{__('auth.unauthenticated')}}') @endauth" type="button"> <i class="fas fa-plus-circle pluse"></i> {{__('web.add_advertisement')}} </button>
+                <button class="btn btn-add my-2 my-sm-0 col-lg-2 col-12" onclick="@auth window.location='{{url('advertisements/create')}}';@else alert('{{__('auth.unauthenticated')}}') @endauth" type="button"> <i class="fas fa-plus-circle pluse"></i> {{__('web.add_advertisement')}} </button>
             </form>
         </div>
     </nav>

@@ -9,6 +9,10 @@ Start Home Page
 
 **/
 /* navebar dropdown menu */
+.resp-s {
+    align-items: baseline; border-top: 1px solid #ddd; /* display: flex; */ text-align: start;
+}
+
 .dropdown-menu {
     left: auto;
     direction: ltr
@@ -535,7 +539,7 @@ header .carousel-inner {
     display: none
 }
 .b-top{
-    padding-top: 1.3rem
+    padding-top: 0.3rem
 }
 .m-b-m{
     margin-bottom: .6rem;
