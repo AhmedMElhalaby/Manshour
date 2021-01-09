@@ -62,7 +62,7 @@
     <nav class="navbar navbar-light  pb-0 container-fluid" style="margin-bottom: 15px">
         <div class="row ">
             <div class="col-lg-2 col-12 col-md-3"><a class="pr-0" href="{{url('/')}}">
-                    <img class="logo" src="{{(app()->getLocale() == 'ar')?asset('web/img/logo.png'):asset('web/img/en_logo.png')}}" alt=""></a>
+                <img class="logo" src="{{(app()->getLocale() == 'ar')?asset('web/img/logo.png'):asset('web/img/en_logo.png')}}" alt=""></a>
             </div>
             <form class="col-lg col-12 col-md-9 form-inline" action="{{url('/')}}">
                 <input class="search form-control col-lg-4 col-9" id="q" name="q" type="search" value="{{request('q')}}" placeholder="{{__('admin.search')}}" aria-label="Search">
