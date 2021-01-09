@@ -72,19 +72,19 @@
                                 </span>
                             </span>
                         </div>
-                        <div class="col-lg-7 single-l-link">
-                            <ul class="navbar-nav">
-                                <li>
-                                    <a class="" href="#"><i class="fab fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a class="" href="#"><i class="fab fa-instagram"></i></a>
-                                </li>
-                                <li>
-                                    <a class="" href="#"><i class="fab fa-facebook-square"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+{{--                        <div class="col-lg-7 single-l-link">--}}
+{{--                            <ul class="navbar-nav">--}}
+{{--                                <li>--}}
+{{--                                    <a class="" href="#"><i class="fab fa-twitter"></i></a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a class="" href="#"><i class="fab fa-instagram"></i></a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a class="" href="#"><i class="fab fa-facebook-square"></i></a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
@@ -167,7 +167,12 @@
 {{--                                </fieldset>--}}
 {{--                            </form>--}}
                         </div>
-                        <p class="card-text"><i class="fas fa-mobile-alt"></i>{{$Object->User->mobile}}</p>
+                        @if(!$Object->hide_contact)
+                            <p class="card-text"><i class="fas fa-mobile-alt"></i>{{$Object->User->mobile}}</p>
+                        @endif
+                        @if($Object->price)
+                            <p class="card-text"><i class="fas fa-tags"></i>{{$Object->price}}</p>
+                        @endif
                         <a href="javascript:" class="btn submit-comment col-lg" data-toggle="modal" data-target="#SendMessage"><i class="far fa-comments"></i> {{__('web.Advertisement.Show.chat')}} </a>
                     </div>
                 </div>

@@ -131,7 +131,7 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="media">{{__('web.Advertisement.Add.upload_images')}}</label>
-                    <input type="file" required class="form-control-file @error('media') is-invalid @enderror" name="media[]" multiple id="media">
+                    <input type="file" class="form-control-file @error('media') is-invalid @enderror" name="media[]" multiple id="media">
                     @error('media')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -171,16 +171,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group form-check checkbox col-lg-5 pl-0 pr-0 m-0">
-                <input type="checkbox" required class="form-check-input col-lg-1 k-checkbox" id="commission_agreement">
-                <label class="form-check-label col-lg-11 k-checkbox-label" for="commission_agreement">{{__('web.Advertisement.Add.commission_agreement')}}</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group form-check checkbox col-lg-2 pl-0 pr-0 m-0">
-                <input type="checkbox" required class="form-check-input col-lg-1 k-checkbox" id="checkbox-2">
-                <label class="form-check-label col-lg-11 k-checkbox-label" for="checkbox-2">{{__('web.Advertisement.Add.terms_agreement')}}</label>
-            </div>
             <div class="row mt-4 mb-4">
                 <div class="col-lg-9"></div>
                 <div class="col-lg-3">

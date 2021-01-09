@@ -54,12 +54,14 @@ class UpdateRequest extends FormRequest
         }
         $Object->save();
         $Object->refresh();
-        foreach ($this->file('media') as $media) {
-            $Media = new Media();
-            $Media->setRefId($Object->getId());
-            $Media->setMediaType(Constant::MEDIA_TYPES['Ad']);
-            $Media->setFile($media);
-            $Media->save();
+        if($this->hasFile('media')){
+            foreach ($this->file('media') as $media) {
+                $Media = new Media();
+                $Media->setRefId($Object->getId());
+                $Media->setMediaType(Constant::MEDIA_TYPES['Ad']);
+                $Media->setFile($media);
+                $Media->save();
+            }
         }
         return redirect('advertisements/show?advertisement_id='.$Object->getId());
     }
