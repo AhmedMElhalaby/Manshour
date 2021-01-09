@@ -43,7 +43,7 @@
                                 <div class="row">
                                     <div class="col-lg-9 col-md-8 col-9 p-0 media-body">
                                         <h5 class="mt-0 mb-4">{{$advertisement->getTitle()}}</h5>
-                                        <p> {{$advertisement->getContent()}} </p>
+                                        <p> {{ (strlen($advertisement->getContent()) > 100)?substr($advertisement->getContent(), 0, 99):$advertisement->getContent()}} </p>
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-3 p-0 d-flex">
                                         <div class="row">

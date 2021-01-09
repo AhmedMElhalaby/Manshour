@@ -17,6 +17,12 @@ class Controller extends BaseController
      */
     public function __construct()
     {
-        App::setLocale(session('localization','en'));
+        if(session('localization','ar') =='ar'){
+            session(['localization' => 'ar']);
+            App::setLocale('ar');
+        }else{
+            session(['localization' => 'en']);
+            App::setLocale('en');
+        }
     }
 }

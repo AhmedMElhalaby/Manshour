@@ -32,7 +32,7 @@ class AdvertisementResource extends JsonResource
         $Object['city_id'] = $this->city_id;
         $Object['City'] = new CityResource($this->city);
         $Object['title'] = $this->title;
-        $Object['content'] = $this->content;
+        $Object['content'] = (strlen($this->content) > 100)?substr($this->content, 0, 99):$this->content;
         $Object['contact'] = $this->contact;
         $Object['hide_contact'] = $this->hide_contact;
         $Object['price'] = $this->price;
