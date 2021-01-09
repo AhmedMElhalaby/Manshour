@@ -64,7 +64,7 @@
             <div class="col-lg-2 col-12 col-md-3"><a class="pr-0" href="{{url('/')}}">
                     <img class="logo" src="{{(app()->getLocale() == 'ar')?asset('web/img/logo.png'):asset('web/img/en_logo.png')}}" alt=""></a>
             </div>
-            <form class="col-lg col-12 col-md-9 form-inline">
+            <form class="col-lg col-12 col-md-9 form-inline" action="{{url('/')}}">
                 <input class="search form-control col-lg-4 col-9" id="q" name="q" type="search" value="{{request('q')}}" placeholder="{{__('admin.search')}}" aria-label="Search">
                 <button class="btn btn-gradient my-2 my-sm-0 col-lg-1 col-3" type="submit"><i class="fas fa-search"></i></button>
                 <section class="dropdown top-navbar top-navbar-lg col-lg-2 col-5"> <a class="user-color dropdown-toggle nav-link dropdown" href="#"><i class="far fa-user-circle user"></i> {{__('web.my_account')}} </a>
