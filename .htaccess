@@ -1,6 +1,5 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{SERVER_PORT} 80
-#    RewriteRule ^(.*)$ public/$1 [L]
-    RewriteRule ^(.*)$ https://mnshur.com/$1 [R,L]
+    RewriteRule ^(.*)$ https://mnshur.com/public/$1 [R,L]
 </IfModule>
