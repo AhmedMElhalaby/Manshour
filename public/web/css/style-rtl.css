@@ -87,7 +87,7 @@ Start Home Page
 }
 
 .row {
-    width: inherit;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin-right: 0;
