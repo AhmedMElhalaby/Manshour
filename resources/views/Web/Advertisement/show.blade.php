@@ -189,7 +189,7 @@
                                         <div class="div card-h">
                                             <h5 class="card-title">{{$ad->title}}</h5>
                                         </div>
-                                        <p class="card-text">{{$ad->content}}</p>
+{{--                                        <p class="card-text">{{$ad->content}}</p>--}}
                                     </div>
                                 </div>
                             </div>
