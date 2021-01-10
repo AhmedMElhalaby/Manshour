@@ -528,11 +528,11 @@ header .carousel-inner {
 }
 .all-media .media img{
     margin-left: 1rem;
-    max-height: 12rem
+    max-height: 8rem
 }
 .all-media .media-body {
     text-align: start;
-    margin-top: 1.5rem;
+    margin-top: .5rem;
     margin-right: 1rem
 }
 .add-to-fav-mob{
@@ -542,8 +542,8 @@ header .carousel-inner {
     padding-top: 0.3rem
 }
 .m-b-m{
-    margin-bottom: .6rem;
-    margin-top: 1.3rem;
+    margin-bottom: .3rem;
+    margin-top: .3rem;
 }
 .all-media .media h5{
 

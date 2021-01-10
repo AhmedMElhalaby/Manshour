@@ -165,8 +165,8 @@
                                 '       <div class="col-lg-10 col-md-10 col-10">'+
                                 '           <div class="row">'+
                                 '               <div class="col-lg-9 col-md-8 col-9 p-0 media-body">'+
-                                '                   <h5 class="mt-0 mb-4">'+advertisement.title+'</h5>'+
-                                '                   <p> '+advertisement.content+' </p>'+
+                                '                   <h5 class="mt-0">'+advertisement.title+'</h5>'+
+                                '                   <p class="m-0"> '+advertisement.content+' </p>'+
                                 '               </div>'+
                                 '               <div class="col-lg-3 col-md-4 col-3 p-0 d-flex">'+
                                 '                   <div class="row">'+

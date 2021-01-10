@@ -481,8 +481,8 @@ Start Home Page
     margin-bottom: 2rem
 }
 .m-b-m{
-    margin-bottom: .6rem;
-    margin-top: 1.3rem;
+    margin-bottom: .3rem;
+    margin-top: .3rem;
 }
 
 .add-to-fav-mob{
@@ -498,10 +498,10 @@ Start Home Page
 }
 .all-media .media img{
     margin-right: 1rem;
-    max-height: 12rem
+    max-height: 8rem
 }
 .all-media .media-body {
-    margin-top: 1.5rem;
+    margin-top: .5rem;
 }
 
 .all-media .detail-btn {
