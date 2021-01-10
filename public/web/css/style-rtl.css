@@ -521,7 +521,7 @@ header .carousel-inner {
 .all-media .media {
     display: flex;
     flex-wrap: wrap;
-    margin: 4% 0;
+    margin: 1% 0;
     border: 1px solid #E4E4E4;
     border-radius: 10px;
     direction: rtl
@@ -708,8 +708,14 @@ footer {
     display: flex;
     padding: 0;
     padding-right: 1rem;
-    padding-top: 1.8rem;
+    padding-top: 0.8rem;
     justify-content: flex-end
+}
+
+.footer-email{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .footer-links li {
