@@ -36,6 +36,7 @@
 <script src="{{asset('web/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('web/js/main.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="https://cdn.ckeditor.com/4.15.1/standard-all/ckeditor.js"></script>
 @yield('script')
 </body>
 </html>

@@ -257,4 +257,15 @@
             $('#price').hide();
         @endif
     </script>
+    <script>
+        CKEDITOR.config.devtools_styles =
+            '#cke_11,#cke_19,#cke_21,#cke_25,#cke_30,#cke_32,#cke_47 { display: none }' +
+            '#cke_tooltip h2 { font-size: 14px; border-bottom: 1px solid; margin: 0; padding: 1px; }' +
+            '#cke_tooltip ul { padding: 0pt; list-style-type: none; }';
+
+        CKEDITOR.replace('content', {
+            height: 250,
+            extraPlugins: 'devtools'
+        });
+    </script>
 @endsection

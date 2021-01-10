@@ -1837,9 +1837,10 @@ start single post
     opacity: 0.36
 }
 .single-post .post-disc{
-    display: flex;
-    flex-wrap: wrap;
-    font-weight: 600
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    font-weight: 600;
+    text-align: start;
 }
 .single-post .post-disc p{
     text-align: start
