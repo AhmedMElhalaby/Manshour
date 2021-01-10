@@ -347,7 +347,9 @@
     .logo-mob,.top-navbar-mob{
         display: flex !important
     }
-
+    .footer_div{
+        margin: 0 !important;
+    }
 }
 @media (min-width: 767.98px) and (max-width: 991.98px) {
 

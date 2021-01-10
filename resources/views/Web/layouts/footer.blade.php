@@ -1,5 +1,5 @@
 <footer class="container-fluid">
-    <div class=" mt-5 mb-4 w-100">
+    <div class=" mt-5 mb-4 footer_div w-100">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-12 d-f">
                 <a href="" class="col-6 m-auto"><img class="footer-img" src="{{(app()->getLocale() == 'ar')?asset('web/img/footer.png'):asset('web/img/en_logo_white.png')}}" alt=""></a>
