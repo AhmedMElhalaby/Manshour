@@ -1784,6 +1784,9 @@ start single post
     font-weight: 600;
     text-align: start;
 }
+.chat-img img{
+    max-height: 3rem;
+}
 .single-post .post-disc p{
     text-align: start
 }
