@@ -153,7 +153,7 @@
         <div class="row">
             <div class="form-group col-lg-12">
                 <label for="content" class="text-info">{{__('web.Advertisement.Add.content')}}</label>
-                <textarea required class="form-control @error('hide_contact') is-invalid @enderror" id="content" name="details" rows="3" placeholder="">{{old('content')}}</textarea>
+                <textarea required class="form-control @error('hide_contact') is-invalid @enderror" id="content" name="details" rows="3" placeholder="">{{old('details')}}</textarea>
                 @error('title')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -265,7 +265,7 @@
 
         CKEDITOR.replace('content', {
             height: 250,
-            extraPlugins: 'devtools'
+            extraPlugins: 'devtools',
         });
     </script>
 @endsection
