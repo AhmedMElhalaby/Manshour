@@ -64,7 +64,7 @@ return [
             'title'=>'Advertisement Title',
             'content'=>'Advertisement Content',
             'terms_agreement'=>'Agree on the terms',
-            'commission_agreement'=>'The owner of the advertisement is obligated to pay the site commission (5.0%) in case of selling through a published site',
+            'commission_agreement'=>'The owner of the advertisement is obligated to pay the site commission (0.5%) in case of selling through a published site',
         ],
         'Show'=>[
             'add_to_favourite'=>'Add to Favourite',
