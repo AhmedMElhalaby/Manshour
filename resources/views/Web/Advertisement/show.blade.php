@@ -165,6 +165,7 @@
 {{--                                </fieldset>--}}
 {{--                            </form>--}}
                         </div>
+                        @auth
                         @if(!$Object->hide_contact)
                             <p class="card-text"><i class="fas fa-mobile-alt"></i>{{$Object->User->mobile}}</p>
                         @endif
@@ -172,6 +173,7 @@
                             <p class="card-text"><i class="fas fa-tags"></i>{{$Object->price}}</p>
                         @endif
                         <a href="javascript:" class="btn submit-comment col-lg" data-toggle="modal" data-target="#SendMessage"><i class="far fa-comments"></i> {{__('web.Advertisement.Show.chat')}} </a>
+                        @endauth
                     </div>
                 </div>
                 <h5>{{__('web.Advertisement.Show.similar_advertisement')}}</h5>
