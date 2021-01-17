@@ -46,6 +46,7 @@ return [
         'add_advertisement'=>'Add New Advertisement',
         'delete_advertisement'=>'Delete Advertisement',
         'edit_advertisement'=>'Edit Advertisement',
+        'show_advertisement'=>'Show Advertisement',
         'Add'=>[
             'category'=>'Advertisement Category',
             'choose_category'=>'Choose Category',

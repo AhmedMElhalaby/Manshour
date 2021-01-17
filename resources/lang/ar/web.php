@@ -46,6 +46,7 @@ return [
         'add_advertisement'=>'اضافة اعلان جديد',
         'delete_advertisement'=>'حذف الاعلان',
         'edit_advertisement'=>'تعديل الاعلان',
+        'show_advertisement'=>'عرض الإعلان',
         'Add'=>[
             'category'=>'قسم الإعلان',
             'choose_category'=>'اختر القسم',

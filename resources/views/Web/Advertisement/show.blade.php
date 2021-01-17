@@ -51,6 +51,18 @@
     </div>
 @endsection
 @section('content')
+    <section class="container-fluid bread-crumb">
+        <div class="row">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">{{__('web.main_page')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('web.Advertisement.show_advertisement')}}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
     <section class="container-fluid single-post" style="min-height: 25vh">
         <div class="row">
             <div class="col-lg-8">
