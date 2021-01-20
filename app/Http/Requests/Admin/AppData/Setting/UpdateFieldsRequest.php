@@ -37,11 +37,17 @@ class UpdateFieldsRequest extends FormRequest
         $instagram = Setting::where('key','instagram')->first();
         $instagram->setValue($this->filled('instagram')?$this->instagram:'');
         $instagram->save();
+        $instagram = Setting::where('key','twitter')->first();
+        $instagram->setValue($this->filled('twitter')?$this->twitter:'');
+        $instagram->save();
         $email = Setting::where('key','email')->first();
         $email->setValue($this->filled('email')?$this->email:'');
         $email->save();
         $mobile = Setting::where('key','mobile')->first();
         $mobile->setValue($this->filled('mobile')?$this->mobile:'');
+        $mobile->save();
+        $mobile = Setting::where('key','footer_about_us')->first();
+        $mobile->setValue($this->filled('footer_about_us')?$this->footer_about_us:'');
         $mobile->save();
         return redirect($crud->getRedirect())->with('status', __('admin.messages.saved_successfully'));
     }

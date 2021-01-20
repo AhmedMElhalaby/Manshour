@@ -29,7 +29,7 @@
                                     <div class="card-body">
                                         <ul>
                                             <li> <span>{{__('crud.BankAccount.bank_name')}}</span> : <span>{{$bankAccount->getBankName()}}</span></li>
-                                            <li> <span>{{__('crud.BankAccount.account_name')}}</span> : <span>{{$bankAccount->getAccountName()}}</span></li>
+                                            <li @if(app()->getLocale() == 'ar') style="text-align: right" @endif> <span>{{__('crud.BankAccount.account_name')}}</span> : <span>{{$bankAccount->getAccountName()}}</span></li>
                                             <li> <span>{{__('crud.BankAccount.account_number')}}</span> : <span>{{$bankAccount->getAccountNumber()}}</span></li>
                                             <li> {{__('crud.BankAccount.account_iban')}} : <span>{{$bankAccount->getAccountIban()}}</span></li>
                                         </ul>

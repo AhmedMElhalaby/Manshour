@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -58,6 +59,13 @@ class Advertisement extends Model
             $fav = (Favourite::where('advertisement_id',$this->id)->where('user_id',auth()->user()->id)->first())?true:false;
         }
         return $fav;
+    }
+    protected static function boot()
+    {
+        static::addGlobalScope('ordered', function (Builder $builder) {
+            $builder->orderBy('created_at', 'desc');
+        });
+        parent::boot();
     }
     /**
      * @return int
