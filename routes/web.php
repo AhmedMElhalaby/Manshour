@@ -61,6 +61,7 @@ Route::group([
         Route::post('update', 'AdvertisementController@update');
         Route::post('delete', 'AdvertisementController@delete');
         Route::post('comment', 'AdvertisementController@comment');
+        Route::post('report_abuse', 'AdvertisementController@report_abuse');
         Route::post('comment/post_response', 'AdvertisementController@comment_post_response');
         Route::post('send_message', 'AdvertisementController@send_message');
 

@@ -175,6 +175,18 @@ Route::group([
             Route::delete('/{banner}','BannerController@destroy');
             Route::get('/option/export','BannerController@export');
         });
+        Route::group([
+            'prefix'=>'abuse_types'
+        ],function () {
+            Route::get('/','AbuseReportController@index');
+            Route::get('/create','AbuseReportController@create');
+            Route::post('/','AbuseReportController@store');
+            Route::get('/{abuse_type}','AbuseReportController@show');
+            Route::get('/{abuse_type}/edit','AbuseReportController@edit');
+            Route::put('/{abuse_type}','AbuseReportController@update');
+            Route::delete('/{abuse_type}','AbuseReportController@destroy');
+            Route::get('/option/export','AbuseReportController@export');
+        });
     });
     /*
     |--------------------------------------------------------------------------
@@ -229,6 +241,12 @@ Route::group([
             Route::get('/','DeletedAdvertisementController@index');
             Route::delete('/{advertisement}','DeletedAdvertisementController@destroy');
             Route::get('/option/export','DeletedAdvertisementController@export');
+        });
+        Route::group([
+            'prefix'=>'abuse_comments'
+        ],function () {
+            Route::get('/','AbuseCommentController@index');
+            Route::get('{comment}/delete_comment','AbuseCommentController@delete_comment');
         });
     });
 

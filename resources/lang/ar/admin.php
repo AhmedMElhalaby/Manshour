@@ -28,11 +28,13 @@ return [
         'users'=>'المستخدمين',
         'tickets'=>'التذاكر',
         'banners'=>'اللوحات الاعلانية',
+        'abuse_types'=>'أنواع البلاغات',
         'roles'=>'الأدوار',
         'permissions'=>'الصلاحيات',
         'app_content'=>'محتوى التطبيق',
         'advertisements'=>'الاعلانات',
         'deleted_advertisements'=>'الاعلانات المحذوفة',
+        'abuse_comments'=>'إبلاغات التعليقات',
 
     ],
     'Home'=>[

@@ -75,6 +75,9 @@ return [
             'chat'=>'محادثة',
             'reply_comment'=>'الرد على التعليق',
             'message'=>'نص الرسالة',
+            'report_abuse'=>'إبلاغ تعليق مسيء',
+            'details'=>'تفاصيل',
+            'abuse_type'=>'نوع الإبلاغ',
         ],
         'Delete'=>[
             'delete_reason'=>'سبب الحذف',

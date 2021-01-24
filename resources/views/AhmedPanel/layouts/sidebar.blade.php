@@ -96,6 +96,14 @@
                     </a>
                 </li>
             @endif
+            @if (auth('admin')->user()->can('AbuseReports'))
+                <li class="nav-item @if(strpos(url()->current() , url('admin/app_data/abuse_types'))===0) active @endif">
+                    <a href="{{url('admin/app_data/abuse_types')}}" class="nav-link">
+                        <i class="material-icons">category</i>
+                        <p>{{__('admin.sidebar.abuse_types')}}</p>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
 </li>
@@ -121,6 +129,14 @@
                         <a href="{{url('admin/app_content/deleted_advertisements')}}" class="nav-link">
                             <i class="material-icons">text_format</i>
                             <p>{{__('admin.sidebar.deleted_advertisements')}}</p>
+                        </a>
+                    </li>
+                @endif
+                @if (auth('admin')->user()->can('CommentReports'))
+                    <li class="nav-item @if(strpos(url()->current() , url('admin/app_content/abuse_comments'))===0) active @endif">
+                        <a href="{{url('admin/app_content/abuse_comments')}}" class="nav-link">
+                            <i class="material-icons">bug_report</i>
+                            <p>{{__('admin.sidebar.abuse_comments')}}</p>
                         </a>
                     </li>
                 @endif

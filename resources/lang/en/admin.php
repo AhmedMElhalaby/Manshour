@@ -29,10 +29,12 @@ return [
         'tickets'=>'Tickets',
         'roles'=>'Roles',
         'banners'=>'Banners',
+        'abuse_types'=>'Abuse Types',
         'permissions'=>'Permissions',
         'app_content'=>'App Content',
         'advertisements'=>'Advertisements',
         'deleted_advertisements'=>'Deleted Advertisements',
+        'abuse_comments'=>'Abuse Comments',
     ],
     'Home'=>[
         'n_send_general'=>'Send Public Notification ',

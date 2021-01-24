@@ -75,6 +75,9 @@ return [
             'chat'=>'Chat',
             'reply_comment'=>'Reply Comment',
             'message'=>'Message',
+            'report_abuse'=>'Report Abuse Comment',
+            'details'=>'Details',
+            'abuse_type'=>'Abuse Type',
         ],
         'Delete'=>[
             'delete_reason'=>'Delete Reason',

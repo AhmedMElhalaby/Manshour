@@ -141,6 +141,22 @@ return [
         'url' => 'الرابط',
         'is_active' => 'الحالة',
     ],
+    'AbuseReport'=>[
+        'crud_names' => 'أنواع الإبلاغ',
+        'crud_name' => 'نوع البلاغ',
+        'crud_the_name' => 'النوع',
+        'name' => 'الاسم',
+        'name_ar' => 'الاسم عربي',
+    ],
+    'CommentReport'=>[
+        'crud_names' => 'إبلاغات التعليقات',
+        'crud_name' => 'إبلاغ تعليق',
+        'crud_the_name' => 'الإبلاغ',
+        'comment_id' => 'التعليق',
+        'user_id' => 'المستخدم',
+        'abuse_report_id' => 'نوع الإبلاغ',
+        'details' => 'التفاصيل',
+    ],
     'Advertisement'=>[
         'crud_names' => 'الإعلانات',
         'crud_name' => 'إعلان',
@@ -157,6 +173,9 @@ return [
         'sell_type' => 'طريقة البيع',
         'delete_reason' => 'سبب الحذف',
         'is_active' => 'الحالة',
+        'Links' => [
+            'delete_comment'=>'حذف التعليق'
+        ],
         'SellType' => [
             Constant::ADVERTISEMENT_SELL_TYPE['InsideWebsite']=>'داخل الموقع',
             Constant::ADVERTISEMENT_SELL_TYPE['OutsideWebsite']=>'خارج الموقع',

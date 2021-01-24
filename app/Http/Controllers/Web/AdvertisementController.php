@@ -14,6 +14,7 @@ use App\Http\Requests\Web\Advertisement\ResponseRequest;
 use App\Http\Requests\Web\Advertisement\CommentPostResponseRequest;
 use App\Http\Requests\Web\Advertisement\CommentResponseRequest;
 use App\Http\Requests\Web\Advertisement\EditRequest;
+use App\Http\Requests\Web\Advertisement\ReportAbuseRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -104,6 +105,14 @@ class AdvertisementController extends Controller
      * @return JsonResponse
      */
     public function response_toggle_fav(ResponseToggleFavRequest $request): JsonResponse
+    {
+        return $request->preset();
+    }
+    /**
+     * @param ReportAbuseRequest $request
+     * @return RedirectResponse
+     */
+    public function report_abuse(ReportAbuseRequest $request)
     {
         return $request->preset();
     }

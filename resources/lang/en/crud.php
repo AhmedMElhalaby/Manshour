@@ -141,6 +141,22 @@ return [
         'account_number' => 'Account Number',
         'account_iban' => 'Account Iban',
     ],
+    'AbuseReport'=>[
+        'crud_names' => 'Abuse Types',
+        'crud_name' => 'Abuse Type',
+        'crud_the_name' => 'The Abuse Type',
+        'name' => 'Name',
+        'name_ar' => 'Name Ar',
+    ],
+    'CommentReport'=>[
+        'crud_names' => 'Comment Abuse Reports',
+        'crud_name' => 'Comment Abuse Report',
+        'crud_the_name' => 'The Comment Abuse Report',
+        'comment_id' => 'Comment',
+        'user_id' => 'User',
+        'abuse_report_id' => 'Abuse Type',
+        'details' => 'details',
+    ],
     'Advertisement'=>[
         'crud_names' => 'Advertisements',
         'crud_name' => 'Advertisement',
@@ -157,6 +173,9 @@ return [
         'sell_type' => 'Sell Type',
         'delete_reason' => 'Delete Reason',
         'is_active' => 'Status',
+        'Links' => [
+            'delete_comment'=>'Delete Comment'
+        ],
         'SellType' => [
             Constant::ADVERTISEMENT_SELL_TYPE['InsideWebsite']=>'Inside Website',
             Constant::ADVERTISEMENT_SELL_TYPE['OutsideWebsite']=>'Outside Website',

@@ -49,6 +49,40 @@
             </form>
         </div>
     </div>
+    <div class="modal fade" id="ReportAbuse" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-centered">
+            <form method="post" action="{{url('advertisements/report_abuse')}}" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">{{__('web.Advertisement.Show.report_abuse')}}</h5>
+                </div>
+                <div class="modal-body">
+                    @csrf
+                    <input type="hidden" name="comment_id" id="comment_id">
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label for="abuse_report_id">{{__('web.Advertisement.Show.abuse_type')}}</label>
+                            <select name="abuse_report_id" id="abuse_report_id" class="form-control">
+                                @foreach(\App\Models\AbuseReport::all() as $abuseReport)
+                                    <option value="{{$abuseReport->getId()}}">{{app()->getLocale()=='ar'?$abuseReport->getNameAr():$abuseReport->getName()}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="details" hidden></label>
+                            <textarea class="form-control" id="details" name="details" rows="5" placeholder="{{__('web.Advertisement.Show.details')}}"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row w-100">
+                        <div class="col-lg delete-b">
+                            <button class="btn btn-add my-2 my-sm-0 mb-2 detail-btn" type="submit">{{__('admin.Home.n_send')}} </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
 @section('content')
     <section class="container-fluid bread-crumb">
@@ -177,7 +211,6 @@
 {{--                                </fieldset>--}}
 {{--                            </form>--}}
                         </div>
-                        @auth
                         @if(!$Object->hide_contact)
                             <p class="card-text"><i class="fas fa-mobile-alt"></i>{{$Object->User->mobile}}</p>
                         @endif
@@ -185,7 +218,6 @@
                             <p class="card-text"><i class="fas fa-tags"></i>{{$Object->price}}</p>
                         @endif
                         <a href="javascript:" class="btn submit-comment col-lg" data-toggle="modal" data-target="#SendMessage"><i class="far fa-comments"></i> {{__('web.Advertisement.Show.chat')}} </a>
-                        @endauth
                     </div>
                 </div>
                 <h5>{{__('web.Advertisement.Show.similar_advertisement')}}</h5>
@@ -275,7 +307,11 @@
                         '                   </div>' +
                         '                   <a href="javascript:" class="btn-reply" onclick="document.getElementById(`reply-comment-'+comment.id+'`).style.display = `block`">' +
                         '                       <i class="far fa-comment"></i>' +
-                        '                       <span> {{__('web.Advertisement.Show.reply_comment')}}</span>' +
+                        '                       <span> {{__('web.Advertisement.Show.reply_comment')}} </span>' +
+                        '                   </a>'+
+                        '                   <a href="javascript:" class="btn-reply px-3" data-toggle="modal" data-target="#ReportAbuse" onclick="document.getElementById(`comment_id`).value=`'+comment.id+'`">' +
+                        '                       <i class="fas fa-bug"></i>' +
+                        '                       <span> {{__('web.Advertisement.Show.report_abuse')}}</span>' +
                         '                   </a>'+
                         '               </div>'+
                         '               <p class="comment">'+comment.comment+'</p>'+

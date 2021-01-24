@@ -39,6 +39,11 @@ class SendMessageRequest extends FormRequest
         }
         $Message = new ChatMessage();
         $Message->setChatRoomId($room->getId());
+        $Message->setMessage(__(' السلام عليكم ورحمة الله وبركاته، حاب استفسر بخصوص اعلانكم : '.$Object->getTitle()));
+        $Message->setUserId($logged->id);
+        $Message->save();
+        $Message = new ChatMessage();
+        $Message->setChatRoomId($room->getId());
         $Message->setMessage($this->message);
         $Message->setUserId($logged->id);
         $Message->save();
