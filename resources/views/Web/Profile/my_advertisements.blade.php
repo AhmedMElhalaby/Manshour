@@ -60,7 +60,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <p>{{__('web.Advertisement.Delete.commission_reminder')}}</p>
+                    <p class="row">{{__('web.Advertisement.Delete.commission_reminder')}}</p>
+                    <p class="row">{{__('web.Advertisement.Delete.commission_value')}} <span id="CommissionValue">0</span></p>
+                    <br>
                     <div class="row w-100">
                         <div class="col-lg-1"></div>
                         <div class="col-lg delete-b">
@@ -138,7 +140,12 @@
                 $('#sell_price_div').show();
             }else{
                 $('#sell_price_div').hide();
+                $('#CommissionValue').text(0);
+                $('#sell_price').val('');
             }
+        });
+        $('#sell_price').keyup(function () {
+            $('#CommissionValue').text(parseFloat($(this).val())*0.5/100);
         });
     </script>
 @endsection

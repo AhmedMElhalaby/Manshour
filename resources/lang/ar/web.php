@@ -87,7 +87,8 @@ return [
             'sold_outside_website'=>'تم البيع خارج الموقع',
             'never_sold'=>'لم يتم البيع',
             'sold_price'=>'سعر البيع',
-            'commission_reminder'=>'نذكرك بدفع عمولة الموقع ( 0.5 ) % من قيمة بيع المنتج او الخدمة'
+            'commission_reminder'=>'نذكرك بدفع عمولة الموقع ( 0.5 ) % من قيمة بيع المنتج او الخدمة',
+            'commission_value'=>'قيمة العمولة :'
 
         ]
     ],
