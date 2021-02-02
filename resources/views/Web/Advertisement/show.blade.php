@@ -99,7 +99,7 @@
     </section>
     <section class="container-fluid single-post" style="min-height: 25vh">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8 order-sm-1 order-2">
                 <div class="single-post-top">
                     <h4 class="@if(app()->getLocale() == 'ar') text-right @else text-left @endif">{{$Object->title}}</h4>
                     <hr>
@@ -192,7 +192,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 other-ads">
+            <div class="col-lg-4 order-1">
                 <div class="card rate">
                     <div class="card-body">
                         <div>
@@ -222,7 +222,7 @@
                 </div>
                 <h5>{{__('web.Advertisement.Show.similar_advertisement')}}</h5>
                 <hr>
-                <div class="row">
+                <div class="row other-ads">
                     <div class="col-lg-12 p-0">
                         @foreach($SimilarAd as $ad)
                         <div class="card another-ads"  style="max-width: 540px; ">
