@@ -24,7 +24,7 @@ trait ResponseTrait
                     'to' => $paging->lastItem()
                 ]:null
             ],
-            200
+            200,['Content-Type'=>'application/json;charset=utf-8']
         );
     }
 
@@ -41,7 +41,7 @@ trait ResponseTrait
                 'paging'=>null
 
             ],
-            200
+            200,['Content-Type'=>'application/json;charset=utf-8']
         );
     }
 
@@ -59,7 +59,7 @@ trait ResponseTrait
                 'paging'=>$paging
 
             ],
-            200
+            200,['Content-Type'=>'application/json;charset=utf-8']
         );
     }
 }

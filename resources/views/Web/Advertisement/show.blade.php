@@ -159,7 +159,7 @@
                         </ol>
                     @endif
                 </div>
-                <div class="post-disc">{!! json_decode($Object->content) !!}</div>
+                <div class="post-disc">{!! $Object->content !!}</div>
                 <div class="row">
                     <div class="col-lg-12 p-0">
                         <div class="comments-area">
