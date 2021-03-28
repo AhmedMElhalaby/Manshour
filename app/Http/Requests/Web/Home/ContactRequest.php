@@ -3,8 +3,6 @@
 namespace App\Http\Requests\Web\Home;
 
 use App\Helpers\Constant;
-use App\Http\Resources\Web\AdvertisementResource;
-use App\Models\Advertisement;
 use App\Models\Ticket;
 use Illuminate\Foundation\Http\FormRequest;
 

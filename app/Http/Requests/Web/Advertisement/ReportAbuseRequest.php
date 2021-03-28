@@ -2,14 +2,7 @@
 
 namespace App\Http\Requests\Web\Advertisement;
 
-use App\Helpers\Constant;
-use App\Http\Resources\Web\AdvertisementResource;
-use App\Models\Advertisement;
-use App\Models\AdvertisementReport;
-use App\Models\Comment;
 use App\Models\CommentReport;
-use App\Models\Favourite;
-use App\Models\Media;
 use \App\Helpers\ResponseRequest as Response;
 
 class ReportAbuseRequest extends Response

@@ -2,10 +2,7 @@
 
 namespace App\Http\Requests\Web\Advertisement;
 
-use App\Helpers\Constant;
-use App\Http\Resources\Web\AdvertisementResource;
 use App\Models\Advertisement;
-use App\Models\Media;
 use Illuminate\Foundation\Http\FormRequest;
 
 class EditRequest extends FormRequest

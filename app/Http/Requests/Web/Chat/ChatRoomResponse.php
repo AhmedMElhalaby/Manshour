@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\Web\Chat;
 
-use App\Http\Resources\Web\AdvertisementResource;
 use App\Http\Resources\Web\ChatRoomResource;
-use App\Models\Advertisement;
 use \App\Helpers\ResponseRequest as Response;
 use App\Models\ChatRoom;
 use App\Models\User;

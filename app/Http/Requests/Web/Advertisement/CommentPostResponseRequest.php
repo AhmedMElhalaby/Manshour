@@ -2,12 +2,8 @@
 
 namespace App\Http\Requests\Web\Advertisement;
 
-use App\Helpers\Constant;
-use App\Http\Resources\Web\AdvertisementResource;
 use App\Http\Resources\Web\CommentResource;
-use App\Models\Advertisement;
 use App\Models\Comment;
-use App\Models\Media;
 use \App\Helpers\ResponseRequest as Response;
 
 class CommentPostResponseRequest extends Response
