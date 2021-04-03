@@ -212,7 +212,7 @@
 {{--                            </form>--}}
                         </div>
                         @if(!$Object->hide_contact)
-                            <p class="card-text"><i class="fas fa-mobile-alt"></i>{{$Object->User->mobile}}</p>
+                            <p class="card-text"><i class="fas fa-mobile-alt"></i>{{$Object->contact}}</p>
                         @endif
                         @if($Object->price)
                             <p class="card-text"><i class="fas fa-tags"></i>{{$Object->price}}</p>
