@@ -123,7 +123,7 @@ class Functions
         }
         $ch = curl_init();
         $userid = '966555408042';
-        $password = 'Mshmsh10';
+        $password = 'Mnshur';
         $sender = 'MNSHUR';
         $text = urlencode($msg);
 //        $encoding = 'UTF8';
