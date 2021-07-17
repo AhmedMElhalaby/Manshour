@@ -27,6 +27,7 @@ return [
     'code_not_correct'=>'كود استرجاع كلمة المرور غير صحيح',
     'code_correct'=>'كود استرجاع كلمة المرور صحيح',
     'password'=>'كلمة المرور',
+    'password_confirmation'=>'تأكيد كلمة المرور',
     'email'=>'البريد الالكتروني',
     'logout'=>'تسجيل الخروج',
     'gender'=>[
@@ -40,5 +41,9 @@ return [
     'verified_before'=>'الايميل مفعل مسبقا',
     'verified'=>'تم التفعيل بنجاح',
     'verification_code_sent'=>'تم ارسال كود التحقق .',
+    'verification_code'=>'أدخل كود التفعيل',
+    'save_password'=>'حفظ كلمة المرور',
+    'success_change_password'=> 'تم تغيير كلمة المرور بنجاح',
+    'password_not_matched'=> 'حقل كلمة المرور و تأكيد كلمة المرور غير متطابقين',
 
 ];

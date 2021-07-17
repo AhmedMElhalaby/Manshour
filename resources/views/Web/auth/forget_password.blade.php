@@ -39,6 +39,12 @@
                             <div class="form-group">
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="{{__('web.send_forget_password')}}">
                             </div>
+
+                            @if (session('error'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
                         </form>
                     </div>
                 </div>

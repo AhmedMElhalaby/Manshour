@@ -26,6 +26,8 @@ return [
     'code_not_correct'=>'Reset Password Code Not Correct',
     'code_correct'=>'Reset Password Code Correct',
     'password'=>'Password',
+    'password_confirmation'=>'Password Confirmation',
+
     'email'=>'E-Mail',
     'logout'=>'Logout',
     'gender'=>[
@@ -39,5 +41,9 @@ return [
     'verified_before'=>'Email Verified Before',
     'verified'=>'Verified Successfully',
     'verification_code_sent'=>'Verification code has been sent .',
+    'verification_code'=>'Enter verification code .',
+    'save_password'=>'Save Password',
+    'success_change_password'=> 'Password changed successfully',
+    'password_not_matched'=> 'The password field and confirm password do not match',
 
 ];

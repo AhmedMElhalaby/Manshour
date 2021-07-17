@@ -48,6 +48,12 @@
                             <div class="text-right register-link mb-2">
                                 <span> {{__('web.dont_have_account')}} &nbsp; <a href="{{url('register')}}" class="text-info"> {{__('web.register')}} </a></span>
                             </div>
+
+                            @if (session('success'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                         </form>
                     </div>
                 </div>

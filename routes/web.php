@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes(['verify'=>true]);
+
 Route::group([
     'prefix'  => 'auth',
     'middleware' => 'auth',
@@ -83,3 +84,8 @@ Route::group([
     Route::get('messages', 'ChatController@chat_room_messages');
     Route::post('messages/send', 'ChatController@send_message');
 });
+
+
+Route::post('setNewPassword', 'Auth\ForgotPasswordController@setNewPassword')->name('setNewPassword');
+Route::get('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+//Route::get('resetPassword/{id}','ResetPasswordController@resetPassword')->name('password.resetPassword');

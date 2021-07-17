@@ -142,6 +142,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'password'=>'كلمة المرور',
+        'password_confirmation'=>'تأكيد كلمة المرور',
+        'verification_code'=>'رمز استعادة كلمة المرور',
+
+    ],
 
 ];
